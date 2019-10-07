@@ -1,0 +1,19 @@
+{
+  "name": "fashionstore",
+  "version": "1.0.0",
+  "description": "ĐỒ ÁN WEBSITE BÁN HÀNG THỜI TRANG",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PTChinh/FashionStore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PTChinh/FashionStore/issues"
+  },
+  "homepage": "https://github.com/PTChinh/FashionStore#readme"
+}
