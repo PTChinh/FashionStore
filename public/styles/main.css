@@ -1,0 +1,53 @@
+span
+{
+    margin-right: 20px;
+}
+.menu
+{
+    list-style: none;
+}
+.menu li:hover
+{
+    background-color: #353942;
+    color: white;
+}
+.deal
+{
+    background-image: url("/images/deal.jpg");
+    height: 500px;
+}
+.image-theme
+{
+    position: relative;
+    color: white;
+}
+.title-theme
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 5px;
+    font-size: 20px;
+}
+.img-cover
+{
+    background: linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(177,185,187,1) 52%);
+    height:100%;
+    position: absolute;
+    bottom: 0;
+    opacity: 0.4;
+}
+.Trend-theme
+{
+    height: 500px;
+}
+.footer-theme
+{
+    font-size: 20px;
+    color: blue;
+}
+.header-title
+{
+    color: white;
+    font-size: 40px;
+}

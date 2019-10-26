@@ -1,0 +1,83 @@
+html
+    head
+        meta(charset='utf-8')
+        title
+            | Shop thời trang Bee Fashion
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+        script(src='https://kit.fontawesome.com/14be88be6b.js', crossorigin='anonymous')
+        link(rel='stylesheet', type='text/css', href='/styles/main.css')
+    header.container.d-flex.justify-content-center.bg-dark.border-bottom.border-white
+        .col-12.col-md-2.pt-2.pb-2
+            img(src='/images/logo.png')
+        .col-12.col-md-2.d-flex.align-items-center
+            span.header-title
+                strong Bee Fashion
+        .col-12.col-md-6.p-5.justify-content-center
+            div
+                form.d-flex.flex-row.justify-content-center
+                    span
+                        i.fas.fa-search.text-white.d-inline
+                    input.d-flex.text-gray.bg-light(type='text', name='', placeholder='Tìm kiếm sản phẩm ...', size='60px')
+        .d-flex.d-none.d-md-flex.col-md-2.justify-content-center.align-items-end.pb-3
+            span
+                a.text-white(href='#')
+                    i.far.fa-smile
+            span.text-white
+                a.text-white(href='#')
+                    i.far.fa-heart
+            span.text-white
+                a.text-white(href='#')
+                    i.fas.fa-shopping-cart
+    body
+        nav.container.bg-warning
+            ul.d-flex.justify-content-center.menu.p-3
+                li.mr-5.font-weight-bolder Home
+                li.mr-5.font-weight-bolder Info
+                li.mr-5.font-weight-bolder Product
+                li.mr-5.font-weight-bolder About
+                li.mr-5.font-weight-bolder Cart
+        block content
+    footer
+        .d-flex.justify-content-center.pt-5.border-bottom.border
+            .container.row
+                .col-md-3
+                    p.footer-theme
+                        | Nhãn hàng
+                    figure
+                        img(src='/images/logo.png')
+                .col-md-3.d-flex.flex-column
+                    p.footer-theme Về chúng tôi
+                    a.mb-3(href='#') Chăm sóc khách hàng
+                    a.mb-3(href='#') Vận chuyển sản phẩm
+                    a.mb-3(href='#') Quyền lợi khách hàng
+                .col-md-3
+                    p.footer-theme theo dõi chúng tôi trên
+                    .mb-3.d-flex
+                        .mr-3
+                            i.fab.fa-facebook
+                        div
+                            a(href='#') Facebook
+                    .mb-3.d-flex
+                        .mr-3
+                            i.fab.fa-instagram
+                        div
+                            a(href='#') Instagram
+                    .mb-3.d-flex
+                        .mr-3
+                            i.fab.fa-twitter-square
+                        div
+                            a(href='#') Twitter
+                .col-md-3
+                    p.footer-theme Thông tin liên lạc
+                    p
+                        span
+                            i.fas.fa-thumbtack
+                        |  KTX Khu B DHQG, Dĩ An, Bình Dương, Việt Nam
+                    p
+                        span
+                            i.fas.fa-phone-volume
+                        | +(85) 915330370
+                    p
+                        span
+                            i.fas.fa-envelope
+                        |  tranhiepnguyenhuy@gmail.com
