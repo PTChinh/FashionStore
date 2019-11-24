@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Thông tin sản phẩm</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./main.css">
+</head>
+<body>
+	<div class=" bg-dark" id="Background-Table-Img" onclick="hide()"></div>
+<div>
+	<div class="container" id="Table-Img">
+			<div class="row justify-content-center">
+				<div class="row col-9 p-3 border">
+					<div class="col-12 col-md-7">
+						<div class="w-100 Relative">
+							<img class="Info-Product-Image-Sc" id="Main-Img-Detail" src="image/Do Nam 1.jpg">
+							<div class="Pointer Change-Btn Pre text-center" onclick="changeBtn(-1)">
+							<span><</span>
+							</div>
+							<div class="Pointer Change-Btn Next text-center" onclick="changeBtn(1)">
+							<span>></span>
+							</div>				
+						</div>
+						
+					</div>
+					<div class="col-12 col-md-5" >
+						<h4>Hình ảnh chi tiết của sản phẩm</h4>
+						<div class="row p-2 justify-content-around" id="Main">	
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+	<div class="mb-5 mt-5 E-background-color">
+		<div class="container p-2 ">
+			<div class="d-flex">
+				<a href="#">Trang chủ</a>
+				<span class="ml-1 mr-1">/</span>
+				<strong>Chi tiết sản phẩm</strong>
+			</div>			
+		</div>
+	</div>
+<div  class="d-flex justify-content-center mb-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-5">
+				<figure class="p-5">
+					<img class="Info-Product-Main-Image Info-Product-Image-Sc" id="Main-Img" src="" alt="Hình ảnh sản phẩm mẫu">
+				</figure>
+				<div class="d-flex">
+					<div class="Info-Product-Image mr-3 Pointer Active" tabindex="0" onclick="importImg()">
+						<img class="Info-Product-Image-Sc Change" onmouseover="changeImg(this)" src="image/Do Nu 1.jpg" alt="Hình ảnh sản phẩm mẫu">
+					</div>
+					<div class="Info-Product-Image mr-3 Pointer Active" tabindex="0" onclick="importImg()">
+						<img class="Info-Product-Image-Sc Change" onmouseover="changeImg(this)" src="image/Do tre em 1.png" alt="Hình ảnh sản phẩm mẫu">
+					</div>
+					<div class="Info-Product-Image mr-3 Pointer Active" tabindex="0" onclick="importImg()">
+						<img class="Info-Product-Image-Sc Change" onmouseover="changeImg(this)" src="image/Do Nam 1.jpg" alt="Hình ảnh sản phẩm mẫu">
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-7 bg-dark text-white">
+				<h2 class="mb-3">Bộ sưu tập quần áo strees style</h2>
+				<div class="mb-3">
+					<div>Mổ tả</div>
+					<div>Sản phẩm chính hãng hàng Việt Nam chất lượng cao, được nhiều người yêu thích trong mùa đông này</div>
+				</div>
+				<div class="d-flex mb-3">
+					<div class="Info-Item">Giá sản phẩm</div>
+					<div>50000 USD</div>
+				</div>
+				<div class="d-flex mb-3">
+					<div class="Info-Item">Màu sắc</div>
+					<div>
+						<select>
+							<option>Xanh</option>
+							<option>Đỏ</option>
+							<option>Tím</option>
+							<option>Vàng</option>
+						</select>
+					</div>
+				</div>
+				<div class="d-flex mb-3">
+					<div class="Info-Item">Kích thước</div>	
+					<div>				
+						<input class="mr-2 mt-2" type="radio" name="Size-radio" value="S"><span>S</span>
+						<input class="mr-2 mt-2" type="radio" name="Size-radio" value="M"><span>M</span>
+						<input class="mr-2 mt-2" type="radio" name="Size-radio" value="L"><span>L</span>
+						<input class="mr-2 mt-2" type="radio" name="Size-radio" value="XL"><span>XL</span>
+					</div>
+				</div>
+				<div class="d-flex mb-4">
+					<div class="Info-Item">Số lượng</div>
+					<div>
+						<button class="">+</button>
+						<input class="text-center" type="text" name="SL" readonly="" value="1" size="1px">
+						<button>_</button>
+					</div>
+				</div>
+				<div class="">
+					<button class="btn btn-primary">Thêm vào giỏ hàng</button>
+					<button class="btn btn-warning">Mua ngay</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var n=0;
+	Load();
+	function Load()
+	{
+	var slides=document.getElementsByClassName("Change");
+	document.getElementById("Main-Img").src=slides[0].src;
+	}
+	function changeImg(x)
+	{
+		document.getElementById("Main-Img").src=x.src;
+	}
+	function changeImgPos(x)
+	{
+		var slides=document.getElementsByClassName("Detail");
+		document.getElementById("Main-Img-Detail").src=slides[x].src;
+		n=x;
+	}
+
+	function changeBtn(x) 
+	{
+		var slides=document.getElementsByClassName("Detail");
+		var length=slides.length;
+
+		if(n+x<0)
+		{
+			n=length-1;
+		}
+		else
+		{
+			
+				if(n+x>=length)
+				{
+					n=0;
+				}
+				else
+					n+=x;
+		}
+		changeImgPos(n);
+	}
+	function importImg()
+	{
+		document.getElementById("Table-Img").style.display="block";
+		document.getElementById("Background-Table-Img").style.display="block";
+		var Imgs = document.getElementsByClassName("Change");
+		var length=Imgs.length;
+
+		for(var i=0; i<length;i++)
+		{
+		var div = document.createElement("div");	
+		div.className="Info-Product-Image Active mr-1 mb-2 Pointer Img-Focus";
+		div.tabIndex=0;
+		div.onclick = function()
+		{
+		var divs = document.getElementsByClassName("Img-Focus");
+		var slides= document.getElementsByClassName("Detail");
+		var length=divs.length;
+		for( var i=0; i<length; i++)
+		{
+			if(document.activeElement === divs[i])
+			{
+				document.getElementById("Main-Img-Detail").src=slides[i].src;
+				n=i;
+				return;
+			}
+		}
+		}
+		;
+		div.innerHTML='<img class="Info-Product-Image-Sc Detail" src="'+Imgs[i].src+'" alt="Hình ảnh sản phẩm mẫu">';
+		document.getElementById("Main").appendChild(div);
+		}
+		changeImg(n);
+	}
+	function focusImg()
+	{
+		var divs = document.getElementsByClassName("Img-Focus");
+		var slides= document.getElementsByClassName("Detail");
+		var length=divs.length;
+		for( var i=0; i<length; i++)
+		{
+			if(document.activeElement === divs[i])
+			{
+				document.getElementById("Main-Img-Detail").src=slides[i].src;
+				n=i;
+				return;
+			}
+		}
+	
+	}
+	function hide()
+	{
+		document.getElementById("Table-Img").style.display="none";
+		document.getElementById("Background-Table-Img").style.display="none";
+		Load();
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<title>
+		Sakura Shop - Nơi niềm vui bắt đầu 
+	</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/14be88be6b.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="./main.css">
+</head>
+<body background="image/background.jpg">
+<header class="container-fulid">
+	<div class="container d-flex justify-content-center border-bottom border-white">
+		<div class="col-12 col-md-2 pt-2 pb-2"><img src="image/logo.jpg"></div>
+		
+			<div class="col-12 col-md-2 d-flex align-items-center ">
+				<div class="Special-Tiltle-Affect p-2"><span class="header-title"> <strong>SAKURA</strong></span></div></div>
+				
+		<div class="col-12 col-md-6 p-5 justify-content-center">
+			<div>
+				<form class="d-flex flex-row justify-content-center">
+		<span><i class="fas fa-search text-white d-inline"></i></span>
+		<input class="d-flex text-gray bg-light" type="text" name="" value="Tìm kiếm sản phẩm ..." size="60px">
+		</form>
+			</div>
+		
+		</div>
+		<div class="d-flex d-none d-md-flex col-md-2 justify-content-center align-items-end pb-3">
+			<span><a class="text-white mr-3" href="#"><i class="far fa-smile"></i></a></span>
+			<span class="text-white mr-3"><a class="text-white" href="#"><i class="far fa-heart"></i></a></span>
+			<span class="text-white mr-3"><a class="text-white" href="#"><i class="fas fa-shopping-cart "></i></a></span>
+		</div>
+
+</header>
+
+
+<nav class="container-fulid E-background-color">
+	<ul class="d-none d-md-flex justify-content-center m-0 Menu">
+
+		<li class="Menu-Opt" >Trang chủ<i class="fas fa-sort-down ml-1"></i>
+		<ul class= "Sup-Menu-Opt">
+
+			<li><div class="Menu-Opt-Width"><a href="#">Về chúng tôi</a></div></li>
+			<li><a href="#">Bộ sưu tập</a></li>
+			<li><a href="#">Vận chuyển</a></li>
+		</ul>
+		</li>
+		<li class="Menu-Opt">Cửa hàng<i class="fas fa-sort-down ml-1"></i>
+			<ul class= "Sup-Menu-Opt">
+			<li><div class="Menu-Opt-Width"><a href="#">Quần & Áo </a></div></li>
+			<li><a href="#">Giày & Dép</a></li>
+			<li><a href="#">Trang sức & Phụ kiện siu xinh</a></li>
+			<li><a href="#">Balo & Túi xách</a></li>	
+			</ul>
+		</li>
+		<li class="">Vận chuyển	</li>
+		<li class="">Về chúng tôi</li>
+		<li class="">Giỏ hàng</li>
+	</ul>
+	<div class="d-flex d-md-none flex-column justify-content-center">
+		<div class="Nav-Mobile">
+			<span class="Pointer">Menu Day</span>
+			<div class="Menu-Mobile">
+			<ul class=" Menu d-flex flex-column">
+				<li class="Menu-Opt">Trang chủ
+					<ul class="Sup-Menu-Mobile">
+						<li><div class="Menu-Opt-Width">Về chúng tôi</div></li>
+						<li>Bộ sưu tập</li>
+						<li>Vận chuyển</li>
+					</ul>
+				</li>
+				<li class="Menu-Opt">Cửa hàng
+					<ul class="Sup-Menu-Mobile">
+						<li><div class="Menu-Opt-Width">Quần Áo</div></li>
+						<li>Giày Dép</li>
+						<li>Trang sức phụ kiện</li>
+						<li>Balô Túi sách</li>
+					</ul>
+				</li>
+				<li><a href="#">Vận chuyển</a></li>
+				<li> <a href="#">Về chúng tôi</a></li>
+				<li><a href="#">Giỏ hàng</a></li>
+			</ul>
+		</div>	
+		</div>	
+			
+	</div>
+</nav>
+
+
+<div class="container Frame bg-white deal">
+		<div class="w-100 ">
+			<div class="SlideShow fade-animation deal"><img class="Info-Product-Image-Sc" src="image/deal.jpg"></div>
+			<div class="PreSlideShow SlideShow fade-animation deal"><img class="Info-Product-Image-Sc" src="image/deal2.jpg"></div>
+			<div class="PreSlideShow SlideShow fade-animation deal"><img class="Info-Product-Image-Sc " src="image/deal3.jpg"></div>
+			<div class="PreSlideShow SlideShow fade-animation deal"><img class="Info-Product-Image-Sc " src="image/deal4.jpg"></div>	
+		</div>
+		<div class="SlideBtn-Div d-flex justify-content-center">		
+				<input class="mr-1 SlideBtn" type="radio" name="Slideshow-btn"  onclick="showBtnSlide(0)">
+				<input class="mr-1 SlideBtn" type="radio" name="Slideshow-btn"  onclick="showBtnSlide(1)">
+				<input class="mr-1 SlideBtn" type="radio" name="Slideshow-btn"  onclick="showBtnSlide(2)">
+				<input class="mr-1 SlideBtn" type="radio" name="Slideshow-btn"  onclick="showBtnSlide(3)">
+		</div>
+</div>
+
+
+<div>
+	<div class="container Type-background-color mt-5 mb-5">
+		<h2>Sản phẩm</h2>
+		<div class="row">
+			<div class="col-6 col-md-3 border-right border-left mt-2">
+					<div class="d-flex flex-column text-center">
+						<div class="row justify-content-center">
+							<div class="Img-Type-Product mr-2" >
+								<a href="#"><img class="Info-Product-Image-Sc" src="image/clothes.png"></a>
+							</div>	
+						</div>
+						
+						<div class="mt-2 mb-2">Quần & Áo</div>
+					</div>
+			</div>
+			<div class="col-6 col-md-3 border-right mt-2">
+					<div class="d-flex flex-column text-center">
+						<div class="row justify-content-center">
+							<div class="Img-Type-Product mr-2" >
+								<a href="#"><img class="Info-Product-Image-Sc" src="image/Shoe.png"></a>
+							</div>	
+						</div>
+						
+						<div class="mt-2 mb-2">Giày & Dép</div>
+					</div>
+			</div>
+			<div class="col-6 col-md-3 border-right mt-2">
+					<div class="d-flex flex-column text-center">
+						<div class="row justify-content-center">
+							<div class="Img-Type-Product mr-2" >
+								<a href="#"><img class="Info-Product-Image-Sc" src="image/hat.png"></a>
+							</div>	
+						</div>
+						
+						<div class="mt-2 mb-2"> Phụ kiện & Trang sức</div>
+					</div>
+			</div>
+			<div class="col-6 col-md-3 border-right mt-2">
+					<div class="d-flex flex-column text-center">
+						<div class="row justify-content-center">
+							<div class="Img-Type-Product mr-2" >
+								<a href="#"><img class="Info-Product-Image-Sc" src="image/backpack.png"></a>
+							</div>	
+						</div>
+						
+						<div class="mt-2 mb-2">Balo & Túi xách</div>
+					</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<div class=" d-flex justify-content-center border-bottom border-white mb-5 pb-3">
+	<div class="container text-light E-background-color mt-3 justify-content-center align-items-center m-0">
+		<h1 class="mt-4 mb-4 text-dark">Bộ sưu tập tháng</h1>
+		<div class="row justify-content-around">
+			<div class="w-100"></div>
+			<div class="d-flex col-12 col-md-4 justify-content-center ">
+				<a href="#" >
+				<figure class="image-theme Scale-Trans">
+					<img src="image/Do Nu 1.jpg" alt="Hình ảnh thời trang" class="img-fluid ">
+					<div class="img-cover col-12 col-md-0"></div>
+					<div class="title-theme">
+						<h4>Bộ sưu tập</h4><span>Thời trang Nữ</span>
+					</div>
+				</figure>
+				</a>
+			</div >
+			<div class="d-flex col-12 col-md-4 justify-content-center  ">
+				<a  href="#" >
+				<figure class="image-theme Scale-Trans">
+					<img src="image/Do Nam 1.jpg" alt="Hình ảnh thời trang" class="img-fluid">
+					<div class="img-cover col-12 col-md-0"></div>
+					<div class="title-theme">
+						<h4>Bộ sưu tập</h4><span>Thời trang Nam</span>
+					</div>
+				</figure>
+				</a>
+			</div>
+			<div class="d-flex col-12 col-md-4 justify-content-center	">
+				<a href="#">
+				<figure class="image-theme Scale-Trans">
+					<img src="image/Do tre em 1.png" alt="Hình ảnh thời trang" class="img-fluid">
+					<div class="img-cover col-12 col-md-0"></div>
+					<div class="title-theme">
+						<h4>Bộ sưu tập</h4>
+						<span>Thời trang Trẻ em</span>
+					</div>
+				</figure>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="d-flex flex-column ">
+	<div class="d-flex justify-content-center Trending-background mb-5 pt-5 pb-5">
+	<div class="Special-Tiltle-Affect Trending-Div text-center"><strong>Trending</strong></div>
+
+	</div>
+	<div class="container E-background-color justify-content-center">
+		<div class="row justify-content-center">
+			<div class="col-10">
+				<div class="d-flex flex-row Trending-Scroll m-2 Trending-Img-background-color align-items-center">
+					<div>
+					<div class="d-flex text-center E-background-color flex-column p-2 ml-5 mr-5">
+						<a href="#">
+						<figure class="Img-Product-Small">
+							<img class="Info-Product-Image-Sc" src="image/Do Nu 1.jpg">
+						</figure>
+						</a>
+						<div class="d-flex flex-column bg-white">
+						<a href="#">Đồ nữ</a>
+						<span>900000</span>
+						<div>
+							<input type="checkbox" name="" id="1" class="Fav d-none">
+							<label for="1"><i class="far fa-heart"></i></label>
+						</div>
+						</div>
+					</div>
+					</div>
+					<div>
+					<div class="d-flex text-center E-background-color flex-column p-2 mr-5">
+						<a href="#">
+						<figure class="Img-Product-Small">
+							<img class="Info-Product-Image-Sc" src="image/Do Nu 1.jpg">
+						</figure>
+						</a>
+						<div class="d-flex flex-column bg-white">
+						<a href="#">Đồ nữ</a>
+						<span>900000</span>
+						<div>
+							<input type="checkbox" name="" id="2" class="Fav d-none">
+							<label for="2"><i class="far fa-heart"></i></label>
+						</div>
+						</div>
+					</div>
+					</div>
+					<div>
+					<div class="d-flex text-center E-background-color flex-column p-2 mr-5">
+						<a href="#">
+						<figure class="Img-Product-Small">
+							<img class="Info-Product-Image-Sc" src="image/Do Nu 1.jpg">
+						</figure>
+						</a>
+						<div class="d-flex flex-column bg-white">
+						<a href="#">Đồ nữ</a>
+						<span>900000</span>
+						<div>
+							<input type="checkbox" name="" id="3" class="Fav d-none">
+							<label for="3"><i class="far fa-heart"></i></label>
+						</div>
+						</div>
+					</div>
+					</div>
+					
+					<div>
+					<div class="d-flex text-center E-background-color flex-column p-2 mr-5">
+						<a href="#">
+						<figure class="Img-Product-Small">
+							<img class="Info-Product-Image-Sc" src="image/Do Nu 1.jpg">
+						</figure>
+						</a>
+						<div class="d-flex flex-column bg-white">
+						<a href="#">Đồ nữ</a>
+						<span>900000</span>
+						<div>
+							<input type="checkbox" name="" id="4" class="d-none Fav">
+							<label for="4"><i class="far fa-heart"></i></label>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="d-flex justify-content-center pt-4 pb-5">
+	<div class="container row E-background-color pt-4">
+		<div class=" col-12 col-md-7">
+			<figure>
+				<img src="image/Shopping.jpg" class="img-fluid">
+			</figure>
+		</div>
+		<div class="col-12 col-md-5 bg-white text-center mb-3">
+			<div>
+				<h3 class="m-4 text-primary">Những "bí quyết" mua hàng bỏ túi ngay </h3>
+				<p class="text-secondary">Được chia sẽ bởi những khách hàng thân thiết</p>
+				<p class="text-primary">Kinh nghiệm mua hàng để bạn hiểu rõ hơn bản thân cần gì và những điều chưa biết về Bee fashion</p>
+				<button class="btn btn-warning m-4">Tìm hiểu ngay</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<footer>
+	<div class="d-flex justify-content-center pt-5 border-bottom border">
+		<div class="container row">
+					<div class="col-md-3">
+						<p class="footer-theme">Nhãn hàng </p>
+						<figure><img src="image/logo.jpg"></figure>
+					</div>
+					<div class="col-md-3 d-flex flex-column">
+					<p class="footer-theme">Về chúng tôi</p>
+					<a href="#" class="mb-3">Chăm sóc khách hàng</a>
+					<a href="#" class="mb-3">Vận chuyển sản phẩm</a>
+					<a href="#" class="mb-3">Quyền lợi khách hàng</a>
+					</div>
+				<div class="col-md-3">
+					<p class="footer-theme">Theo dõi chúng tôi trên</p>
+					<div class="mb-3 d-flex"><div  class="mr-3"><i class="fab fa-facebook"></i></div> <div><a href="#">Facebook</a></div></div>
+					<div class="mb-3 d-flex"><div class="mr-3"><i class="fab fa-instagram"></i></div><div><a href="#">Instagram</a></div></div>
+					<div class="mb-3 d-flex"><div class="mr-3"><i class="fab fa-twitter-square"></i></div><div><a href="#">Twitter</a></div></div>
+				</div>
+				<div class="col-md-3">
+					<p class="footer-theme">Thông tin liên lạc</p>
+					<p> <span><i class="fas fa-thumbtack"></i></span> KTX Khu B DHQG, Dĩ An, Bình Dương, Việt Nam</p>
+					<p><span><i class="fas fa-phone-volume"></i></span>+(85) 915330370 </p>
+				<p><span><i class="fas fa-envelope"></i></span> tranhiepnguyenhuy@gmail.com</p>
+				</div>
+		</div>
+	</div>
+</footer>
+
+
+<script type="text/javascript">
+		var n=0;
+	function showSlide()
+	{
+		var slides= document.getElementsByClassName("SlideShow");
+		var length= (slides.length);
+		if(n==length)
+			n=0;
+		showBtnSlide(n);
+		n++;
+		setTimeout(showSlide, 4000);
+	}
+		setTimeout(showSlide,0);
+
+		function showBtnSlide(a)
+		{
+			var slides=document.getElementsByClassName("SlideShow");
+			var length=(slides.length);
+			for(var i=0; i<length;i++)
+			{
+				if(i==a)
+				{
+					slides[i].style.display="block";
+				}
+				else
+					slides[i].style.display="none";
+			}
+			n=a;
+		}
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>s
+</body>
+</html>
