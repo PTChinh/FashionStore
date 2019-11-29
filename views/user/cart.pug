@@ -1,0 +1,87 @@
+extends ../layouts/common
+block content
+    .mb-5
+        h1.pl-5 Thông tin  giỏ hàng
+    .mb-3
+        .container
+            .col-12.Product-Invoice
+                table.Invoice-Table.text-center
+                    tr.border
+                        th Hình ảnh
+                        th Tên sản phẩm
+                        th Đơn giá
+                        th Số lượng
+                        th Thành tiền
+                        th Thao tác
+                    tr.border-bottom
+                        td.row.justify-content-center
+                            .Info-Product-Image
+                                img.Info-Product-Image-Sc(src='images/Do Nu 1.jpg')
+                        td Bộ sưu tập đồ nữ hiện đại
+                        td 500000
+                        td
+                            button +
+                            input(type='Text', name='', value='1', size='1px')
+                            button -
+                        td(reaonly='') 5000000
+                        td
+                            button.btn.btn-primary Xóa
+                    tr.border-bottom
+                        td.row.justify-content-center
+                            .Info-Product-Image
+                                img.Info-Product-Image-Sc(src='images/Do Nu 1.jpg')
+                        td Bộ sưu tập đồ nữ hiện đại
+                        td 500000
+                        td
+                            button +
+                            input(type='Text', name='', value='1', size='1px')
+                            button -
+                        td(reaonly='') 5000000
+                        td
+                            button.btn.btn-primary Xóa
+                    tr.border-bottom
+                        td.row.justify-content-center
+                            .Info-Product-Image
+                                img.Info-Product-Image-Sc(src='images/Do Nu 1.jpg')
+                        td Bộ sưu tập đồ nữ hiện đại
+                        td 500000
+                        td
+                            button +
+                            input(type='Text', name='', value='1', size='1px')
+                            button -
+                        td(reaonly='') 500
+                        td
+                            button.btn.btn-primary Xóa
+    .container.border-top
+        .row
+            .col-12.col-md-7.bg-light.mt-4
+                h3.mb-2.mt-2 Mã giảm giá/voucher
+                .Sub-title.mb-2
+                    i
+                        | Những giả giá ưu đãi mà cửa hàng dành cho bạn bao gồm mã giảm giá sự kiện hoặc voucher dành cho khách hàng thân  thiết
+                input.form-control(type='texr', name='', placeholder='Nhập mã giảm giá tại đây...', size='70%')
+                button.btn.btn-primary(size='30%') Nhập
+            .col-12.col-md-5.mt-4
+                .d-flex.justify-content-end
+                    div
+                        .d-flex.mb-5.border-bottom.pb-1
+                            i.fas.fa-money-check-alt.fa-3x.mr-5
+                            h3 Tổng hóa đơn
+                        .d-flex.mb-2
+                            .Info-Item Phụ phí
+                            div 200000
+                        .d-flex.mb-2
+                            .Info-Item Tổng tiền hàng
+                            div 9000000
+                        .d-flex.mb-2
+                            .Info-Item Phí vận chuyển
+                            div 500000
+                        .d-flex.mb-2
+                            .Info-Item
+                                | Số tiền giảm giá
+                            div 600000
+                        .d-flex.mt-4.Total-Cart.mb-3.border-top
+                            .Info-Item Tổng
+                            div 8100000
+                        div
+                            button.btn.btn-primary.w-100.mb-5 MUA HÀNG

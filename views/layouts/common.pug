@@ -2,56 +2,110 @@ html
     head
         meta(charset='utf-8')
         title
-            | Shop thời trang Bee Fashion
+            | Sakura Shop - Nơi niềm vui bắt đầu
         link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
         script(src='https://kit.fontawesome.com/14be88be6b.js', crossorigin='anonymous')
-        link(rel='stylesheet', type='text/css', href='/styles/main.css')
-    header.container.d-flex.justify-content-center.bg-dark.border-bottom.border-white
-        .col-12.col-md-2.pt-2.pb-2
-            img(src='/images/logo.png')
-        .col-12.col-md-2.d-flex.align-items-center
-            span.header-title
-                strong Bee Fashion
-        .col-12.col-md-6.p-5.justify-content-center
-            div
-                form.d-flex.flex-row.justify-content-center
-                    span
-                        i.fas.fa-search.text-white.d-inline
-                    input.d-flex.text-gray.bg-light(type='text', name='', placeholder='Tìm kiếm sản phẩm ...', size='60px')
-        .d-flex.d-none.d-md-flex.col-md-2.justify-content-center.align-items-end.pb-3
-            span
-                a.text-white(href='#')
-                    i.far.fa-smile
-            span.text-white
-                a.text-white(href='#')
-                    i.far.fa-heart
-            span.text-white
-                a.text-white(href='#')
-                    i.fas.fa-shopping-cart
+        base(href='/')
+        link(rel='stylesheet', type='text/css', href='styles/main.css')
+        style.
+            .form-control {
+                padding-left: 2.375rem;
+                padding-right: 2.375rem;
+            }
+    header.container-fulid
+        .container.d-flex.justify-content-center.border-bottom.border-white
+            .col-12.col-md-2.pt-2.pb-2
+                img(src='/images/logo.jpg', alt='logo')
+            .col-12.col-md-2.d-flex.align-items-center
+                .Special-Tiltle-Affect.p-2
+                    span.header-title
+                        strong SAKURA
+
+            form(method="POST")
+                .form-group.col-md-12.mt-5.pt-3.ml-5
+                    span.fa.fa-search.icon-left
+                    input.form-control.input-opacity(type='text', name='', placeholder='Tìm kiếm sản phẩm ...', size='60px')
+            .d-flex.d-none.d-md-flex.col-md-2.justify-content-center.align-items-end.pb-3
+                span
+                    a.text-white.mr-3(href='#')
+                        i.fa.fa-user.icon-size
+                span.text-white.mr-3
+                    a.text-white(href='#')
+                        i.fa.fa-heart.icon-size
+                span.text-white.mr-3
+                    a.text-white(href='/user/cart')
+                        i.fas.fa-shopping-cart.icon-size
     body
-        nav.container.bg-warning
-            ul.d-flex.justify-content-center.menu.p-3
-                li.mr-5.font-weight-bolder Home
-                li.mr-5.font-weight-bolder Info
-                li.mr-5.font-weight-bolder Product
-                li.mr-5.font-weight-bolder About
-                li.mr-5.font-weight-bolder Cart
+        nav.container-fulid.E-background-color
+            ul.d-none.d-md-flex.justify-content-center.m-0.Menu
+                li.Menu-Opt.font-weight-bold
+                    | Trang chủ
+                    i.fas.fa-sort-down.ml-1
+                    ul.Sup-Menu-Opt
+                        li
+                            .Menu-Opt-Width
+                                a(href='#') Về chúng tôi
+                        li
+                            a(href='#') Bộ sưu tập
+                        li
+                            a(href='#') Vận chuyển
+                li.Menu-Opt.font-weight-bold
+                    | Của hàng
+                    i.fas.fa-sort-down.ml-1
+                    ul.Sup-Menu-Opt
+                        li
+                            .Menu-Opt-Width
+                                a(href='#') Quần & áo
+                        li
+                            a(href='#') Giày & dép
+                        li
+                            a(href='#') Trang sức & phụ kiện
+                        li
+                            a(href='#') Balo & túi xách
+                li.font-weight-bold Vận chuyển
+                li.font-weight-bold Về chúng tôi
+                li.font-weight-bold Giỏ hàng
+            .d-flex.d-md-none.flex-column.justify-content-center
+                .Nav-Mobile
+                    span.Pointer Menu Day
+                    .Menu-Mobile
+                        ul.Menu.d-flex.flex-column
+                            li.Menu-Opt
+                                | Trang chủ
+                                ul.Sup-Menu-Mobile
+                                    li
+                                        .Menu-Opt-Width Về chúng tôi
+                                    li Bộ sưu tập
+                                    li Vận chuyển
+                            li.Menu-Opt
+                                | Cửa hàng
+                                ul.Sup-Menu-Mobile
+                                    li
+                                        .Menu-Opt-Width Quần áo
+                                    li Giày dép
+                                    li Trang sức, phụ kiện
+                                    li Balo, túi xách
+                            li
+                                a(href='#') Vận chuyển
+                            li
+                                a(href='#') Về chúng tôi
+                            li
+                                a(href='#') Giỏ hàng
         block content
     footer
         .d-flex.justify-content-center.pt-5.border-bottom.border
             .container.row
                 .col-md-3
-                    p.footer-theme
-                        | Nhãn hàng
+                    p.footer-theme Nhãn hàng
                     figure
-                        img(src='/images/logo.png')
+                        img(src='/images/logo.jpg')
                 .col-md-3.d-flex.flex-column
                     p.footer-theme Về chúng tôi
                     a.mb-3(href='#') Chăm sóc khách hàng
                     a.mb-3(href='#') Vận chuyển sản phẩm
                     a.mb-3(href='#') Quyền lợi khách hàng
                 .col-md-3
-                    p.footer-theme theo dõi chúng tôi trên
+                    p.footer-theme Theo dõi chúng tôi trên
                     .mb-3.d-flex
                         .mr-3
                             i.fab.fa-facebook
@@ -81,3 +135,29 @@ html
                         span
                             i.fas.fa-envelope
                         |  tranhiepnguyenhuy@gmail.com
+    script(type='text/javascript').
+        var n = 0;
+        function showSlide() {
+            var slides = document.getElementsByClassName("SlideShow");
+            var length = (slides.length);
+            if (n === length)
+                n = 0;
+            showBtnSlide(n);
+            n++;
+            setTimeout(showSlide, 4000);
+        }
+        setTimeout(showSlide, 0);
+        function showBtnSlide(a) {
+            var slides = document.getElementsByClassName("SlideShow");
+            var length = (slides.length);
+            for (var i = 0; i < length; i++) {
+                if (i === a) {
+                    slides[i].style.display = "block";
+                } else
+                    slides[i].style.display = "none";
+            }
+            n = a;
+        }
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')

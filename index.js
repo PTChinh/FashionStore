@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 
 //Route
 const adminRoute = require('./routes/admin.route');
+const userRoute = require('./routes/user.route');
 
 //Middleware
 const adminMiddleware = require('./middleware/admin.middleware');
@@ -23,7 +24,7 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));// for parsing application/x-www-form-urlencoded
 app.use(cookieParser(process.env.SESSION_SECRET));
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 //DB Connection
 require('./src/database/connection');
@@ -34,5 +35,6 @@ sequelize.authenticate().then(() => console.log('Database connected...')).catch(
 app.get('/', (req, res) => res.render('index'));
 
 app.use('/admin', adminRoute);
+app.use('/user', userRoute);
 
 app.listen(port, () => console.log('Server listening on port ' + port));
