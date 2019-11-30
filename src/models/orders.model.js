@@ -30,7 +30,7 @@ module.exports = sequelize.define("orders", {
     },
 
     price: {
-        type: Sequelize.INTEGER(11),
+        type: Sequelize.DECIMAL,
         allowNull: false
     },
 
