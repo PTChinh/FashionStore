@@ -1,401 +1,405 @@
 
-.Menu
-{
-	list-style: none;
+.Menu {
+    list-style: none;
 
 }
-.Menu li
-{
-	padding: 10px 40px;
-}
-.Menu-Mobile
-{
-	z-index:1;
-	width: 200px;
-	display: none;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	background-color: white;
-}
-.Nav-Mobile
-{
-	position: relative;
-}
-.Nav-Mobile:hover div
-{
-	display: block;
-}
-.Menu li:hover
-{
-	background-color: #ffc5f7;
-}
-.Pointer
-{
-  cursor: pointer;
-}
-.Menu-Opt
-{
-	position: relative;
-}
-.Sup-Menu-Opt
-{
-	border-top: 3px solid green;
-	z-index: 1;
-	display: none;
-	position: absolute;
-	padding: 0;
-	list-style: none;
-	top: 100%;
-	left:0;
-	background-color: white;
-}
-.Sup-Menu-Opt li
-{
-	padding: 10px 0 10px 10px;
-	margin: 0;
-}
-.Sup-Menu-Opt a
-{
-	color: black;
-	text-decoration: none;
-}
-.Sup-Menu-Mobile
-{
-	z-index:1;
-	display: none;
-	position: absolute;
-	padding: 0;
-	list-style: none;
-	top: 0;
-	left: 100%;
-	background-color: white;
-}
-.Menu li:hover ul
-{
-	display: block;
+
+.Menu li {
+    padding: 10px 40px;
 }
 
-.Menu-Opt-Width
-{
-	width: 400px;
+.Menu-Mobile {
+    z-index: 1;
+    width: 200px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
 }
-.deal
-{
-	height: 600px;
-	z-index:0;
+
+.Nav-Mobile {
+    position: relative;
 }
-.image-theme
-{
-	position: relative;
-	color: white;
+
+.Nav-Mobile:hover div {
+    display: block;
 }
-.title-theme
-{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	margin: 5px;
-	font-size: 20px;
+
+.Menu li:hover {
+    background-color: #ffc5f7;
 }
-.img-cover
-{
-	background: linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(177,185,187,1) 52%);
-	height:100%;
-	position: absolute;
-	bottom: 0;
-	opacity: 0.4;
+
+.Pointer {
+    cursor: pointer;
 }
-.Trend-theme
-{
-	height: 500px;
+
+.Menu-Opt {
+    position: relative;
 }
-.footer-theme
-{
- font-size: 20px;
- color: blue;
+
+.Sup-Menu-Opt {
+    border-top: 3px solid green;
+    z-index: 1;
+    display: none;
+    position: absolute;
+    padding: 0;
+    list-style: none;
+    top: 100%;
+    left: 0;
+    background-color: white;
 }
-.header-title
-{
-	color: white;
-	font-size: 40px;
+
+.Sup-Menu-Opt li {
+    padding: 10px 0 10px 10px;
+    margin: 0;
 }
-.Info-Item
-{
-	flex-basis: 150px;
+
+.Sup-Menu-Opt a {
+    color: black;
+    text-decoration: none;
 }
-.Info-Product-Image
-{
-	height: 90px;
-	width: 90px;
+
+.Sup-Menu-Mobile {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    padding: 0;
+    list-style: none;
+    top: 0;
+    left: 100%;
+    background-color: white;
 }
-.Info-Product-Image-Sc
-{
-	width: 100%;
- 	height: 100%;
-	object-fit: cover;
+
+.Menu li:hover ul {
+    display: block;
 }
-.Customer-Image
-{
-	height: 200px;
-	width: 200px;
-	border-radius: 50%;
-	position: relative;
+
+.Menu-Opt-Width {
+    width: 400px;
 }
-.Customer-Image:hover div
-{
-	display: block;
-	transition: all .3s ease-in-out;
+
+.deal {
+    height: 600px;
+    z-index: 0;
 }
-.Change-CusImg-Btn-State
-{
-	display: none;
+
+.image-theme {
+    position: relative;
+    color: white;
 }
-.Change-CusImg-Btn
-{
-	top:70%;
-	left: 40%;
-	position: absolute;
-	height: 40px;
-	width: 40px;
+
+.title-theme {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 5px;
+    font-size: 20px;
 }
-.Info-Cus-Image-Sc
-{
-	width: 100%;
- 	height: 100%;
-	object-fit: cover;
-	border-radius: 50%;
+
+.img-cover {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(177, 185, 187, 1) 52%);
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    opacity: 0.4;
 }
-.Product-Invoice
-{
-	height: 500px;
-	overflow: scroll;
-	overflow-x: hidden;
+
+.Trend-theme {
+    height: 500px;
 }
-.Total-Cart
-{
-	color: red;
-	font-size: 30px;
+
+.footer-theme {
+    font-size: 20px;
+    color: blue;
 }
-.Sub-title
-{
-	color: #c4c9cb;
-	font-size: 14px;
+
+.header-title {
+    color: white;
+    font-size: 40px;
 }
-.Invoice-Table th
-{
-	width: 200px;
+
+.Info-Item {
+    flex-basis: 150px;
 }
-.Invoice-Table td
-{
-	padding: 1em;
+
+.Info-Product-Image {
+    height: 90px;
+    width: 90px;
 }
-.List-Group
-{
-	list-style: none;
-	padding: 20px;
-	border: 1px solid #c3bfc3;
-	border-radius: 10px;
+
+.Info-Product-Image-Sc {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Customer-Image {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.Customer-Image:hover div {
+    display: block;
+    transition: all .3s ease-in-out;
+}
+
+.Change-CusImg-Btn-State {
+    display: none;
+}
+
+.Change-CusImg-Btn {
+    top: 70%;
+    left: 40%;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+}
+
+.Info-Cus-Image-Sc {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.Product-Invoice {
+    height: 500px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.Total-Cart {
+    color: red;
+    font-size: 30px;
+}
+
+.Sub-title {
+    color: #c4c9cb;
+    font-size: 14px;
+}
+
+.Invoice-Table th {
+    width: 200px;
+}
+
+.Invoice-Table td {
+    padding: 1em;
+}
+
+.List-Group {
+    list-style: none;
+    padding: 20px;
+    border: 1px solid #c3bfc3;
+    border-radius: 10px;
 
 }
-.List-Group li
-{
-	margin-bottom: 10px;
-	color: #d521c5;
+
+.List-Group li {
+    margin-bottom: 10px;
+    color: #d521c5;
 }
-.Img-Product-Small
-{
-	width: 230px;
-	height: 230px;
-	background-color: black;
+
+.Img-Product-Small {
+    width: 230px;
+    height: 230px;
+    background-color: black;
 }
 
 .checkforfun {
-	display: none;
+    display: none;
 }
 
 .checkforfun + label {
-	color: lightgray;
+    color: lightgray;
 }
 
 .checkforfun:checked ~ label {
-	color: red;
+    color: red;
 }
 
-header
-{
-	background-image: url("../images/Hoa.jpg");
-	background-position: center;
-	background-size: cover;
-	background-attachment: fixed;
+header {
+    background-image: url("../images/Hoa.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 body, footer {
-	background-image: url("../images/background.jpg");
+    background-image: url("../images/background.jpg");
 }
 
-.E-background-color
-{
-background-color: white;
+.E-background-color {
+    background-color: white;
 }
-.Type-background-color
-{
-background-color:#dffffc;
+
+.Type-background-color {
+    background-color: #dffffc;
 }
-.Trending-Img-background-color
-{
-	background-color: #febcf5;
+
+.Trending-Img-background-color {
+    background-color: #febcf5;
 }
-.Trending-Scroll
-{
-	height: 400px;
-	width:100%;
-	overflow-y:hidden;
-	overflow-x:scroll;
+
+.Trending-Scroll {
+    height: 400px;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
 }
-.Trending-background
-{
-	background-image: url("../images/tittle1.jpg");
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
+
+.Trending-background {
+    background-image: url("../images/tittle1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
-.Img-Type-Product
-{
-height: 100px;
-width: 100px;
+
+.Img-Type-Product {
+    height: 100px;
+    width: 100px;
 }
-.Special-Tiltle-Affect
-{
-	color: white;
-	background-color: #4d4e4e;
-	font-size: 40px;
-	border: 4px solid white;
+
+.Special-Tiltle-Affect {
+    color: white;
+    background-color: #4d4e4e;
+    font-size: 40px;
+    border: 4px solid white;
 }
-.Trending-Div
-{
-height: 100px;
-width: 250px;
-padding: 10px 20px 5px 20px;
+
+.Trending-Div {
+    height: 100px;
+    width: 250px;
+    padding: 10px 20px 5px 20px;
 }
-.Scale-Trans:hover img
-{
-	-webkit-transform: scale(1.4);
-	transform: scale(1.4);
+
+.Scale-Trans:hover img {
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
 }
 
 .icon-size {
-	font-size: larger;
+    font-size: larger;
 }
 
 .icon-left {
-	position: absolute;
-	z-index: 2;
-	display: block;
-	width: 2.375rem;
-	height: 2.375rem;
-	line-height: 2.375rem;
-	text-align: center;
-	pointer-events: none;
-	color: #aaa;
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
 }
 
 .input-opacity {
-	opacity: 0.7;
+    opacity: 0.7;
 }
 
 .Scale-Trans img {
-	transition: transform .5s ease;
+    transition: transform .5s ease;
 }
 
-.Scale-Trans
-{
-	overflow: hidden;
+.Scale-Trans {
+    overflow: hidden;
 }
-.Box-Shadow-Around:hover
-{
-	transition: all .3s ease-in-out;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+
+.Box-Shadow-Around:hover {
+    transition: all .3s ease-in-out;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
-.SlideBtn-Div
-{
-	position: absolute;
-	width: 100%;
-	top:95%;
+
+.SlideBtn-Div {
+    position: absolute;
+    width: 100%;
+    top: 95%;
 }
-.Frame
-{
-	position: relative;
+
+.Frame {
+    position: relative;
 }
-.PreSlideShow
-{
-	display: none;	
+
+.PreSlideShow {
+    display: none;
 }
+
 .fade-animation {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
 }
-.Active:focus
-{
-	outline: 2px solid pink;
+
+.Active:focus {
+    outline: 2px solid pink;
 }
-.Active:hover
-{
-	outline: 2px solid pink;
+
+.Active:hover {
+    outline: 2px solid pink;
 }
+
 @-webkit-keyframes fade {
-  from {opacity: 0.4} 
-  to {opacity: 1}
+    from {
+        opacity: 0.4
+    }
+    to {
+        opacity: 1
+    }
 }
 
 @keyframes fade {
-  from {opacity: 0.4} 
-  to {opacity: 1}
-}
-.Change-Btn
-{
-	height: 80px;
-	width:40px;
-	background-color: black;
-	color: white;
-	opacity: 0.4;
-	font-size: 50px;
-	position: absolute;
-}
-.Pre
-{
-		top:40%;
-}
-.Next
-{
-	top: 40%;
-	right:0;
+    from {
+        opacity: 0.4
+    }
+    to {
+        opacity: 1
+    }
 }
 
-.Relative
-{
-	position: relative;
+.Change-Btn {
+    height: 80px;
+    width: 40px;
+    background-color: black;
+    color: white;
+    opacity: 0.4;
+    font-size: 50px;
+    position: absolute;
 }
-#Table-Img
-{
-	display: none;
-	position: fixed;
-	top: 10%;
-	left:10%;
-	background-color: white;
-	z-index: 10000;
+
+.Pre {
+    top: 40%;
 }
-#Background-Table-Img
-{
-	background-color: black;
-	opacity: 0.4;
-	display: none;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
+
+.Next {
+    top: 40%;
+    right: 0;
+}
+
+.Relative {
+    position: relative;
+}
+
+#Table-Img {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    background-color: white;
+    z-index: 10000;
+}
+
+#Background-Table-Img {
+    background-color: black;
+    opacity: 0.4;
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
 }
 
 .listCategory {
