@@ -47,16 +47,6 @@ module.exports = sequelize.define("product", {
     view: {
         type: Sequelize.INTEGER(11),
         allowNull: false
-    },
-
-    total: {
-        type: Sequelize.INTEGER(255),
-        allowNull: false
-    },
-
-    buyed: {
-        type: Sequelize.INTEGER(255),
-        allowNull: false
     }
 
 }, {

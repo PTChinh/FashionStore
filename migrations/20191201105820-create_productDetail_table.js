@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("product", {
+    return queryInterface.createTable("productDetail", {
 
       id: {
         type: Sequelize.INTEGER(11),
@@ -11,33 +11,8 @@ module.exports = {
         primaryKey: true
       },
 
-      supplierID: {
+      productID: {
         type: Sequelize.INTEGER(11),
-        allowNull: false
-      },
-
-      categoryID: {
-        type: Sequelize.INTEGER(11),
-        allowNull: false
-      },
-
-      name: {
-        type: Sequelize.STRING(200),
-        allowNull: false
-      },
-
-      price: {
-        type: Sequelize.DECIMAL,
-        allowNull: false
-      },
-
-      content: {
-        type: Sequelize.TEXT,
-        allowNull: false
-      },
-
-      sale: {
-        type: Sequelize.DECIMAL,
         allowNull: false
       },
 
@@ -46,8 +21,23 @@ module.exports = {
         allowNull: false
       },
 
-      view: {
-        type: Sequelize.INTEGER(11),
+      color: {
+        type: Sequelize.STRING(100),
+        allowNull: false
+      },
+
+      size: {
+        type: Sequelize.STRING(4),
+        allowNull: false
+      },
+
+      total: {
+        type: Sequelize.INTEGER(255),
+        allowNull: false
+      },
+
+      buyed: {
+        type: Sequelize.INTEGER(255),
         allowNull: false
       },
 
@@ -65,6 +55,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("product");
+    return queryInterface.dropTable("productDetail");
   }
 };
