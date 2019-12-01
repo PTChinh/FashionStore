@@ -1,0 +1,39 @@
+extends ../layouts/common
+block content
+    .container.mb-5.mt-5
+        h1 Thông tin tài khoản
+        .row.mt-5
+            .col-6.col-md-4
+                .d-flex.flex-row.justify-content-center.mt-5.mb-3
+                    .Customer-Image.bg-warning.Scale-Trans.Box-Shadow-Around
+                        img.Info-Cus-Image-Sc(src='images/Do Nam 1.jpg')
+                        .Change-CusImg-Btn-State
+                            .Change-CusImg-Btn.bg-white.rounded-circle.d-flex.justify-content-center.align-items-center
+                                button.rounded-circle.border-0
+                                    i.fas.fa-camera
+                h3.text-center Ảnh đại diện
+            .col-6.col-md-6.bg-dark.text-white.p-2
+                .d-flex.mb-3
+                    .Info-Item Tên
+                    div Trần Hiệp Nguyên Huy
+                .d-flex.mb-3
+                    .Info-Item Giới tính
+                    div Nam
+                .d-flex.mb-3
+                    .Info-Item Ngày sinh
+                    div 15/5/1999
+                .d-flex.mb-3
+                    .Info-Item Địa chỉ
+                    div Khóm 1, TT Mỹ An, Tháp Mười, Đồng Tháp
+                .d-flex.mb-3
+                    .Info-Item Email
+                    div tranhiepnguyenhuy1999@gmail.com
+                .d-flex.mb-3
+                    .Info-Item Số điện thoại
+                    div 0915330370
+                .d-flex.mb-3
+                    .Info-Item Tên tài khoản
+                    div tranhiepnguyenhuy
+                div
+                    button.btn.btn-primary
+                        | Thay đổi
