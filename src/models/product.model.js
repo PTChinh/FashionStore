@@ -40,17 +40,12 @@ module.exports = sequelize.define("product", {
     },
 
     image: {
-        type: Sequelize.STRING(64),
+        type: Sequelize.STRING(200),
         allowNull: false
     },
 
     view: {
         type: Sequelize.INTEGER(11),
-        allowNull: false
-    },
-
-    warranty: {
-        type: Sequelize.STRING(64),
         allowNull: false
     },
 
@@ -61,11 +56,6 @@ module.exports = sequelize.define("product", {
 
     buyed: {
         type: Sequelize.INTEGER(255),
-        allowNull: false
-    },
-
-    specifications: {
-        type: Sequelize.TEXT,
         allowNull: false
     }
 

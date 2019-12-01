@@ -42,17 +42,12 @@ module.exports = {
       },
 
       image: {
-        type: Sequelize.STRING(64),
+        type: Sequelize.STRING(200),
         allowNull: false
       },
 
       view: {
         type: Sequelize.INTEGER(11),
-        allowNull: false
-      },
-
-      warranty: {
-        type: Sequelize.STRING(64),
         allowNull: false
       },
 
@@ -63,11 +58,6 @@ module.exports = {
 
       buyed: {
         type: Sequelize.INTEGER(255),
-        allowNull: false
-      },
-
-      specifications: {
-        type: Sequelize.TEXT,
         allowNull: false
       },
 
