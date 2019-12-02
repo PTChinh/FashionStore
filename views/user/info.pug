@@ -13,27 +13,42 @@ block content
                                     i.fas.fa-camera
                 h3.text-center Ảnh đại diện
             .col-6.col-md-6.bg-dark.text-white.p-2
-                .d-flex.mb-3
+                .d-flex.mb-3.ml-3
                     .Info-Item Tên
-                    div Trần Hiệp Nguyên Huy
-                .d-flex.mb-3
+                    div
+                        input.form-control(type='text' value='Trần Hiệp Nguyên Huy' style={ width: '360px' })
+                .d-flex.mb-3.ml-3
                     .Info-Item Giới tính
-                    div Nam
-                .d-flex.mb-3
+                    div
+                        input(type='radio' name='gender' value='Male')
+                        span.ml-1 Nam
+                        input.ml-5(type='radio' name='gender' value='Female')
+                        span.ml-1 Nữ
+                        input.ml-5(type='radio' name='gender' value='Other')
+                        span.ml-1 Khác
+                .d-flex.mb-3.ml-3
                     .Info-Item Ngày sinh
-                    div 15/5/1999
-                .d-flex.mb-3
+                    div.form-group
+                        input.form-control(type='date' name='birthday' max='2001-12-31'
+                        min='1980-01-01')
+                .d-flex.mb-3.ml-3
                     .Info-Item Địa chỉ
                     div Khóm 1, TT Mỹ An, Tháp Mười, Đồng Tháp
-                .d-flex.mb-3
+                        button.btn.btn-link.ml-3 Sửa
+                .d-flex.mb-3.ml-3
                     .Info-Item Email
-                    div tranhiepnguyenhuy1999@gmail.com
-                .d-flex.mb-3
+                    div
+                        input.form-control(type='text' value='tranhiepnguyenhuy1999@gmail.com' style={ width: '360px' })
+                .d-flex.mb-3.ml-3
                     .Info-Item Số điện thoại
-                    div 0915330370
-                .d-flex.mb-3
+                    div
+                        input.form-control(type='text' value='0915330370' style={ width: '360px' })
+                .d-flex.mb-3.ml-3
                     .Info-Item Tên tài khoản
-                    div tranhiepnguyenhuy
-                div
-                    button.btn.btn-primary
-                        | Thay đổi
+                    div
+                        input.form-control(type='text' value='tranhiepnguyenhuy' style={ width: '360px' })
+                .d-flex-mb-3.ml-3
+                    button.btn.btn-info
+                        | Đổi mật khẩu
+                    button.btn.btn-primary.float-right.mr-4
+                        | Lưu

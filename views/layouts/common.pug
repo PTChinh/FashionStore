@@ -8,7 +8,7 @@ html
         base(href='/')
         link(rel='stylesheet', type='text/css', href='styles/main.css')
         style.
-            .form-control {
+            .new-form-control {
                 padding-left: 2.375rem;
                 padding-right: 2.375rem;
             }
@@ -20,6 +20,15 @@ html
                 color: #fff;
                 padding: 1px 2px 1px 2px;
                 vertical-align: top;
+            }
+
+            a, a:hover {
+                color: black;
+                text-decoration: none;
+            }
+
+            .text-color {
+                color: black;
             }
     header.container-fulid
         .container.d-flex.justify-content-center.border-bottom.border-white
@@ -34,7 +43,7 @@ html
             form(method="POST")
                 .form-group.col-md-12.mt-5.pt-3.ml-5
                     span.fa.fa-search.icon-left
-                    input.form-control.input-opacity(type='text', name='', placeholder='Tìm kiếm sản phẩm ...', size='60px')
+                    input.new-form-control.input-opacity(type='text', name='', placeholder='Tìm kiếm sản phẩm ...', size='60px')
             .d-flex.d-none.d-md-flex.col-md-3.justify-content-center.align-items-end.pb-3
                 span
                     a.text-white.mr-3(href='/user/info')
@@ -49,24 +58,14 @@ html
     body
         nav.container-fulid.E-background-color
             ul.d-none.d-md-flex.justify-content-center.m-0.Menu
-                li.Menu-Opt.font-weight-bold
-                    | Trang chủ
-                    i.fas.fa-sort-down.ml-1
-                    ul.Sup-Menu-Opt
-                        li
-                            .Menu-Opt-Width
-                                a(href='#') Về chúng tôi
-                        li
-                            a(href='#') Bộ sưu tập
-                        li
-                            a(href='#') Vận chuyển
+                li.font-weight-bold
+                    a.link(href='/') Trang chủ
                 li.Menu-Opt.font-weight-bold
                     | Của hàng
                     i.fas.fa-sort-down.ml-1
                     ul.Sup-Menu-Opt
-                        li
-                            .Menu-Opt-Width
-                                a(href='#') Quần & áo
+                        li.Menu-Opt-Width
+                            a(href='#') Quần & áo
                         li
                             a(href='#') Giày & dép
                         li
@@ -75,7 +74,6 @@ html
                             a(href='#') Balo & túi xách
                 li.font-weight-bold Vận chuyển
                 li.font-weight-bold Về chúng tôi
-                li.font-weight-bold Giỏ hàng
             .d-flex.d-md-none.flex-column.justify-content-center
                 .Nav-Mobile
                     span.Pointer Menu Day
