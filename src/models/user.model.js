@@ -19,6 +19,11 @@ module.exports = sequelize.define("user", {
         allowNull: false
     },
 
+    sex: {
+        type: Sequelize.STRING(10),
+        allowNull: false
+    },
+
     password: {
         type: Sequelize.STRING(64),
         allowNull: false
@@ -30,7 +35,12 @@ module.exports = sequelize.define("user", {
     },
 
     phone: {
-        type: Sequelize.INTEGER(10),
+        type: Sequelize.STRING(10),
+        allowNull: false
+    },
+
+    dob: {
+        type: Sequelize.DATEONLY,
         allowNull: false
     },
 

@@ -27,8 +27,9 @@ html
                 text-decoration: none;
             }
 
-            .text-color {
-                color: black;
+            .img-user {
+                width: 30px;
+                height: 30px;
             }
     header.container-fulid
         .container.d-flex.justify-content-center.border-bottom.border-white
@@ -43,18 +44,34 @@ html
             form(method="POST")
                 .form-group.col-md-12.mt-5.pt-3.ml-5
                     span.fa.fa-search.icon-left
-                    input.new-form-control.input-opacity(type='text', name='', placeholder='Tìm kiếm sản phẩm ...', size='60px')
-            .d-flex.d-none.d-md-flex.col-md-3.justify-content-center.align-items-end.pb-3
+                    input.new-form-control.form-control.input-opacity(type='text', name='', placeholder='Tìm kiếm sản phẩm ...', size='60px')
+            .d-flex.d-none.d-md-flex.col-md-4.justify-content-center.align-items-end.pb-3
                 span
-                    a.text-white.mr-3(href='/user/info')
-                        i.fa.fa-user.icon-size
-                span.text-white.mr-3
-                    a.text-white(href='#')
-                        i.fa.fa-heart.icon-size
-                span.text-white.mr-3
-                    a.text-white(href='/user/cart')
-                        i.fas.fa-shopping-cart.icon-size
-                            sup.badge.badge-pill(id='cart-count') 5
+                    if user
+                        img.round.img-user.mr-3(src='/images/userimg.png' alt='user img')
+                span
+                    if modal
+                        a.text-white.mr-3(href='#' data-toggle=modal.dataToggle data-target=modal.dataTarget)
+                            i.fa.fa-user.icon-size
+                    else
+                        a.text-white.mr-3(href='/user/info')
+                            i.fa.fa-user.icon-size
+                span
+                    if modal
+                        a.text-white.mr-3(href='#' data-toggle=modal.dataToggle data-target=modal.dataTarget)
+                            i.fa.fa-heart.icon-size
+                    else
+                        a.text-white.mr-3(href='#')
+                            i.fa.fa-heart.icon-size
+                span
+                    if modal
+                        a.text-white.mr-3(href='#' data-toggle=modal.dataToggle data-target=modal.dataTarget)
+                            i.fas.fa-shopping-cart.icon-size
+                    else
+                        a.text-white.mr-3(href='/user/cart')
+                            i.fas.fa-shopping-cart.icon-size
+                                sup.badge.badge-pill(id='cart-count') 5
+
     body
         nav.container-fulid.E-background-color
             ul.d-none.d-md-flex.justify-content-center.m-0.Menu
@@ -100,6 +117,22 @@ html
                                 a(href='#') Về chúng tôi
                             li
                                 a(href='#') Giỏ hàng
+        .container
+            #myModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        form#myform(method='POST')
+                            .modal-header
+                                h4.modal-title Đăng nhập
+                                button.btn.btn-primary.float-right Đăng kí
+                            .modal-body
+                                p.h6#error
+                                .form-group
+                                    input.form-control#username(type='text', name='username', placeholder='Tài khoản', required='required')
+                                    input.form-control.mt-2#password(type='password', name='password', placeholder='Mật khẩu', required='required')
+                            .modal-footer
+                                button.btn.btn-primary.float-right Đăng nhập
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close
         block content
     footer
         .d-flex.justify-content-center.pt-5.border-bottom.border
@@ -139,7 +172,7 @@ html
                     p
                         span
                             i.fas.fa-phone-volume
-                        | +(85) 915330370
+                        | +(84) 915330370
                     p
                         span
                             i.fas.fa-envelope
@@ -170,3 +203,4 @@ html
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+    script(src='scripts/main.js')

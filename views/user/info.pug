@@ -12,43 +12,65 @@ block content
                                 button.rounded-circle.border-0
                                     i.fas.fa-camera
                 h3.text-center Ảnh đại diện
-            .col-6.col-md-6.bg-dark.text-white.p-2
+                span.d-flex.justify-content-center
+                    button.btn.btn-primary(data-Toggle='modal' data-Target='#mypassmodal')
+                        | Đổi mật khẩu
+            form.col-6.col-md-6.bg-dark.text-white.p-2(method='PUT')
                 .d-flex.mb-3.ml-3
                     .Info-Item Tên
                     div
-                        input.form-control(type='text' value='Trần Hiệp Nguyên Huy' style={ width: '360px' })
+                        input.form-control(type='text' value=user.name style={ width: '360px' } required='required')
                 .d-flex.mb-3.ml-3
                     .Info-Item Giới tính
                     div
-                        input(type='radio' name='gender' value='Male')
+                        - let isMale = user.sex === 'nam'
+                        - let isFemale = user.sex === 'nữ'
+                        - let isOther = user.sex === 'khác'
+
+                        input(type='radio' name='gender' value='Male' checked=isMale)
                         span.ml-1 Nam
-                        input.ml-5(type='radio' name='gender' value='Female')
+                        input.ml-5(type='radio' name='gender' value='Female' checked=isFemale)
                         span.ml-1 Nữ
-                        input.ml-5(type='radio' name='gender' value='Other')
+                        input.ml-5(type='radio' name='gender' value='Other' checked=isOther)
                         span.ml-1 Khác
                 .d-flex.mb-3.ml-3
                     .Info-Item Ngày sinh
                     div.form-group
                         input.form-control(type='date' name='birthday' max='2001-12-31'
-                        min='1980-01-01')
+                        min='1980-01-01' value=user.dob)
                 .d-flex.mb-3.ml-3
                     .Info-Item Địa chỉ
-                    div Khóm 1, TT Mỹ An, Tháp Mười, Đồng Tháp
+                    div=user.address
                         button.btn.btn-link.ml-3 Sửa
                 .d-flex.mb-3.ml-3
                     .Info-Item Email
                     div
-                        input.form-control(type='text' value='tranhiepnguyenhuy1999@gmail.com' style={ width: '360px' })
+                        input.form-control(type='text' value=user.email style={ width: '360px' } required='required')
                 .d-flex.mb-3.ml-3
                     .Info-Item Số điện thoại
                     div
-                        input.form-control(type='text' value='0915330370' style={ width: '360px' })
+                        input.form-control(type='text' value=user.phone style={ width: '360px' } required='required')
                 .d-flex.mb-3.ml-3
-                    .Info-Item Tên tài khoản
+                    .Info-Item.mt-2 Tên tài khoản
                     div
-                        input.form-control(type='text' value='tranhiepnguyenhuy' style={ width: '360px' })
+                        input.form-control-plaintext.text-white(type='text' value=user.username style={ width: '360px' } readonly)
                 .d-flex-mb-3.ml-3
-                    button.btn.btn-info
-                        | Đổi mật khẩu
                     button.btn.btn-primary.float-right.mr-4
                         | Lưu
+
+    .container
+        #mypassModal.modal.fade
+            .modal-dialog
+                .modal-content
+                    form#myform(method='PUT')
+                        .modal-header
+                            h4.modal-title Đổi Mật Khẩu
+                        .modal-body
+                            p.h6#error
+                            .form-group
+                                input.form-control#oldpassword(type='password', name='oldPassword', placeholder='Mật khẩu cũ', required='required')
+                                input.form-control.mt-2#newpassword(type='password', name='newPassword', placeholder='Mật khẩu mới', required='required')
+                                input.form-control.mt-2#repassword(type='password', name='rePassword', placeholder='Nhập lại mật khẩu mới', required='required')
+                        .modal-footer
+                            button.btn.btn-primary.float-right#btnUpdate Cập nhật
+                            button.btn.btn-light(type='button', data-dismiss='modal') Close

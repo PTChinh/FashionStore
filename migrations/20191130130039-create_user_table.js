@@ -20,6 +20,11 @@ module.exports = {
         allowNull: false
       },
 
+      sex: {
+        type: Sequelize.STRING(10),
+        allowNull: false
+      },
+
       password: {
         type: Sequelize.STRING(64),
         allowNull: false
@@ -31,7 +36,12 @@ module.exports = {
       },
 
       phone: {
-        type: Sequelize.INTEGER(10),
+        type: Sequelize.STRING(10),
+        allowNull: false
+      },
+
+      dob: {
+        type: Sequelize.DATEONLY,
         allowNull: false
       },
 
