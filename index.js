@@ -7,9 +7,11 @@ const cookieParser = require('cookie-parser');
 //Route
 const adminRoute = require('./routes/admin.route');
 const userRoute = require('./routes/user.route');
+const productRoute = require('./routes/product.route');
 
 //Middleware
 const adminMiddleware = require('./middleware/admin.middleware');
+const userMiddleware = require('./middleware/user.middleware');
 
 const port = 1999;
 
@@ -57,9 +59,6 @@ const user = require('./src/models/user.model');
 
 sequelize.authenticate().then(() => console.log('Database connected...')).catch(err => console.log('Error: ' + err));
 
-//Middleware
-const userMiddleware = require('./middleware/user.middleware');
-
 //Routes
 app.get('/', userMiddleware.requireAuthUser, (req, res) => res.render('index'));
 app.post('/', (req, res) => {
@@ -88,7 +87,7 @@ app.post('/', (req, res) => {
     });
 });
 
-
+app.use('/product', userMiddleware.requireAuthUser, productRoute);
 app.use('/admin', adminRoute);
 app.use('/user', userRoute);
 
