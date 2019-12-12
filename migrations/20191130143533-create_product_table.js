@@ -11,12 +11,12 @@ module.exports = {
         primaryKey: true
       },
 
-      supplierID: {
+      supplier_id: {
         type: Sequelize.INTEGER(11),
         allowNull: false
       },
 
-      categoryID: {
+      category_id: {
         type: Sequelize.INTEGER(11),
         allowNull: false
       },
@@ -46,17 +46,12 @@ module.exports = {
         allowNull: false
       },
 
-      view: {
-        type: Sequelize.INTEGER(11),
-        allowNull: false
-      },
-
-      createdAt: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false
       },
 
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false
       }

@@ -11,7 +11,7 @@ module.exports = {
         primaryKey: true
       },
 
-      productID: {
+      product_id: {
         type: Sequelize.INTEGER(11),
         allowNull: false
       },
@@ -41,12 +41,12 @@ module.exports = {
         allowNull: false
       },
 
-      createdAt: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false
       },
 
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false
       }
