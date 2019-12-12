@@ -1,0 +1,54 @@
+extends ../layouts/common
+block content
+    .container
+        .row
+            .col-6.col-md-3
+                div
+                    h4.mb-3 Danh mục sản phẩm
+                    .mb-5
+                        ul.List-Group
+                            li
+                                a.listCategory(href='/product/clothes') Quần & áo
+                            li
+                                a(href='/product/backpack') Balo & túi xách
+                            li
+                                a(href='/product/shoe') Giày dép
+                            li
+                                a(href='/product/accessories') Trang sức & phụ kiện
+                div
+                    h4.mb-5 Bộ lọc tìm kiếm
+                    div
+                        div
+                            h5.mb-3 Khoảng Giá
+                            select.form-control.mb-5
+                                option Dưới 500.000₫
+                                option Từ 500.000₫ - 1.000.000₫
+                                option Trên 1.000.000₫
+                        div
+                            h5.mb-3 Dịch Vụ & Khuyến Mãi
+                            div
+                                input#promotion.mb-5(type='checkbox', name='')
+                                label.ml-3(for='promotion') Đang khuyến mãi
+            .col-12.col-md-9
+                .d-flex.justify-content-end.mb-5.mt-5
+                    label.mt-1 Sắp xếp theo:
+                    select.ml-3.form-control.col-sm-3
+                        option Giá từ thấp đến cao
+                        option Giá từ cao đến thấp
+                        option Từ A -> Z
+                        option Ưu tiên khuyến mãi
+                .container.border
+                    .row.justify-content-around.p-2
+                        - let i = 0
+                        each product in products
+                            .d-flex.flex-column.text-center.border.mb-2.mt-1.Box-Shadow-Around
+                                figure.Img-Product-Small.Scale-Trans
+                                    img.Info-Product-Image-Sc(src=product.image alt='my product')
+                                a.btn.btn-primary.ml-5.mr-5(href='#') Thêm vào giỏ
+                                p= product.price
+                                div
+                                    input.checkforfun(type='checkbox' name='' id=`${i}`)
+                                    label(for=`${i}`)
+                                        i.fa.fa-heart
+                            -i++
+
