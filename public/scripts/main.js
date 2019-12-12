@@ -24,23 +24,26 @@ $(document).ready(function () {
 
         if ($('#newpassword').val() !== $('#repassword').val())
             alert('Mật khẩu nhập lại không đúng');
+        else {
 
-        var oldpassword = $('#oldpassword').val();
-        var newpassword = $('#newpassword').val();
+            var oldpassword = $('#oldpassword').val();
+            var newpassword = $('#newpassword').val();
 
-        $.ajax({
-            url: '/user/info',
-            type: 'put',
-            dataType: 'json',
-            data: {
-                oldPassword: oldpassword,
-                newPassword: newpassword,
-            }
-        }).done(function(data) {
-            alert("Thay đổi mật khẩu thành công.");
-            $('#mymodal').modal('hide');
-        }).fail(function(err) {
-            console.log(err);
-        });
+            $.ajax({
+                url: '/user/info',
+                type: 'put',
+                dataType: 'json',
+                data: {
+                    oldPassword: oldpassword,
+                    newPassword: newpassword,
+                }
+            }).done(function (data) {
+                alert("Thay đổi mật khẩu thành công.");
+                $('#myPassModal').modal('hide');
+            }).fail(function (err) {
+                console.log(err);
+                alert(err.responseJSON.msg);
+            });
+        }
     })
 });
