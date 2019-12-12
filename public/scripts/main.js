@@ -19,8 +19,28 @@ $(document).ready(function () {
     //     });
     // });
 
-    $('#btnUpdate').click(function () {
-        if($('#newpassword').val() !== $('#repassword').val())
+    $('#myform').on('submit', function(e) {
+        e.preventDefault();
+
+        if ($('#newpassword').val() !== $('#repassword').val())
             alert('Mật khẩu nhập lại không đúng');
-    });
+
+        var oldpassword = $('#oldpassword').val();
+        var newpassword = $('#newpassword').val();
+
+        $.ajax({
+            url: '/user/info',
+            type: 'put',
+            dataType: 'json',
+            data: {
+                oldPassword: oldpassword,
+                newPassword: newpassword,
+            }
+        }).done(function(data) {
+            alert("Thay đổi mật khẩu thành công.");
+            $('#mymodal').modal('hide');
+        }).fail(function(err) {
+            console.log(err);
+        });
+    })
 });

@@ -17,31 +17,29 @@ module.exports.changePassword = (req, res) => {
     const newPass = req.body.newPassword;
 
     user.findOne({
-        where: { id: req.signedCookies.userId }
+        where: {id: req.signedCookies.userId}
     }).then((us) => {
-        if(us== null) {
-            res.sendStatus(401);
+        if (us == null) {
+            return res.status(401).send({
+                msg: "Không tìm thấy tài khoản."
+            });
         }
-        else {
-            let result = bcrypt.compareSync(oldPass, us.password);
-            if(result === false) {
-                res.status(406).send('Mật khẩu cũ không đúng!');
-            }
-            else {
-                let hash = bcrypt.hashSync(newPass, saltRounds);
-                user.update(
-                {
-                    password: hash,
-                    updatedAt: Date.now()
-                },
-                {
-                    where: {
-                        id: req.signedCookies.userId
-                    }
-                });
+        let result = bcrypt.compareSync(oldPass, us.password);
+        if (result === false) {
+            return res.status(406).send({msg: "Mật khẩu cũ không đúng."});
+        }
+        let hash = bcrypt.hashSync(newPass, saltRounds);
+        user.update(
+            {
+                password: hash,
+                updatedAt: Date.now()
+            },
+            {
+                where: {
+                    id: req.signedCookies.userId
+                }
+            });
 
-                res.redirect('/');
-            }
-        }
+        return res.status(200).send({msg: "Thay đổi mật khẩu thành công"});
     });
 };
