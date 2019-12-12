@@ -32,7 +32,7 @@ module.exports.changePassword = (req, res) => {
         user.update(
             {
                 password: hash,
-                updatedAt: Date.now()
+                updated_at: Date.now()
             },
             {
                 where: {
@@ -41,5 +41,32 @@ module.exports.changePassword = (req, res) => {
             });
 
         return res.status(200).send({msg: "Thay đổi mật khẩu thành công"});
+    });
+};
+
+module.exports.postUserLogin = (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    user.findOne({
+        where: { username: username }
+    }).then((user) => {
+        if(user == null) {
+            res.sendStatus(401);
+        }
+        else {
+            let result = bcrypt.compareSync(password, user.password);
+            if(result === false) {
+                res.send({msg: 'Wrong password'});
+            }
+            else {
+                res.cookie('userId', user.id, {
+                    signed: true
+                });
+                res.locals.user = user;
+                console.log(req.url);
+                res.redirect('/product' + req.url);
+            }
+        }
     });
 };

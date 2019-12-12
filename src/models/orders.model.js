@@ -9,22 +9,22 @@ module.exports = sequelize.define("orders", {
         primaryKey: true
     },
 
-    transactionID: {
+    transaction_id: {
         type: Sequelize.INTEGER(11),
         allowNull: false
     },
 
-    productID: {
+    product_id: {
         type: Sequelize.INTEGER(11),
         allowNull: false
     },
 
-    totalProduct: {
+    total_product: {
         type: Sequelize.INTEGER(11),
         allowNull: false
     },
 
-    productName: {
+    product_name: {
         type: Sequelize.STRING(200),
         allowNull: false
     },

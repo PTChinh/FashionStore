@@ -32,6 +32,16 @@ module.exports = sequelize.define("admin", {
     status: {
         type: Sequelize.INTEGER(1),
         allowNull: false
+    },
+
+    createdAt: {
+        field: 'created_at',
+        type: Sequelize.DATE,
+    },
+
+    updatedAt: {
+        field: 'updated_at',
+        type: Sequelize.DATE,
     }
 
 }, {

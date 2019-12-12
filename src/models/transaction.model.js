@@ -14,7 +14,7 @@ module.exports = sequelize.define("transaction", {
         allowNull: false
     },
 
-    userID: {
+    user_id: {
       type: Sequelize.INTEGER(20),
       allowNull: false
     },

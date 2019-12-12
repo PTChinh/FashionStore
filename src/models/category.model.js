@@ -14,7 +14,7 @@ module.exports = sequelize.define("category", {
         allowNull: false
     },
 
-    parentID: {
+    parent_id: {
         type: Sequelize.INTEGER(11),
         allowNull: false
     },

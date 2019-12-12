@@ -9,7 +9,7 @@ module.exports = sequelize.define("productDetail", {
         primaryKey: true
     },
 
-    productID: {
+    product_id: {
         type: Sequelize.INTEGER(11),
         allowNull: false
     },
@@ -37,6 +37,16 @@ module.exports = sequelize.define("productDetail", {
     buyed: {
         type: Sequelize.INTEGER(255),
         allowNull: false
+    },
+
+    createdAt: {
+        field: 'created_at',
+        type: Sequelize.DATE,
+    },
+
+    updatedAt: {
+        field: 'updated_at',
+        type: Sequelize.DATE,
     }
 
 }, {

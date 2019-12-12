@@ -33,23 +33,23 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 require('./src/database/connection');
 const user = require('./src/models/user.model');
-// const user = require('./src/models/user.model');
+const product = require('./src/models/product.model');
+const productDetail = require('./src/models/productDetail.model');
+
 // var hash = bcrypt.hashSync('huy123', saltRounds);
 // var day = new Date(1999,4,15);
-// user.create({
-//     id: 1,
-//     name: 'Trần Hiệp Nguyên Huy',
-//     username: 'tranhiepnguyenhuy',
-//     password: hash,
-//     email: 'tranhiepnguyenhuy1999@gmail.com',
-//     phone: '0915330370',
-//     dob: day,
-//     address: 'Khóm 1, TT Mỹ An, Tháp Mười, Đồng Tháp',
-//     status: 1,
-//     createdAt: Date.now(),
-//     updatedAt: Date.now()
-// }).then(function (users) {
-//     if(users) {
+// product.create({
+//     supplier_id: 4,
+//     category_id: 4,
+//     name: 'Nón U Y2010 A02',
+//     image: 'images/products/accessories/caps/non-u-y2010-a02/1.jpg',
+//     content: 'Nón thời trang mẫu Y2010',
+//     price: 110000,
+//     sale: 5,
+//     created_at: Date.now(),
+//     updated_at: Date.now()
+// }).then(function (pro) {
+//     if(pro) {
 //         console.log("thanh cong");
 //     }
 //     else {

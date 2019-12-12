@@ -9,12 +9,12 @@ module.exports = sequelize.define("product", {
         primaryKey: true
     },
 
-    supplierID: {
+    supplier_id: {
         type: Sequelize.INTEGER(11),
         allowNull: false
     },
 
-    categoryID: {
+    category_id: {
         type: Sequelize.INTEGER(11),
         allowNull: false
     },
@@ -44,9 +44,14 @@ module.exports = sequelize.define("product", {
         allowNull: false
     },
 
-    view: {
-        type: Sequelize.INTEGER(11),
-        allowNull: false
+    createdAt: {
+        field: 'created_at',
+        type: Sequelize.DATE,
+    },
+
+    updatedAt: {
+        field: 'updated_at',
+        type: Sequelize.DATE,
     }
 
 }, {

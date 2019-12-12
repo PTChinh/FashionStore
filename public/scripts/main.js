@@ -1,20 +1,18 @@
 $(document).ready(function () {
-    // $('#myForm').on('submit', function (event) {
-    //     event.preventDefault(); // Stop the form from causing a page refresh.
+    // $('#myformlogin').on('submit', function (e) {
+    //     e.preventDefault();
     //     var data = {
     //         username: $('#username').val(),
     //         password: $('#password').val()
     //     };
     //     $.ajax({
-    //         url: '/',
-    //         method: 'GET'
-    //     }).then(function (status) {
-    //         // Do stuff with the response, like add it to the page dynamically.
-    //         if(status === 401)
-    //             $('#error').append('Wrong');
-    //         else
-    //             alert('ok');
-    //     }).catch(function (err) {
+    //         url: '/*',
+    //         method: 'POST',
+    //         dataType: 'json',
+    //         data: data
+    //     }).done(function (data) {
+    //         console.log('OK');
+    //     }).fail(function (err) {
     //         console.error(err);
     //     });
     // });
