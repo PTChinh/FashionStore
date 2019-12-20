@@ -10,7 +10,7 @@ module.exports.clothes = (req, res) => {
     }).then(function (products) {
         res.render('product/clothes', {
             allProducts: products,
-            products: products.slice(0, 6)
+            products: products.slice(0, 9)
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
@@ -27,7 +27,7 @@ module.exports.backpack = (req, res) => {
     }).then(function (products) {
         res.render('product/backpack', {
             allProducts: products,
-            products: products.slice(0, 6)
+            products: products.slice(0, 9)
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
@@ -43,7 +43,7 @@ module.exports.shoe = (req, res) => {
     }).then(function (products) {
         res.render('product/shoe', {
             allProducts: products,
-            products: products.slice(0, 6)
+            products: products.slice(0, 9)
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
@@ -60,7 +60,7 @@ module.exports.accessories = (req, res) => {
     }).then(function (products) {
         res.render('product/accessories', {
             allProducts: products,
-            products: products.slice(0, 6)
+            products: products.slice(0, 9)
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);

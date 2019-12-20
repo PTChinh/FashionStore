@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const session = require('express-session')
 
 //Route
 const adminRoute = require('./routes/admin.route');
@@ -25,6 +26,7 @@ app.set('views', './views');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));// for parsing application/x-www-form-urlencoded
 app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(session({secret: '1231231dsdsdsfsf', cookie: { maxAge: 43200000}}));
 
 app.use(express.static(__dirname + '/public'));
 
@@ -60,35 +62,42 @@ const productDetail = require('./src/models/productDetail.model');
 sequelize.authenticate().then(() => console.log('Database connected...')).catch(err => console.log('Error: ' + err));
 
 //Routes
-app.get('/', userMiddleware.requireAuthUser, (req, res) => res.render('index'));
-app.post('/', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-
-    user.findOne({
-        where: { username: username }
-    }).then((user) => {
-        if(user == null) {
-            res.sendStatus(401);
-        }
-        else {
-            let result = bcrypt.compareSync(password, user.password);
-            if(result === false) {
-                res.send('Wrong password');
-            }
-            else {
-                res.cookie('userId', user.id, {
-                    signed: true
-                });
-                app.locals.user = user;
-                res.redirect('/');
-            }
-        }
-    });
+app.get('/', userMiddleware.requireAuthUser, (req, res) => {
+    if(res.locals && res.locals.user)
+        res.render('index', {user:  res.locals.user});
+    else
+        res.render('index');
 });
+// app.post('/', (req, res) => {
+//     const username = req.body.username;
+//     const password = req.body.password;
+//
+//     user.findOne({
+//         where: { username: username }
+//     }).then((user) => {
+//         if(user == null) {
+//             res.status(401).send({
+//                 msg: "Không tìm thấy tài khoản."
+//             });
+//         }
+//         else {
+//             let result = bcrypt.compareSync(password, user.password);
+//             if(result === false) {
+//                 res.status(406).send({msg: "Mật khẩu không tào lao."});
+//             }
+//             else {
+//                 res.cookie('userId', user.id, {
+//                     signed: true
+//                 });
+//                 app.locals.user = user;
+//                 res.redirect('/');
+//             }
+//         }
+//     });
+// });
 
 app.use('/product', userMiddleware.requireAuthUser, productRoute);
 app.use('/admin', adminRoute);
-app.use('/user', userRoute);
+app.use('/user', userMiddleware.requireAuthUser, userRoute);
 
 app.listen(port, () => console.log('Server listening on port ' + port));

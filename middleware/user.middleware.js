@@ -8,8 +8,7 @@ module.exports.requireAuthUser = (req, res, next) => {
             dataToggle: 'modal',
             dataTarget: '#mymodal'
         };
-    }
-    else {
+    } else {
         user.findOne({
             where: {id: req.signedCookies.userId}
         }).then((user) => {
@@ -19,10 +18,11 @@ module.exports.requireAuthUser = (req, res, next) => {
                     dataTarget: '#mymodal'
                 };
             } else {
+                let sessData = req.session;
+                sessData.user = user;
                 res.locals.user = user;
             }
         });
     }
-
     next();
 };

@@ -1,15 +1,23 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const express = require('express');
+const app = express();
 
 const db = require('../src/database/connection');
 const user = require('../src/models/user.model');
 
 module.exports.cart = (req, res) => {
-    res.render('user/cart');
+    let us = req.session.user;
+    res.render('user/cart', {
+        user: us
+    });
 };
 
 module.exports.info = (req, res) => {
-    res.render('user/info');
+    let us = req.session.user;
+    res.render('user/info', {
+        user: us
+    });
 };
 
 module.exports.changePassword = (req, res) => {
@@ -52,21 +60,23 @@ module.exports.postUserLogin = (req, res) => {
         where: { username: username }
     }).then((user) => {
         if(user == null) {
-            res.sendStatus(401);
+            res.status(401).send({
+               msg: "Không tìm thấy tài khoản."
+            });
         }
         else {
             let result = bcrypt.compareSync(password, user.password);
             if(result === false) {
-                res.send({msg: 'Wrong password'});
+                res.status(406).send({msg: "Mật khẩu không đúng."});
             }
             else {
+
                 res.cookie('userId', user.id, {
                     signed: true
                 });
-                res.locals.user = user;
-                console.log(req.url);
-                res.redirect('/product' + req.url);
+                res.status(200).send({msg: "Đăng nhập thành công."})
             }
+
         }
     });
 };

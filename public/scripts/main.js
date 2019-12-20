@@ -1,21 +1,26 @@
 $(document).ready(function () {
-    // $('#myformlogin').on('submit', function (e) {
-    //     e.preventDefault();
-    //     var data = {
-    //         username: $('#username').val(),
-    //         password: $('#password').val()
-    //     };
-    //     $.ajax({
-    //         url: '/*',
-    //         method: 'POST',
-    //         dataType: 'json',
-    //         data: data
-    //     }).done(function (data) {
-    //         console.log('OK');
-    //     }).fail(function (err) {
-    //         console.error(err);
-    //     });
-    // });
+    $('#myformlogin').on('submit', function (e) {
+        e.preventDefault();
+
+        var username = $('#username').val();
+        var password = $('#password').val();
+        var url = window.location;
+
+        $.ajax({
+            url: '/user/info',
+            method: 'post',
+            dataType: 'json',
+            data: {
+                username: username,
+                password: password
+            }
+        }).done(function (data) {
+            $('#myModal').modal('hide');
+            window.location.replace(url);
+        }).fail(function (err) {
+            alert(err.responseJSON.msg);
+        });
+    });
 
     $('#myform').on('submit', function(e) {
         e.preventDefault();
@@ -43,5 +48,5 @@ $(document).ready(function () {
                 alert(err.responseJSON.msg);
             });
         }
-    })
+    });
 });
