@@ -1,5 +1,7 @@
 const db = require('../src/database/connection');
+const Sequelize = require('sequelize');
 const product = require('../src/models/product.model');
+const productDetail = require('../src/models/productDetail.model');
 
 module.exports.clothes = (req, res) => {
 
@@ -62,6 +64,48 @@ module.exports.accessories = (req, res) => {
             allProducts: products,
             products: products.slice(0, 9)
         });
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
+
+};
+
+module.exports.detail = (req, res) => {
+
+    let productId = req.query.id;
+    let listProducts;
+
+    product.findOne({
+        where: {
+            id: productId
+        }
+    }).then(function (product) {
+
+        productDetail.findAll({
+            where: {
+                product_id: productId
+            }
+        }).then(function (products) {
+            listProducts = products;
+        }).catch(function () {
+            console.log('Some thing went wrong! ' + err);
+        });
+
+        productDetail.findAll({
+            group: 'image',
+            where: {
+                product_id: productId
+            }
+        }).then(function (productDetails) {
+            res.render('product/detail', {
+                product: product,
+                productDetails: productDetails,
+                listProducts: listProducts
+            });
+        }).catch(function (err) {
+            console.log('Some thing went wrong! ' + err);
+        });
+
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
     });

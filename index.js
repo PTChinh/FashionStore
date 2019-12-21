@@ -38,15 +38,15 @@ const user = require('./src/models/user.model');
 const product = require('./src/models/product.model');
 const productDetail = require('./src/models/productDetail.model');
 
-// var hash = bcrypt.hashSync('huy123', saltRounds);
-// var day = new Date(1999,4,15);
+var hash = bcrypt.hashSync('huy123', saltRounds);
+var day = new Date(1999,4,15);
 // product.create({
-//     supplier_id: 4,
+//     supplier_id: 5,
 //     category_id: 4,
-//     name: 'Nón U Y2010 A02',
-//     image: 'images/products/accessories/caps/non-u-y2010-a02/1.jpg',
-//     content: 'Nón thời trang mẫu Y2010',
-//     price: 110000,
+//     name: 'Ví Nam Y2010 A04',
+//     image: 'images/products/accessories/wallets/vi-nam-y2010-a04/1.jpg',
+//     content: 'Ví Nam Thời Trang Y2010',
+//     price: 125000,
 //     sale: 5,
 //     created_at: Date.now(),
 //     updated_at: Date.now()

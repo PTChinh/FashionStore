@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //ajax user login
     $('#myformlogin').on('submit', function (e) {
         e.preventDefault();
 
@@ -22,6 +23,7 @@ $(document).ready(function () {
         });
     });
 
+    //ajax user change password
     $('#myform').on('submit', function(e) {
         e.preventDefault();
 
