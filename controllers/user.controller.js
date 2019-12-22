@@ -13,7 +13,7 @@ module.exports.cart = (req, res) => {
     let cart = req.session.cart;
     let products = [];
 
-    if(cart) {
+    if(cart.length !== 0) {
         for (let i = 0; i < cart.length; i++) {
             product.findOne({
                 where: {
@@ -27,6 +27,7 @@ module.exports.cart = (req, res) => {
                     if (products[j].id === product.id)
                         isDup = true;
                 }
+
                 if (!isDup)
                     products.push(product);
 
@@ -40,8 +41,7 @@ module.exports.cart = (req, res) => {
                 console.log('Some thing went wrong! ' + err);
             })
         }
-    }
-    else {
+    } else {
         res.render('user/cart', {
             user: us,
             cart: cart,
@@ -114,6 +114,28 @@ module.exports.postUserLogin = (req, res) => {
                 res.status(200).send({msg: "Đăng nhập thành công."})
             }
 
+        }
+    });
+};
+
+module.exports.removeFromCart = (req, res) => {
+    let id = req.body.productDetailId;
+
+    productDetail.findOne({
+        where: {
+            id: id
+        }
+    }).then(function (productItem) {
+        if(productItem) {
+            let cart = req.session.cart;
+            for(let i = 0; i < cart.length; i++) {
+                if(productItem.id === cart[i].id) {
+                    req.session.cart.splice(i, 1);
+                }
+            }
+            res.status(200).send({msg: "Xóa thành công"});
+        } else {
+            res.status(401).send({msg: "Không tìm thấy sản phẩm"})
         }
     });
 };

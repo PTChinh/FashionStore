@@ -148,5 +148,4 @@ module.exports.addToCart = (req, res) => {
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
     });
-
 };

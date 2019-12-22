@@ -110,4 +110,29 @@ $(document).ready(function () {
 
         $(this).closest('td').next('td').next('td').html($price * x - $price * x * $sale / 100);
     });
+
+    //ajax remove product from cart
+    $(".btnRemove").click(function(e) {
+        e.preventDefault();
+
+        var postUrl = window.location.pathname;
+        var url = window.location;
+
+        var $row = $(this).closest("tr");    // Find the row
+        var $id = $row.find("input").attr('id');
+
+        $.ajax({
+            type: "post",
+            url: postUrl,
+            data: {
+                productDetailId: $id
+            },
+        }).done(function () {
+            alert("Xóa sản phẩm thành công");
+            window.location.replace(url);
+        }).fail(function (err) {
+            console.log(err);
+            alert(err.responseJSON.msg);
+        });
+    });
 });
