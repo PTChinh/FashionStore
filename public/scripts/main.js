@@ -81,8 +81,9 @@ $(document).ready(function () {
     $(".add").click(function(e) {
         e.preventDefault();
 
-        var getUrl = window.location.pathname;
-        var url = window.location;
+        var $row = $(this).closest("tr");    // Find the row
+        var $price = parseInt($row.find(".price-pro").text(), 10);
+        var $sale = parseInt($row.find(".sale-pro").text(), 10);
 
         var x = parseInt($(this).prev('input').attr('value'), 10);
 
@@ -92,15 +93,21 @@ $(document).ready(function () {
         if(x < $itemHas)
             $(this).prev('input').attr('value', ++x);
 
+        $(this).closest('td').next('td').next('td').html($price * x - $price * x * $sale / 100);
     });
 
     $(".sub").click(function(e) {
         e.preventDefault();
+
+        var $row = $(this).closest("tr");    // Find the row
+        var $price = parseInt($row.find(".price-pro").text(), 10);
+        var $sale = parseInt($row.find(".sale-pro").text(), 10);
 
         var x = parseInt($(this).next('input').attr('value'), 10);
 
         if(x > 1)
             $(this).next('input').attr('value', --x);
 
+        $(this).closest('td').next('td').next('td').html($price * x - $price * x * $sale / 100);
     });
 });

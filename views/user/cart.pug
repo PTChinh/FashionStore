@@ -26,14 +26,14 @@ block content
                                     td.align-middle= product.name
                                     td.align-middle= item.color
                                     td.align-middle= item.size
-                                    td.align-middle= product.price
+                                    td.align-middle.price-pro= product.price
                                     td.align-middle.item-has(style='display:none;')= item.total - item.buyed
                                     td.align-middle
                                         button.sub -
-                                        input.text-center(id=`${item.id}` type='Text', name='', value='1', size='1px' readonly onchange='calTotalMoney(this.id, product.price)')
+                                        input.text-center.quantity-pro(id=`${item.id}` type='Text', name='', value='1', size='1px')
                                         button.add +
-                                    td.align-middle= product.sale + '%'
-                                    td.align-middle.total-money
+                                    td.align-middle.sale-pro= product.sale + '%'
+                                    td.align-middle.total-money= product.price - product.price * product.sale / 100
                                     td.align-middle
                                         button.btn.btn-primary Xóa
     .container
@@ -62,9 +62,3 @@ block content
                             div 8100000
                         div
                             button.btn.btn-primary.w-100.mb-5 MUA HÀNG
-    script.
-        function calTotalMoney(id, price) {
-            let curId = '#' + id;
-            let x = document.getElementById(curId).value;
-            document.getElementsByClassName("total-money").innerHTML = price * x;
-        }
