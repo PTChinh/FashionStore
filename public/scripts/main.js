@@ -51,4 +51,56 @@ $(document).ready(function () {
             });
         }
     });
+
+    //ajax add product to cart
+    $(".btnAddToCart").click(function(e) {
+        e.preventDefault();
+
+        var postUrl = window.location.pathname;
+        var url = window.location;
+
+        var $row = $(this).closest("tr");    // Find the row
+        var $id = $row.find(".product-id").text();
+
+        $.ajax({
+            type: "post",
+            url: postUrl,
+            data: {
+                productDetailId: $id
+            },
+        }).done(function () {
+            alert("Thêm sản phẩm thành công");
+            window.location.replace(url);
+        }).fail(function (err) {
+            console.log(err);
+            alert(err.responseJSON.msg);
+        });
+    });
+
+    //button add and sub product quantity
+    $(".add").click(function(e) {
+        e.preventDefault();
+
+        var getUrl = window.location.pathname;
+        var url = window.location;
+
+        var x = parseInt($(this).prev('input').attr('value'), 10);
+
+        var $row = $(this).closest("tr");    // Find the row
+        var $itemHas = parseInt($row.find(".item-has").text(), 10);
+
+        if(x < $itemHas)
+            $(this).prev('input').attr('value', ++x);
+
+    });
+
+    $(".sub").click(function(e) {
+        e.preventDefault();
+
+        var x = parseInt($(this).next('input').attr('value'), 10);
+
+        if(x > 1)
+            $(this).next('input').attr('value', --x);
+
+    });
 });

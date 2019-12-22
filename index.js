@@ -64,7 +64,10 @@ sequelize.authenticate().then(() => console.log('Database connected...')).catch(
 //Routes
 app.get('/', userMiddleware.requireAuthUser, (req, res) => {
     if(res.locals && res.locals.user)
-        res.render('index', {user:  res.locals.user});
+        res.render('index', {
+            user:  res.locals.user,
+            cart: req.session.cart
+        });
     else
         res.render('index');
 });
@@ -98,6 +101,6 @@ app.get('/', userMiddleware.requireAuthUser, (req, res) => {
 
 app.use('/product', userMiddleware.requireAuthUser, productRoute);
 app.use('/admin', adminRoute);
-app.use('/user', userMiddleware.requireAuthUser, userRoute);
+app.use('/user', userRoute);
 
 app.listen(port, () => console.log('Server listening on port ' + port));

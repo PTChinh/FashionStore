@@ -5,18 +5,55 @@ const app = express();
 
 const db = require('../src/database/connection');
 const user = require('../src/models/user.model');
+const product = require('../src/models/product.model');
+const productDetail = require('../src/models/productDetail.model');
 
 module.exports.cart = (req, res) => {
     let us = req.session.user;
-    res.render('user/cart', {
-        user: us
-    });
+    let cart = req.session.cart;
+    let products = [];
+
+    if(cart) {
+        for (let i = 0; i < cart.length; i++) {
+            product.findOne({
+                where: {
+                    id: cart[i].product_id
+                }
+            }).then(function (product) {
+
+                let isDup = false;
+
+                for (let j = 0; j < products.length; j++) {
+                    if (products[j].id === product.id)
+                        isDup = true;
+                }
+                if (!isDup)
+                    products.push(product);
+
+                res.render('user/cart', {
+                    user: us,
+                    cart: cart,
+                    products: products
+                });
+
+            }).catch(function (err) {
+                console.log('Some thing went wrong! ' + err);
+            })
+        }
+    }
+    else {
+        res.render('user/cart', {
+            user: us,
+            cart: cart,
+        });
+    }
 };
 
 module.exports.info = (req, res) => {
     let us = req.session.user;
     res.render('user/info', {
-        user: us
+        user: us,
+        cart: req.session.cart
     });
 };
 
