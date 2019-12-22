@@ -37,28 +37,32 @@ block content
                                     td.align-middle
                                         button.btn.btn-primary.btnRemove Xóa
     .container
-        .row
-            .col-12.col-md-7.bg-light.mt-4
-                h3.mb-2.mt-2 Mã giảm giá/voucher
-                .Sub-title.mb-2
-                    i.text-color
-                        | Những giả giá ưu đãi mà cửa hàng dành cho bạn bao gồm mã giảm giá sự kiện hoặc voucher dành cho khách hàng thân  thiết.
-                input.form-control(type='texr', name='', placeholder='Nhập mã giảm giá tại đây...', size='70%')
-                button.btn.btn-primary.mt-2(size='30%') Nhập
-            .col-12.col-md-5.mt-4
-                .d-flex.justify-content-end
-                    div
-                        .d-flex.mb-5.border-bottom.pb-1
-                            i.fas.fa-money-check-alt.fa-3x.mr-5
-                            h3 Tổng hóa đơn
-                        .d-flex.mb-2
-                            .Info-Item Tổng tiền hàng
-                            div 9000000
-                        .d-flex.mb-2
-                            .Info-Item Phí vận chuyển
-                            div 50000
-                        .d-flex.mt-4.Total-Cart.mb-3.border-top
-                            .Info-Item Tổng
-                            div 8100000
-                        div
-                            button.btn.btn-primary.w-100.mb-5 MUA HÀNG
+        .row.align-items-center.justify-content-center
+            .col-sm-5
+                h3 Tổng hóa đơn
+            .col-sm-6
+                .d-flex.mb-2
+                    .Info-Item Tổng tiền hàng
+                    if(products && cart)
+                        - let total = 0
+                        each product in products
+                            each item in cart
+                                - total += product.price - product.price * product.sale / 100
+                        div#total= total + '₫'
+                    else
+                        div 0₫
+                .d-flex.mb-2
+                    .Info-Item Phí vận chuyển
+                    div 20000₫
+                .d-flex.mt-4.Total-Cart.mb-3.border-top
+                    .Info-Item Tổng
+                    if(products && cart)
+                        - let total = 0
+                        each product in products
+                            each item in cart
+                                - total += product.price - product.price * product.sale / 100
+                        div#totalFinal= total + 20000 + '₫'
+                    else
+                        div 0₫
+                div
+                    button.btn.btn-primary.w-100.mb-5 MUA HÀNG

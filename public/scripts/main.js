@@ -94,6 +94,14 @@ $(document).ready(function () {
             $(this).prev('input').attr('value', ++x);
 
         $(this).closest('td').next('td').next('td').html($price * x - $price * x * $sale / 100);
+
+        let totalMoney = 0;
+        $('.total-money').each(function () {
+            totalMoney += parseInt($(this).text(), 10);
+        });
+
+        document.getElementById('total').innerHTML = totalMoney + '₫';
+        document.getElementById('totalFinal').innerHTML = totalMoney +  20000 + '₫';
     });
 
     $(".sub").click(function(e) {
@@ -109,6 +117,14 @@ $(document).ready(function () {
             $(this).next('input').attr('value', --x);
 
         $(this).closest('td').next('td').next('td').html($price * x - $price * x * $sale / 100);
+
+        let totalMoney = 0;
+        $('.total-money').each(function () {
+            totalMoney += parseInt($(this).text(), 10);
+        });
+
+        document.getElementById('total').innerHTML = totalMoney + '₫';
+        document.getElementById('totalFinal').innerHTML = totalMoney + 20000 + '₫';
     });
 
     //ajax remove product from cart
