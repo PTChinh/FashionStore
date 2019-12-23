@@ -14,32 +14,40 @@ module.exports.cart = (req, res) => {
     let us = req.session.user;
     let cart = req.session.cart;
     let products = [];
+    let promises = [];
 
     if(cart.length !== 0) {
         for (let i = 0; i < cart.length; i++) {
-            product.findOne({
-                where: {
-                    id: cart[i].product_id
-                }
-            }).then(function (product) {
-
-                // let isDup = false;
-                //
-                // for (let j = 0; j < products.length; j++) {
-                //     if (products[j].id === product.id)
-                //         isDup = true;
-                // }
-                //
-                // if (!isDup)
-                products.push(product);
-
-                res.render('user/cart', {
-                    user: us,
-                    cart: cart,
-                    products: products
-                });
-            });
+            promises.push(
+                product.findOne({
+                    where: {
+                        id: cart[i].product_id
+                    }
+                }).then(function (product) {
+                    let isDup = false;
+                    if (products.length !== 0) {
+                        for (let j = 0; j < products.length; j++) {
+                            if (products[j].id === product.id)
+                                isDup = true;
+                        }
+                        if (!isDup)
+                            products.push(product);
+                    } else {
+                        products.push(product);
+                    }
+                })
+            )
         }
+        Promise.all(promises).then(() => {
+            res.render('user/cart', {
+                user: us,
+                cart: cart,
+                products: products
+            });
+        }).catch((err) => {
+            console.log('Some thing went wrong! ' + err);
+        })
+
     } else {
         res.render('user/cart', {
             user: us,

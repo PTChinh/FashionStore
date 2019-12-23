@@ -19,23 +19,24 @@ block content
                     if(products && cart)
                         each item in cart
                             each product in products
-                                tr
-                                    td.align-middle.row.justify-content-center.align-middle
-                                        .Info-Product-Image
-                                            img.Info-Product-Image-Sc(src=item.image)
-                                    td.align-middle.name-pro= product.name
-                                    td.align-middle= item.color
-                                    td.align-middle= item.size
-                                    td.align-middle.price-pro= product.price
-                                    td.align-middle.item-has(style='display:none;')= item.total - item.buyed
-                                    td.align-middle
-                                        button.sub -
-                                        input.text-center.quantity-pro(id=`${item.id}` type='Text', name='', value='1', size='1px')
-                                        button.add +
-                                    td.align-middle.sale-pro= product.sale + '%'
-                                    td.align-middle.total-money= product.price - product.price * product.sale / 100
-                                    td.align-middle
-                                        button.btn.btn-primary.btnRemove Xóa
+                                if(item.product_id === product.id)
+                                    tr
+                                        td.align-middle.row.justify-content-center.align-middle
+                                            .Info-Product-Image
+                                                img.Info-Product-Image-Sc(src=item.image)
+                                        td.align-middle.name-pro= product.name
+                                        td.align-middle= item.color
+                                        td.align-middle= item.size
+                                        td.align-middle.price-pro= product.price
+                                        td.align-middle.item-has(style='display:none;')= item.total - item.buyed
+                                        td.align-middle
+                                            button.sub -
+                                            input.text-center.quantity-pro(id=`${item.id}` type='Text', name='', value='1', size='1px')
+                                            button.add +
+                                        td.align-middle.sale-pro= product.sale + '%'
+                                        td.align-middle.total-money= product.price - product.price * product.sale / 100
+                                        td.align-middle
+                                            button.btn.btn-primary.btnRemove Xóa
     .container
         .row.align-items-center.justify-content-center
             .col-sm-5
@@ -47,7 +48,8 @@ block content
                         - let total = 0
                         each product in products
                             each item in cart
-                                - total += product.price - product.price * product.sale / 100
+                                if(item.product_id === product.id)
+                                    - total += product.price - product.price * product.sale / 100
                         div#total= total + '₫'
                     else
                         div 0₫
@@ -60,7 +62,8 @@ block content
                         - let total = 0
                         each product in products
                             each item in cart
-                                - total += product.price - product.price * product.sale / 100
+                                if(item.product_id === product.id)
+                                    - total += product.price - product.price * product.sale / 100
                         div#totalFinal= total + 20000 + '₫'
                     else
                         div 0₫
