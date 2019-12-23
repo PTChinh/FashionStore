@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const express = require('express');
-const app = express();
+const Sequelize = require('sequelize');
 
 const db = require('../src/database/connection');
 const user = require('../src/models/user.model');
@@ -158,9 +157,27 @@ module.exports.order = (req, res) => {
 
     let listProductQuantity = req.body.listProductQuantity;
 
-    let totalFinal = req.body.totalMoney;
+    let totalFinal = parseInt(req.body.totalMoney,10);
 
     let user = req.session.user;
+
+    let transportFee = 20000;
+
+    totalFinal += transportFee;
+
+    for(let i = 0; i < listProductDetails.length; i++) {
+        productDetail.findOne({
+            where: {
+                id: listProductDetails[i]
+            }
+        }).then(function (pro) {
+            if(pro) {
+                if(pro.total - pro.buyed < listProductQuantity[i]) {
+                    return res.status(500).send({msg: "Sản phẩm " + listProductNames[i] + " không đủ số lượng bạn mua."});
+                }
+            }
+        })
+    }
 
   transaction.create({
       status: 0,
@@ -196,6 +213,16 @@ module.exports.order = (req, res) => {
                       updated_at: Date.now()
                   }).then(function (result) {
                       if(result) {
+                          productDetail.increment(
+                              {
+                                  total: listProductQuantity[i],
+                                  buyed: - listProductQuantity[i]
+                              }, {
+                                  where: {
+                                      id: pd.id
+                                  }
+                              }
+                          );
                           console.log("thanh cong");
                       } else {
                           console.log("that bai");
@@ -203,10 +230,54 @@ module.exports.order = (req, res) => {
                   });
               });
           }
-
+          req.session.cart = [];
           res.status(200).send({msg: "Đặt hàng thành công."});
       } else {
           res.status(500).send({msg: "Có lỗi xảy ra. Vui lòng thực hiện lại thao tác."});
       }
   });
+};
+
+module.exports.orderInfo = (req, res) => {
+  let us = req.session.user;
+  let listTrans, listOrders = [], promises = [];
+
+  transaction.findAll({
+      where: {
+          user_id: us.id
+      }
+  }).then(function (allTrans) {
+      listTrans = allTrans;
+
+      for(let i = 0; i < listTrans.length; i++) {
+          console.log(listTrans[i].name);
+          promises.push(
+              orders.findAll({
+                  where: {
+                      transaction_id: listTrans[i].id
+                  }
+              }).then(function (orders) {
+                  listOrders.push({
+                      transId: listTrans[i].id,
+                      orders: orders
+                  });
+              })
+          )
+      }
+
+      Promise.all(promises).then(() => {
+          res.render('user/order', {
+              user: us,
+              cart: req.session.cart,
+              listTrans: listTrans,
+              listOrders: listOrders
+          });
+      }).catch((err) => {
+          console.log('Some thing went wrong! ' + err);
+      });
+
+  }).catch(function (err) {
+      console.log('Some thing went wrong! ' + err);
+  });
+
 };

@@ -18,6 +18,8 @@ const port = 1999;
 
 const app = express();
 
+app.locals.moment = require('moment');
+
 //Template Engine
 app.set('view engine', 'pug');
 app.set('views', './views');
