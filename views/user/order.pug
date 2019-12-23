@@ -1,0 +1,39 @@
+extends ../layouts/common
+block content
+    .mb-5
+        h1.pl-5 Đơn hàng của bạn
+    .mb-3
+        .container
+            .bg-white
+                table.table.table-hover.table-bordered
+                    tr(align='center')
+                        th.align-middle ID
+                        th.align-middle Sản phẩm
+                        th.align-middle Tổng tiền (đã tính phí ship)
+                        th.align-middle Địa chỉ giao
+                        th.align-middle Ngày tạo
+                        th.align-middle Trạng thái
+                        th.align-middle Thao tác
+                    each trans in listTrans
+                        each orders in listOrders
+                            if(trans.id === orders.transId)
+                                tr
+                                    td.align-middle.name-trans= trans.id
+                                    td.align-middle
+                                        ul
+                                        each order in orders.orders
+                                            li= order.product_name
+                                    td.align-middle= trans.amount
+                                    td.align-middle= trans.address
+                                    td.align-middle= moment(`${trans.created_at}`).format('DD/MM/YYYY')
+                                    if(trans.status === 0)
+                                        td.align-middle Đang chờ
+                                    if(trans.status === 1)
+                                        td.align-middle Đã duyệt
+                                    if(trans.status === 2)
+                                        td.align-middle Đã nhận
+                                    td.align-middle
+                                        if(trans.status === 0)
+                                            button.btn.btn-danger Hủy
+                                        else
+                                            button.btn.btn-primary Đặt lại
