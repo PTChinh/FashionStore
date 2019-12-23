@@ -21,6 +21,11 @@ module.exports = {
         allowNull: false
       },
 
+      product_detail_id: {
+        type: Sequelize.INTEGER(11),
+        allowNull: false
+      },
+
       total_product: {
         type: Sequelize.INTEGER(11),
         allowNull: false
@@ -37,7 +42,7 @@ module.exports = {
       },
 
       amount: {
-        type: Sequelize.DECIMAL(15,4),
+        type: Sequelize.DECIMAL(10,0),
         allowNull:false
       },
 

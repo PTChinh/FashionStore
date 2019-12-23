@@ -35,7 +35,7 @@ module.exports = sequelize.define("transaction", {
     },
 
     phone: {
-        type: Sequelize.INTEGER(10),
+        type: Sequelize.STRING(10),
         allowNull: false
     },
 
@@ -57,6 +57,16 @@ module.exports = sequelize.define("transaction", {
     transport: {
         type: Sequelize.STRING(100),
         allowNull: false
+    },
+
+    createdAt: {
+        field: 'created_at',
+        type: Sequelize.DATE,
+    },
+
+    updatedAt: {
+        field: 'updated_at',
+        type: Sequelize.DATE,
     }
 
 }, {

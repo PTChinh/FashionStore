@@ -7,6 +7,8 @@ const db = require('../src/database/connection');
 const user = require('../src/models/user.model');
 const product = require('../src/models/product.model');
 const productDetail = require('../src/models/productDetail.model');
+const orders = require('../src/models/orders.model');
+const transaction = require('../src/models/transaction.model');
 
 module.exports.cart = (req, res) => {
     let us = req.session.user;
@@ -21,25 +23,22 @@ module.exports.cart = (req, res) => {
                 }
             }).then(function (product) {
 
-                let isDup = false;
-
-                for (let j = 0; j < products.length; j++) {
-                    if (products[j].id === product.id)
-                        isDup = true;
-                }
-
-                if (!isDup)
-                    products.push(product);
+                // let isDup = false;
+                //
+                // for (let j = 0; j < products.length; j++) {
+                //     if (products[j].id === product.id)
+                //         isDup = true;
+                // }
+                //
+                // if (!isDup)
+                products.push(product);
 
                 res.render('user/cart', {
                     user: us,
                     cart: cart,
                     products: products
                 });
-
-            }).catch(function (err) {
-                console.log('Some thing went wrong! ' + err);
-            })
+            });
         }
     } else {
         res.render('user/cart', {
@@ -138,4 +137,68 @@ module.exports.removeFromCart = (req, res) => {
             res.status(401).send({msg: "Không tìm thấy sản phẩm"})
         }
     });
+};
+
+module.exports.order = (req, res) => {
+    let listProductDetails = req.body.productDetails;
+
+    let listTotalMoney = req.body.listTotalMoney;
+
+    let listProductNames = req.body.listProductNames;
+
+    let listProductPrice = req.body.listProductPrice;
+
+    let listProductQuantity = req.body.listProductQuantity;
+
+    let totalFinal = req.body.totalMoney;
+
+    let user = req.session.user;
+
+  transaction.create({
+      status: 0,
+      user_id: user.id,
+      name: user.name,
+      address: user.address,
+      email: user.email,
+      phone: user.phone,
+      amount: totalFinal,
+      payment: 'Tiền mặt',
+      transport: 'Cửa Hàng',
+      created_at: Date.now(),
+      updated_at: Date.now()
+  }).then(function (result) {
+      if(result) {
+
+          for(let i = 0; i < listProductDetails.length; i++) {
+
+              productDetail.findOne({
+                  where: {
+                      id: listProductDetails[i]
+                  }
+              }).then(function (pd) {
+                  orders.create({
+                      transaction_id: result.id,
+                      product_id: pd.product_id,
+                      product_detail_id: pd.id,
+                      total_product: listProductQuantity[i],
+                      product_name: listProductNames[i],
+                      price: listProductPrice[i],
+                      amount: listTotalMoney[i],
+                      created_at: Date.now(),
+                      updated_at: Date.now()
+                  }).then(function (result) {
+                      if(result) {
+                          console.log("thanh cong");
+                      } else {
+                          console.log("that bai");
+                      }
+                  });
+              });
+          }
+
+          res.status(200).send({msg: "Đặt hàng thành công."});
+      } else {
+          res.status(500).send({msg: "Có lỗi xảy ra. Vui lòng thực hiện lại thao tác."});
+      }
+  });
 };

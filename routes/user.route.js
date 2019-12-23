@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get('/cart', controller.cart);
 router.post('/cart', controller.removeFromCart);
+router.put('/cart', controller.order);
 router.get('/info', userMiddleware.requireAuthUser, controller.info);
 router.put('/info', userMiddleware.requireAuthUser, controller.changePassword);
 router.post('/info',userMiddleware.requireAuthUser, controller.postUserLogin);

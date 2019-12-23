@@ -19,6 +19,11 @@ module.exports = sequelize.define("orders", {
         allowNull: false
     },
 
+    product_detail_id: {
+        type: Sequelize.INTEGER(11),
+        allowNull: false
+    },
+
     total_product: {
         type: Sequelize.INTEGER(11),
         allowNull: false
@@ -35,8 +40,18 @@ module.exports = sequelize.define("orders", {
     },
 
     amount: {
-        type: Sequelize.DECIMAL(15,4),
+        type: Sequelize.DECIMAL(10,0),
         allowNull:false
+    },
+
+    createdAt: {
+        field: 'created_at',
+        type: Sequelize.DATE,
+    },
+
+    updatedAt: {
+        field: 'updated_at',
+        type: Sequelize.DATE,
     }
 
 }, {

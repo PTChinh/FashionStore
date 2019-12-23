@@ -60,12 +60,16 @@ html
                     a.text-white.mr-3(href='#')
                         i.fa.fa-heart.icon-size
                 span
-                    a.text-white.mr-3(href='/user/cart')
-                        i.fas.fa-shopping-cart.icon-size
-                            if cart
-                                sup.badge.badge-pill(id='cart-count')= cart.length
-                            else
-                                sup.badge.badge-pill(id='cart-count') 0
+                    if modal
+                        a.text-white.mr-3(href='#' data-toggle=modal.dataToggle data-target=modal.dataTarget)
+                            i.fa.fa-shopping-cart.icon-size
+                    else
+                        a.text-white.mr-3(href='/user/cart')
+                            i.fas.fa-shopping-cart.icon-size
+                                if cart
+                                    sup.badge.badge-pill(id='cart-count')= cart.length
+                                else
+                                    sup.badge.badge-pill(id='cart-count') 0
 
     body
         nav.container-fulid.E-background-color

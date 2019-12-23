@@ -17,13 +17,13 @@ block content
                         th Thành tiền
                         th Thao tác
                     if(products && cart)
-                        each product in products
-                            each item in cart
+                        each item in cart
+                            each product in products
                                 tr
                                     td.align-middle.row.justify-content-center.align-middle
                                         .Info-Product-Image
                                             img.Info-Product-Image-Sc(src=item.image)
-                                    td.align-middle= product.name
+                                    td.align-middle.name-pro= product.name
                                     td.align-middle= item.color
                                     td.align-middle= item.size
                                     td.align-middle.price-pro= product.price
@@ -65,4 +65,4 @@ block content
                     else
                         div 0₫
                 div
-                    button.btn.btn-primary.w-100.mb-5 MUA HÀNG
+                    button#btnBuy.btn.btn-primary.w-100.mb-5 MUA HÀNG

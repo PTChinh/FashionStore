@@ -69,7 +69,7 @@ $(document).ready(function () {
                 productDetailId: $id
             },
         }).done(function () {
-            alert("Thêm sản phẩm thành công");
+            alert("Thêm sản phẩm vào giỏ thành công");
             window.location.replace(url);
         }).fail(function (err) {
             console.log(err);
@@ -147,6 +147,59 @@ $(document).ready(function () {
             alert("Xóa sản phẩm thành công");
             window.location.replace(url);
         }).fail(function (err) {
+            console.log(err);
+            alert(err.responseJSON.msg);
+        });
+    });
+
+    //Click button buy
+    $("#btnBuy").click(function () {
+        var listProductDetails = [];
+        var listTotalMoney = [];
+        var listProductNames = [];
+        var listProductPrice = [];
+        var listProductQuantity = [];
+
+        let totalMoney = 0;
+        $('.total-money').each(function () {
+            totalMoney += parseInt($(this).text(), 10);
+        });
+
+        $('.quantity-pro').each(function () {
+            listProductDetails.push(parseInt($(this).attr('id'), 10));
+        });
+
+        $('.total-money').each(function () {
+            listTotalMoney.push(parseInt($(this).text(), 10));
+        });
+
+        $('.name-pro').each(function () {
+            listProductNames.push($(this).text());
+        });
+
+        $('.price-pro').each(function () {
+            listProductPrice.push(parseInt($(this).text(), 10));
+        });
+
+        $('.quantity-pro').each(function () {
+            listProductQuantity.push(parseInt($(this).attr('value'), 10));
+        });
+
+        $.ajax({
+            type: "put",
+            url: "/user/cart",
+            dataType: 'json',
+            data: {
+                productDetails: listProductDetails,
+                listTotalMoney: listTotalMoney,
+                listProductNames: listProductNames,
+                listProductPrice: listProductPrice,
+                listProductQuantity: listProductQuantity,
+                totalMoney: totalMoney
+            }
+        }).done(function () {
+            alert("Đặt hàng thành công.");
+        }).fail(function () {
             console.log(err);
             alert(err.responseJSON.msg);
         });
