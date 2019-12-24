@@ -250,7 +250,6 @@ module.exports.orderInfo = (req, res) => {
       listTrans = allTrans;
 
       for(let i = 0; i < listTrans.length; i++) {
-          console.log(listTrans[i].name);
           promises.push(
               orders.findAll({
                   where: {

@@ -199,6 +199,7 @@ $(document).ready(function () {
             }
         }).done(function () {
             alert("Đặt hàng thành công.");
+            window.location.href = "../user/order";
         }).fail(function () {
             console.log(err);
             alert(err.responseJSON.msg);
