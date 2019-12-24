@@ -18,8 +18,6 @@ module.exports.requireAuthUser = (req, res, next) => {
                     dataTarget: '#mymodal'
                 };
             } else {
-                let sessData = req.session;
-                sessData.user = user;
                 res.locals.user = user;
             }
         });

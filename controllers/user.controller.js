@@ -117,6 +117,7 @@ module.exports.postUserLogin = (req, res) => {
                 res.cookie('userId', user.id, {
                     signed: true
                 });
+                req.session.user = user;
                 res.status(200).send({msg: "Đăng nhập thành công."})
             }
 
