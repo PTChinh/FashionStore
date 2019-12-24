@@ -367,3 +367,41 @@ module.exports.removeFromInterested = (req, res) => {
         console.log('Some thing went wrong! ' + err);
     });
 };
+
+module.exports.changeInfo = (req, res) => {
+    const name = req.body.name;
+    const dob = req.body.dob;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const address = req.body.address;
+    const sex = req.body.sex;
+
+    user.findOne({
+        where: {
+            id: req.signedCookies.userId
+        }
+    }).then((us) => {
+        if (us == null) {
+            return res.status(401).send({
+                msg: "Không tìm thấy tài khoản."
+            });
+        }
+        user.update(
+            {
+                name: name,
+                dob: dob,
+                email: email,
+                phone: phone,
+                sex: sex,
+                address: address,
+                updated_at: Date.now()
+            },
+            {
+                where: {
+                    id: req.signedCookies.userId
+                }
+            });
+
+        return res.status(200).send({msg: "Thay đổi thành công."});
+    });
+};

@@ -43,14 +43,13 @@ const productDetail = require('./src/models/productDetail.model');
 
 var hash = bcrypt.hashSync('huy123', saltRounds);
 var day = new Date(1999,4,15);
-// product.create({
-//     supplier_id: 5,
-//     category_id: 4,
-//     name: 'Ví Nam Y2010 A04',
-//     image: 'images/products/accessories/wallets/vi-nam-y2010-a04/1.jpg',
-//     content: 'Ví Nam Thời Trang Y2010',
-//     price: 125000,
-//     sale: 5,
+// productDetail.create({
+//     product_id: 29,
+//     image: 'images/products/shoe/shoes/giay-nam-y2010-bd-a42/2.jpg',
+//     color: 'trắng đỏ',
+//     size: '39',
+//     total: 20,
+//     buyed: 0,
 //     created_at: Date.now(),
 //     updated_at: Date.now()
 // }).then(function (pro) {

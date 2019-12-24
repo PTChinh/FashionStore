@@ -17,11 +17,11 @@ block content
                 span.d-flex.justify-content-center
                     button.btn.btn-primary(data-Toggle='modal' data-Target='#mypassmodal')
                         | Đổi mật khẩu
-            form.col-6.col-md-6.bg-dark.text-white.p-2(method='PUT')
+            form.col-6.col-md-6.bg-dark.text-white.p-2#formChangeInfo(method='PUT')
                 .d-flex.mb-3.ml-3
                     .Info-Item Tên
                     div
-                        input.form-control(type='text' value=user.name style={ width: '360px' } required='required')
+                        input.form-control#name(type='text' value=user.name style={ width: '360px' } required='required' maxlength='64')
                 .d-flex.mb-3.ml-3
                     .Info-Item Giới tính
                     div
@@ -29,35 +29,35 @@ block content
                         - let isFemale = user.sex === 'nữ'
                         - let isOther = user.sex === 'khác'
 
-                        input(type='radio' name='gender' value='Male' checked=isMale)
+                        input#maleSex(type='radio' name='gender' value='male' checked=isMale)
                         span.ml-1 Nam
-                        input.ml-5(type='radio' name='gender' value='Female' checked=isFemale)
+                        input.ml-5#femaleSex(type='radio' name='gender' value='female' checked=isFemale)
                         span.ml-1 Nữ
-                        input.ml-5(type='radio' name='gender' value='Other' checked=isOther)
+                        input.ml-5#otherSex(type='radio' name='gender' value='other' checked=isOther)
                         span.ml-1 Khác
                 .d-flex.mb-3.ml-3
                     .Info-Item Ngày sinh
                     div.form-group
-                        input.form-control(type='date' name='birthday' max='2001-12-31'
+                        input.form-control#dob(type='date' name='birthday' max='2001-12-31'
                         min='1980-01-01' value=user.dob)
                 .d-flex.mb-3.ml-3
                     .Info-Item Địa chỉ
                     div
-                        input.form-control(type='text' value=user.address style={ width: '360px' } required='required')
+                        input.form-control#address(type='text' value=user.address style={ width: '360px' } required='required' maxlength='255')
                 .d-flex.mb-3.ml-3
                     .Info-Item Email
                     div
-                        input.form-control(type='text' value=user.email style={ width: '360px' } required='required')
+                        input.form-control#email(type='text' value=user.email style={ width: '360px' } required='required' maxlength='100')
                 .d-flex.mb-3.ml-3
                     .Info-Item Số điện thoại
                     div
-                        input.form-control(type='text' value=user.phone style={ width: '360px' } required='required')
+                        input.numberic.form-control#phone(type='text' value=user.phone style={ width: '360px' } required='required' maxlength='10')
                 .d-flex.mb-3.ml-3
                     .Info-Item.mt-2 Tên tài khoản
                     div
                         input.form-control-plaintext.text-white(type='text' value=user.username style={ width: '360px' } readonly)
                 .d-flex-mb-3.ml-3
-                    button.btn.btn-primary.float-right.mr-4
+                    button.btn.btn-primary.float-right.mr-4(type='submit')
                         | Lưu
 
     .container

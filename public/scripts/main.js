@@ -241,4 +241,55 @@ $(document).ready(function () {
 
         }
     });
+
+    //ajax user change info
+    $('#formChangeInfo').on('submit', function(e) {
+        e.preventDefault();
+
+        var regExPhone = /^0[35789][0-9]{8}$/;
+        var regExEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+        var name = $('#name').val();
+        var dob = $('#dob').val();
+        var address = $('#address').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+
+        var sex;
+
+        if($('#maleSex').is(":checked")) {
+            sex = "nam";
+        }
+        if($('#femaleSex').is(":checked")) {
+            sex = "nữ";
+        }
+        if($('#otherSex').is(":checked")) {
+            sex = "khác";
+        }
+
+        if(!regExPhone.test(phone)) {
+            alert("Vui lòng điền số điện thoại hợp lệ.");
+        } else if(!regExEmail.test(String(email).toLowerCase())) {
+            alert("Vui lòng điền email hợp lệ.");
+        } else {
+            $.ajax({
+                url: '/user/changeinfo',
+                type: 'put',
+                dataType: 'json',
+                data: {
+                    name: name,
+                    dob: dob,
+                    address: address,
+                    email: email,
+                    phone: phone,
+                    sex: sex
+                }
+            }).done(function (data) {
+                alert("Đã lưu thay đổi.");
+            }).fail(function (err) {
+                console.log(err);
+                alert(err.responseJSON.msg);
+            });
+        }
+    });
 });

@@ -42,7 +42,7 @@ module.exports = {
 
       dob: {
         type: Sequelize.DATEONLY,
-        allowNull: false
+        allowNull: true
       },
 
       address: {

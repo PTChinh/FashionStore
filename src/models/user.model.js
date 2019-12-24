@@ -41,7 +41,7 @@ module.exports = sequelize.define("user", {
 
     dob: {
         type: Sequelize.DATEONLY,
-        allowNull: false
+        allowNull: true
     },
 
     address: {
