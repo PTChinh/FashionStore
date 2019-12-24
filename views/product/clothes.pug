@@ -46,7 +46,14 @@ block content
                                 a.btn.btn-primary.ml-5.mr-5(href='/product/detail?id=' + product.id) Xem
                                 p= product.price + '₫'
                                 div
-                                    input.checkforfun(type='checkbox' name='' id=`${product.id}`)
-                                    label(for=`${product.id}`)
-                                        i.fa.fa-heart
+                                    if(hearts)
+                                        each heart in hearts
+                                            if(heart.id === product.id)
+                                                input.checkforfun(type='checkbox' name='' id=`${product.id}` checked)
+                                                label(for=`${product.id}`)
+                                                    i.fa.fa-heart
+                                    else
+                                        input.checkforfun(type='checkbox' name='' id=`${product.id}`)
+                                        label(for=`${product.id}`)
+                                            i.fa.fa-heart
 

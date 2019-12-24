@@ -13,7 +13,8 @@ module.exports.clothes = (req, res) => {
         res.render('product/clothes', {
             allProducts: products,
             products: products.slice(0, 9),
-            cart: req.session.cart
+            cart: req.session.cart,
+            hearts: req.session.heart
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
