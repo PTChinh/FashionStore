@@ -285,36 +285,43 @@ module.exports.orderInfo = (req, res) => {
 module.exports.interested = (req, res) => {
     let heart = req.session.heart;
     let listProducts = [], promises = [];
-    for(let i = 0; i < heart.length; i++) {
-        promises.push(
-            productDetail.findAll({
-                where: {
-                    product_id: heart[i].id
-                }
-            }).then(function (products) {
-                listProducts.push({
-                    product_id: heart[i].id,
-                    productDetails: products
-                });
-            })
-        )
-    }
 
-    Promise.all(promises).then(() => {
+    if(heart) {
+        for (let i = 0; i < heart.length; i++) {
+            promises.push(
+                productDetail.findAll({
+                    where: {
+                        product_id: heart[i].id
+                    }
+                }).then(function (products) {
+                    listProducts.push({
+                        product_id: heart[i].id,
+                        productDetails: products
+                    });
+                })
+            )
+        }
+
+        Promise.all(promises).then(() => {
+            res.render('user/interested', {
+                user: req.session.user,
+                cart: req.session.cart,
+                listProducts: req.session.heart,
+                listProductDetails: listProducts
+            });
+        }).catch((err) => {
+            console.log('Some thing went wrong! ' + err);
+        });
+    } else {
         res.render('user/interested', {
             user: req.session.user,
             cart: req.session.cart,
-            listProducts: req.session.heart,
-            listProductDetails: listProducts
         });
-    }).catch((err) => {
-        console.log('Some thing went wrong! ' + err);
-    });
+    }
 };
 
 module.exports.addToInterested = (req, res) => {
     let id = req.body.productId;
-    let listProducts;
 
     product.findOne({
         where: {

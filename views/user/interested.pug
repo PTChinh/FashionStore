@@ -6,9 +6,9 @@ block content
         .container.mt-5.mb-5
             .row
                 .col-sm-12
-                    if(listProducts.length < 1)
+                    if(!listProducts)
                         h1
-                            center Bạn chưa có đơn hàng nào
+                            center Bạn chưa thêm sản phẩm yêu thích nào
                     else
                         table.table.table-hover
                             thead(align='center')
