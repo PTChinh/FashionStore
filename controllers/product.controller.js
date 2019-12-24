@@ -32,7 +32,8 @@ module.exports.backpack = (req, res) => {
         res.render('product/backpack', {
             allProducts: products,
             products: products.slice(0, 9),
-            cart: req.session.cart
+            cart: req.session.cart,
+            hearts: req.session.heart
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
@@ -49,7 +50,8 @@ module.exports.shoe = (req, res) => {
         res.render('product/shoe', {
             allProducts: products,
             products: products.slice(0, 9),
-            cart: req.session.cart
+            cart: req.session.cart,
+            hearts: req.session.heart
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
@@ -67,7 +69,8 @@ module.exports.accessories = (req, res) => {
         res.render('product/accessories', {
             allProducts: products,
             products: products.slice(0, 9),
-            cart: req.session.cart
+            cart: req.session.cart,
+            hearts: req.session.heart
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
