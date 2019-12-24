@@ -3,16 +3,17 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const session = require('express-session')
+const session = require('express-session');
+
+//Middleware
+const adminMiddleware = require('./middleware/admin.middleware');
+const userMiddleware = require('./middleware/user.middleware');
 
 //Route
 const adminRoute = require('./routes/admin.route');
 const userRoute = require('./routes/user.route');
 const productRoute = require('./routes/product.route');
-
-//Middleware
-const adminMiddleware = require('./middleware/admin.middleware');
-const userMiddleware = require('./middleware/user.middleware');
+const homeRoute = require('./routes/home.route');
 
 const port = 1999;
 
@@ -63,44 +64,7 @@ var day = new Date(1999,4,15);
 
 sequelize.authenticate().then(() => console.log('Database connected...')).catch(err => console.log('Error: ' + err));
 
-//Routes
-app.get('/', userMiddleware.requireAuthUser, (req, res) => {
-    if(res.locals && res.locals.user)
-        res.render('index', {
-            user:  res.locals.user,
-            cart: req.session.cart
-        });
-    else
-        res.render('index');
-});
-// app.post('/', (req, res) => {
-//     const username = req.body.username;
-//     const password = req.body.password;
-//
-//     user.findOne({
-//         where: { username: username }
-//     }).then((user) => {
-//         if(user == null) {
-//             res.status(401).send({
-//                 msg: "Không tìm thấy tài khoản."
-//             });
-//         }
-//         else {
-//             let result = bcrypt.compareSync(password, user.password);
-//             if(result === false) {
-//                 res.status(406).send({msg: "Mật khẩu không tào lao."});
-//             }
-//             else {
-//                 res.cookie('userId', user.id, {
-//                     signed: true
-//                 });
-//                 app.locals.user = user;
-//                 res.redirect('/');
-//             }
-//         }
-//     });
-// });
-
+app.use('/', userMiddleware.requireAuthUser, homeRoute);
 app.use('/product', userMiddleware.requireAuthUser, productRoute);
 app.use('/admin', adminRoute);
 app.use('/user', userRoute);

@@ -1,0 +1,146 @@
+extends ../layouts/common
+block content
+    .container
+        .container.Frame.bg-white.deal
+            .w-100
+                .SlideShow.fade-animation.deal
+                    img.Info-Product-Image-Sc(src='images/deal.jpg')
+                .PreSlideShow.SlideShow.fade-animation.deal
+                    img.Info-Product-Image-Sc(src='images/deal2.jpg')
+                .PreSlideShow.SlideShow.fade-animation.deal
+                    img.Info-Product-Image-Sc(src='images/deal3.jpg')
+                .PreSlideShow.SlideShow.fade-animation.deal
+                    img.Info-Product-Image-Sc(src='images/deal4.jpg')
+            .SlideBtn-Div.d-flex.justify-content-center
+                input.mr-1.SlideBtn(type='radio', name='Slideshow-btn', onclick='showBtnSlide(0)')
+                input.mr-1.SlideBtn(type='radio', name='Slideshow-btn', onclick='showBtnSlide(1)')
+                input.mr-1.SlideBtn(type='radio', name='Slideshow-btn', onclick='showBtnSlide(2)')
+                input.mr-1.SlideBtn(type='radio', name='Slideshow-btn', onclick='showBtnSlide(3)')
+        .container.Type-background-color.mt-5.mb-5
+            h2 Sản phẩm
+            .row
+                .col-6.col-md-3.border-right.border-left.mt-2
+                    .d-flex.flex-column.text-center
+                        .row.justify-content-center
+                            .Img-Type-Product.mr-2
+                                a(href='/product/clothes')
+                                    img.Info-Product-Image-Sc(src='images/clothes.png')
+                        .mt-2.mb-2 Quần & áo
+                .col-6.col-md-3.border-right.mt-2
+                    .d-flex.flex-column.text-center
+                        .row.justify-content-center
+                            .Img-Type-Product.mr-2
+                                a(href='/product/shoe')
+                                    img.Info-Product-Image-Sc(src='images/Shoe.png')
+                        .mt-2.mb-2 Giày & dép
+                .col-6.col-md-3.border-right.mt-2
+                    .d-flex.flex-column.text-center
+                        .row.justify-content-center
+                            .Img-Type-Product.mr-2
+                                a(href='/product/accessories')
+                                    img.Info-Product-Image-Sc(src='images/hat.png')
+                        .mt-2.mb-2  Phụ kiện & trang sức
+                .col-6.col-md-3.border-right.mt-2
+                    .d-flex.flex-column.text-center
+                        .row.justify-content-center
+                            .Img-Type-Product.mr-2
+                                a(href='/product/backpack')
+                                    img.Info-Product-Image-Sc(src='images/backpack.png')
+                        .mt-2.mb-2 Balo & túi xách
+        .d-flex.justify-content-center.border-bottom.border-white.mb-5.pb-3
+            .container.text-light.E-background-color.mt-3.justify-content-center.align-items-center.m-0
+                h1.mt-4.mb-4.text-dark Bộ sưu tập tháng
+                .row.justify-content-around
+                    .w-100
+                    .d-flex.col-12.col-md-4.justify-content-center
+                        a(href='#')
+                            figure.image-theme.Scale-Trans
+                                img.img-fluid(src='images/Do Nu 1.jpg', alt='Hình ảnh thời trang')
+                                .img-cover.col-12.col-md-0
+                                .title-theme
+                                    h4 Bộ sưu tập
+                                    span Thời trang nữ
+                    .d-flex.col-12.col-md-4.justify-content-center
+                        a(href='#')
+                            figure.image-theme.Scale-Trans
+                                img.img-fluid(src='images/Do Nam 1.jpg', alt='Hình ảnh thời trang')
+                                .img-cover.col-12.col-md-0
+                                .title-theme
+                                    h4 Bộ sưu tập
+                                    span Thời trang Nam
+                    .d-flex.col-12.col-md-4.justify-content-center
+                        a(href='#')
+                            figure.image-theme.Scale-Trans
+                                img.img-fluid(src='images/Do tre em 1.png', alt='Hình ảnh thời trang')
+                                .img-cover.col-12.col-md-0
+                                .title-theme
+                                    h4 Bộ sưu tập
+                                    span Thời trang trẻ em
+        .d-flex.flex-column
+            .d-flex.justify-content-center.Trending-background.mb-5.pt-5.pb-5
+                .Special-Tiltle-Affect.Trending-Div.text-center
+                    strong Trending
+            .container.E-background-color.justify-content-center
+                .row.justify-content-center
+                    .col-10
+                        .d-flex.flex-row.Trending-Scroll.m-2.Trending-Img-background-color.align-items-center
+                            div
+                                .d-flex.text-center.E-background-color.flex-column.p-2.ml-5.mr-5
+                                    a(href='#')
+                                        figure.Img-Product-Small
+                                            img.Info-Product-Image-Sc(src='images/Do Nu 1.jpg')
+                                    .d-flex.flex-column.bg-white
+                                        a(href='#') Đồ nữ
+                                        span 900000
+                                        div
+                                            input#1.Fav.d-none(type='checkbox', name='')
+                                            label(for='1')
+                                                i.far.fa-heart
+                            div
+                                .d-flex.text-center.E-background-color.flex-column.p-2.mr-5
+                                    a(href='#')
+                                        figure.Img-Product-Small
+                                            img.Info-Product-Image-Sc(src='images/Do Nu 1.jpg')
+                                    .d-flex.flex-column.bg-white
+                                        a(href='#') Đồ nữ
+                                        span 900000
+                                        div
+                                            input#2.Fav.d-none(type='checkbox', name='')
+                                            label(for='2')
+                                                i.far.fa-heart
+                            div
+                                .d-flex.text-center.E-background-color.flex-column.p-2.mr-5
+                                    a(href='#')
+                                        figure.Img-Product-Small
+                                            img.Info-Product-Image-Sc(src='images/Do Nu 1.jpg')
+                                    .d-flex.flex-column.bg-white
+                                        a(href='#') Đồ nữ
+                                        span 900000
+                                        div
+                                            input#3.Fav.d-none(type='checkbox', name='')
+                                            label(for='3')
+                                                i.far.fa-heart
+                            div
+                                .d-flex.text-center.E-background-color.flex-column.p-2.mr-5
+                                    a(href='#')
+                                        figure.Img-Product-Small
+                                            img.Info-Product-Image-Sc(src='images/Do Nu 1.jpg')
+                                    .d-flex.flex-column.bg-white
+                                        a(href='#') Đồ nữ
+                                        span 900000
+                                        div
+                                            input#4.d-none.Fav(type='checkbox', name='')
+                                            label(for='4')
+                                                i.far.fa-heart
+        .d-flex.justify-content-center.pt-4.pb-5
+            .container.row.E-background-color.pt-4
+                .col-12.col-md-7
+                    figure
+                        img.img-fluid(src='images/Shopping.jpg')
+                .col-12.col-md-5.bg-white.text-center.mb-3
+                    div
+                        h3.m-4.text-primary Những "bí quyết" mua hàng bỏ túi ngay
+                        p.text-secondary Được chia sẻ bởi những khách hàng thân thiết
+                        p.text-primary
+                            | Kinh nghiệm mua hàng để bạn hiểu rõ hơn bản thân cần gì và những điều chưa biết về Sakura fashion
+                        button.btn.btn-warning.m-4 Tìm hiểu ngay
