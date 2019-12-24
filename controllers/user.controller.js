@@ -216,8 +216,8 @@ module.exports.order = (req, res) => {
                       if(result) {
                           productDetail.increment(
                               {
-                                  total: listProductQuantity[i],
-                                  buyed: - listProductQuantity[i]
+                                  total: - listProductQuantity[i],
+                                  buyed: listProductQuantity[i]
                               }, {
                                   where: {
                                       id: pd.id
