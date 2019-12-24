@@ -15,7 +15,7 @@ module.exports.cart = (req, res) => {
     let products = [];
     let promises = [];
 
-    if(cart.length !== 0) {
+    if(cart) {
         for (let i = 0; i < cart.length; i++) {
             promises.push(
                 product.findOne({

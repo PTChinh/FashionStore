@@ -5,18 +5,18 @@ block content
     .mb-3
         .container
             .col-12.bg-white
-                table.table.table-hover.text-center(align='center')
-                    tr
-                        th Hình ảnh
-                        th Tên sản phẩm
-                        th Màu
-                        th Size
-                        th Đơn giá
-                        th Số lượng
-                        th Giảm giá
-                        th Thành tiền
-                        th Thao tác
-                    if(products && cart)
+                if(products && cart)
+                    table.table.table-hover.text-center(align='center')
+                        tr
+                            th Hình ảnh
+                            th Tên sản phẩm
+                            th Màu
+                            th Size
+                            th Đơn giá
+                            th Số lượng
+                            th Giảm giá
+                            th Thành tiền
+                            th Thao tác
                         each item in cart
                             each product in products
                                 if(item.product_id === product.id)
@@ -37,6 +37,10 @@ block content
                                         td.align-middle.total-money= product.price - product.price * product.sale / 100
                                         td.align-middle
                                             button.btn.btn-primary.btnRemove Xóa
+                else
+                    h1
+                        center Bạn chưa thêm sản phẩm nào vào giỏ
+
     .container
         .row.align-items-center.justify-content-center
             .col-sm-5
