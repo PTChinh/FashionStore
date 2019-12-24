@@ -2,6 +2,8 @@ extends ../layouts/common
 block content
     .container.mb-5.mt-5
         h1 Thông tin tài khoản
+            span.ml-5
+                a.h4.btn.btn-outline-success(href='/user/order') Đơn hàng
         .row.mt-5
             .col-6.col-md-4
                 .d-flex.flex-row.justify-content-center.mt-5.mb-3
@@ -40,8 +42,8 @@ block content
                         min='1980-01-01' value=user.dob)
                 .d-flex.mb-3.ml-3
                     .Info-Item Địa chỉ
-                    div=user.address
-                        button.btn.btn-link.ml-3 Sửa
+                    div
+                        input.form-control(type='text' value=user.address style={ width: '360px' } required='required')
                 .d-flex.mb-3.ml-3
                     .Info-Item Email
                     div
