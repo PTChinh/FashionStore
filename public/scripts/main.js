@@ -200,9 +200,45 @@ $(document).ready(function () {
         }).done(function () {
             alert("Đặt hàng thành công.");
             window.location.href = "../user/order";
-        }).fail(function () {
+        }).fail(function (err) {
             console.log(err);
             alert(err.responseJSON.msg);
         });
+    });
+
+    //ajax handle checkbox interested
+    $(".checkforfun").change(function () {
+        var productId = $(this).attr('id');
+        if(this.checked) {
+
+            $.ajax({
+                type: "post",
+                url: "/user/interested",
+                data: {
+                    productId: productId
+                }
+            }).done(function () {
+                alert("Đã thêm vào yêu thích.");
+            }).fail(function (err) {
+                console.log(err);
+                alert(err.responseJSON.msg);
+            });
+
+        } else {
+            $.ajax({
+
+                type: "put",
+                url: "/user/interested",
+                data: {
+                    productId: productId
+                }
+            }).done(function () {
+                alert("Đã xóa khỏi yêu thích.");
+            }).fail(function (err) {
+                console.log(err);
+                alert(err.responseJSON.msg);
+            });
+
+        }
     });
 });

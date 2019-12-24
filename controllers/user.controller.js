@@ -281,3 +281,82 @@ module.exports.orderInfo = (req, res) => {
   });
 
 };
+
+module.exports.interested = (req, res) => {
+    let heart = req.session.heart;
+    let listProducts = [], promises = [];
+    for(let i = 0; i < heart.length; i++) {
+        promises.push(
+            productDetail.findAll({
+                where: {
+                    product_id: heart[i].id
+                }
+            }).then(function (products) {
+                listProducts.push({
+                    product_id: heart[i].id,
+                    productDetails: products
+                });
+            })
+        )
+    }
+
+    Promise.all(promises).then(() => {
+        res.render('user/interested', {
+            user: req.session.user,
+            cart: req.session.cart,
+            listProducts: req.session.heart,
+            listProductDetails: listProducts
+        });
+    }).catch((err) => {
+        console.log('Some thing went wrong! ' + err);
+    });
+};
+
+module.exports.addToInterested = (req, res) => {
+    let id = req.body.productId;
+    let listProducts;
+
+    product.findOne({
+        where: {
+            id: id
+        }
+    }).then(function (product) {
+        if(product) {
+
+            if (req.session.heart) {
+                req.session.heart.push(product);
+            } else {
+                req.session.heart = [product];
+            }
+
+            res.status(200).send({ msg: "Thêm sản phẩm thành công." });
+        } else {
+            res.status(401).send({ msg: "Không tìm thấy sản phẩm" });
+        }
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
+};
+
+module.exports.removeFromInterested = (req, res) => {
+    let id = req.body.productId;
+
+    product.findOne({
+        where: {
+            id: id
+        }
+    }).then(function (product) {
+        if(product) {
+            let heart = req.session.heart;
+            for(let i = 0; i < heart.length; i++) {
+                if(product.id === heart[i].id)
+                    req.session.heart.splice(i, 1);
+            }
+            res.status(200).send({ msg: "Xóa thành công." });
+        } else {
+            res.status(401).send({ msg: "Không tìm thấy sản phẩm" });
+        }
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
+};

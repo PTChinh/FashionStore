@@ -11,5 +11,8 @@ router.get('/info', userMiddleware.requireAuthUser, controller.info);
 router.put('/info', userMiddleware.requireAuthUser, controller.changePassword);
 router.post('/info', userMiddleware.requireAuthUser, controller.postUserLogin);
 router.get('/order', controller.orderInfo);
+router.get('/interested', controller.interested);
+router.post('/interested', controller.addToInterested);
+router.put('/interested', controller.removeFromInterested);
 
 module.exports = router;

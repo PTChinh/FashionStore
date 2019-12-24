@@ -1,0 +1,42 @@
+extends ../layouts/common
+block content
+    .mb-5
+        h1.pl-5 Sản phẩm bạn đã thích
+    .mb-3
+        .container.mt-5.mb-5
+            .row
+                .col-sm-12
+                    if(listProducts.length < 1)
+                        h1
+                            center Bạn chưa có đơn hàng nào
+                    else
+                        table.table.table-hover
+                            thead(align='center')
+                                tr
+                                    th(scope='col') ID
+                                    th(scope='col') Hình ảnh
+                                    th(scope='col') Tên sản phẩm
+                                    th(scope='col') Màu
+                                    th(scope='col') Size
+                                    th(scope='col') Giá
+                                    th(scope='col') Hành động
+                            tbody(align='center')
+                                each product in listProducts
+                                    each item in listProductDetails
+                                        if(product.id === item.product_id)
+                                            each productDetail in item.productDetails
+                                                tr
+                                                    th.align-middle.product-id(scope='row')= productDetail.id
+                                                    td.align-middle.row.justify-content-center.align-middle
+                                                        .Info-Product-Image
+                                                            img.Info-Product-Image-Sc(src=productDetail.image)
+                                                    td.align-middle= product.name
+                                                    td.align-middle= productDetail.color
+                                                    td.align-middle= productDetail.size
+                                                    td.align-middle= product.price
+                                                    td.align-middle
+                                                        if(productDetail.total - productDetail.buyed !== 0)
+                                                            button.btnAddToCart.btn.btn-primary(id=`${productDetail.id}`)
+                                                                i.fas.fa-shopping-cart
+                                                        else
+                                                            button.btn.btn-danger Hết hàng

@@ -38,17 +38,15 @@ block content
                         option Từ A -> Z
                 .container.border
                     .row.justify-content-around.p-2
-                        - let i = 0
-                            each product in products
-                                .d-flex.flex-column.text-center.border.mb-2.mt-1.Box-Shadow-Around
-                                    figure.Img-Product-Small.Scale-Trans
-                                        img.Info-Product-Image-Sc(src=product.image alt='my product')
-                                    p= product.name
-                                    a.btn.btn-primary.ml-5.mr-5(href='/product/detail?id=' + product.id) Xem
-                                    p= product.price + '₫'
-                                    div
-                                        input.checkforfun(type='checkbox' name='' id=`${i}`)
-                                        label(for=`${i}`)
-                                            i.fa.fa-heart
-                                -i++
+                        each product in products
+                            .d-flex.flex-column.text-center.border.mb-2.mt-1.Box-Shadow-Around
+                                figure.Img-Product-Small.Scale-Trans
+                                    img.Info-Product-Image-Sc(src=product.image alt='my product')
+                                p= product.name
+                                a.btn.btn-primary.ml-5.mr-5(href='/product/detail?id=' + product.id) Xem
+                                p= product.price + '₫'
+                                div
+                                    input.checkforfun(type='checkbox' name='' id=`${product.id}`)
+                                    label(for=`${product.id}`)
+                                        i.fa.fa-heart
 

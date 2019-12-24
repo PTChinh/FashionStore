@@ -91,7 +91,7 @@ module.exports.detail = (req, res) => {
             }
         }).then(function (products) {
             listProducts = products;
-        }).catch(function () {
+        }).catch(function (err) {
             console.log('Some thing went wrong! ' + err);
         });
 
