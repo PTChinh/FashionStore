@@ -74,5 +74,29 @@ module.exports.about = (req, res) => {
             user: req.session.user,
         });
     }
+};
 
+module.exports.buytips = (req, res) => {
+
+    let us =  req.session.user;
+    let image;
+    if(us) {
+        user.findOne({
+            where: {
+                id: us.id
+            }
+        }).then(user => {
+            image = user.image;
+            res.render('home/buytips', {
+                cart: req.session.cart,
+                user: req.session.user,
+                image: image
+            });
+        });
+    } else {
+        res.render('home/buytips', {
+            cart: req.session.cart,
+            user: req.session.user,
+        });
+    }
 };

@@ -319,13 +319,15 @@ module.exports.interested = (req, res) => {
     let heart = req.session.heart;
     let listProducts = [], promises = [];
     let image;
-    user.findOne({
-        where: {
-            id: req.session.user.id
-        }
-    }).then(user => {
-        image = user.image;
-    });
+    if(req.session.user) {
+        user.findOne({
+            where: {
+                id: req.session.user.id
+            }
+        }).then(user => {
+            image = user.image;
+        });
+    }
 
     if(heart) {
         for (let i = 0; i < heart.length; i++) {
@@ -355,11 +357,28 @@ module.exports.interested = (req, res) => {
             console.log('Some thing went wrong! ' + err);
         });
     } else {
-        res.render('user/interested', {
-            user: req.session.user,
-            cart: req.session.cart,
-            image: image
-        });
+
+        let image;
+        if(req.session.user) {
+            user.findOne({
+                where: {
+                    id: req.session.user.id
+                }
+            }).then(user => {
+                image = user.image;
+                res.render('user/interested', {
+                    user: req.session.user,
+                    cart: req.session.cart,
+                    image: image
+                });
+            });
+        }
+        else {
+            res.render('user/interested', {
+                user: req.session.user,
+                cart: req.session.cart,
+            });
+        }
     }
 };
 

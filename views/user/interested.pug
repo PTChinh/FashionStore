@@ -6,7 +6,7 @@ block content
         .container.mt-5.mb-5
             .row
                 .col-sm-12
-                    if(!listProducts)
+                    if(!listProducts || listProducts.length < 1)
                         h1
                             center Bạn chưa thêm sản phẩm yêu thích nào
                     else
