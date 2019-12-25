@@ -239,3 +239,37 @@ module.exports.addToCart = (req, res) => {
         console.log('Some thing went wrong! ' + err);
     });
 };
+
+module.exports.search = (req, res) => {
+
+    const search = req.query.search;
+    let matchProducts;
+
+    let image;
+    if(req.session.user) {
+
+        user.findOne({
+            where: {
+                id: req.session.user.id
+            }
+        }).then(user => {
+            image = user.image;
+        });
+    }
+    product.findAll().then(function (products) {
+
+        matchProducts = products.filter((product) => {
+            return product.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+        });
+
+        res.render('product/search', {
+            products: matchProducts,
+            cart: req.session.cart,
+            hearts: req.session.heart,
+            image: image
+        });
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
+
+};
