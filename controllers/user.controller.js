@@ -491,3 +491,40 @@ module.exports.logOut = (req, res) => {
 
     res.status(200).send({msg: "Đã đăng xuất"});
 };
+
+module.exports.signUp = (req, res) => {
+    const username = req.body.username;
+    const address = req.body.address;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const dob = req.body.dob;
+    const sex = req.body.sex;
+    const name = req.body.name;
+    const pass = req.body.pass;
+    let hash = bcrypt.hashSync(pass, saltRounds);
+
+    user.create({
+        name: name,
+        username: username,
+        image: 'images/user/default.png',
+        sex: sex,
+        password: hash,
+        email: email,
+        phone: phone,
+        dob: dob,
+        address: address,
+        status: 1,
+        created_at: Date.now(),
+        updated_at: Date.now()
+    }).then(function (us) {
+        if(us) {
+            res.status(200).send({msg: "Đăng kí thành công."});
+        } else {
+            res.status(500).send({msg: "Đăng kí không thành công."});
+        }
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    })
+
+
+};

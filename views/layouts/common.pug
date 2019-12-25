@@ -121,10 +121,10 @@ html
             #myModal.modal.fade
                 .modal-dialog
                     .modal-content
+                        .modal-header
+                            h4.modal-title Đăng nhập
+                            button.btn.btn-primary.float-right#signup(data-toggle='modal' data-target='#mySignUpModal') Đăng kí
                         form#myformlogin(method='POST')
-                            .modal-header
-                                h4.modal-title Đăng nhập
-                                button.btn.btn-primary.float-right Đăng kí
                             .modal-body
                                 p.h6#error
                                 .form-group
@@ -132,6 +132,32 @@ html
                                     input.form-control.mt-2#password(type='password', name='password', placeholder='Mật khẩu', required='required')
                             .modal-footer
                                 button.btn.btn-primary.float-right#btnLogin(type='submit') Đăng nhập
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close
+        .container
+            #mySignUpModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h4.modal-title Đăng kí
+                        form#myformsignup
+                            .modal-body
+                                .form-group
+                                    input.form-control#newusername(type='text', placeholder='Tài khoản', required='required')
+                                    input.form-control.mt-2#newpassword(type='password', placeholder='Mật khẩu', required='required')
+                                    input.form-control.mt-2.mb-2#newname(type='text' placeholder='Tên người dùng' required='required' maxlength='64')
+                                    input#newmaleSex(type='radio' name='newGender' value='male' checked=true)
+                                    span.ml-1 Nam
+                                    input.ml-5#newfemaleSex(type='radio' name='newGender' value='female')
+                                    span.ml-1 Nữ
+                                    input.ml-5#newotherSex(type='radio' name='newGender' value='other')
+                                    span.ml-1 Khác
+                                    input.form-control.mt-2#newdob(type='date' placeholder='Ngày sinh' name='newBirthday' max='2001-12-31'
+                                        min='1980-01-01')
+                                    input.form-control.mt-2#newaddress(type='text' placeholder='Địa chỉ' required='required' maxlength='255')
+                                    input.form-control.mt-2#newemail(type='text' placeholder='Email' required='required' maxlength='100')
+                                    input.numberic.form-control.mt-2#newphone(type='text' placeholder='Số điện thoại' required='required' maxlength='10')
+                            .modal-footer
+                                button.btn.btn-primary.float-right#btnSignUp(type='submit') Đăng kí
                                 button.btn.btn-light(type='button', data-dismiss='modal') Close
         block content
     footer

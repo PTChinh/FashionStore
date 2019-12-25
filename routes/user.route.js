@@ -19,4 +19,5 @@ router.post('/interested', controller.addToInterested);
 router.put('/interested', controller.removeFromInterested);
 router.post('/avatar', upload.single('avatar'), controller.uploadAvt);
 router.get('/logout', userMiddleware.requireAuthUser, controller.logOut);
+router.put('/signup', controller.signUp);
 module.exports = router;

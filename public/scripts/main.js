@@ -247,7 +247,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         var regExPhone = /^0[35789][0-9]{8}$/;
-        var regExEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        var regExEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         var name = $('#name').val();
         var dob = $('#dob').val();
@@ -328,5 +328,66 @@ $(document).ready(function () {
             console.log(err);
             alert("Lỗi: " + err);
         })
-    })
+    });
+
+    //ajax user sign up
+    $("#signup").on('click', function (e) {
+        e.preventDefault();
+        $('#myModal').modal('hide');
+    });
+
+    $("#btnSignUp").on('click', function (e) {
+
+        var regExPhone = /^0[35789][0-9]{8}$/;
+        var regExEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        var name = $('#newname').val();
+        var pass = $('#newpassword').val();
+        var dob = $('#newdob').val();
+        var address = $('#newaddress').val();
+        var email = $('#newemail').val();
+        var phone = $('#newphone').val();
+        var user = $('#newusername').val();
+
+        var sex;
+
+        if ($('#newmaleSex').is(":checked")) {
+            sex = "nam";
+        }
+        if ($('#newfemaleSex').is(":checked")) {
+            sex = "nữ";
+        }
+        if ($('#newotherSex').is(":checked")) {
+            sex = "khác";
+        }
+
+        if (!regExPhone.test(phone)) {
+            alert("Vui lòng điền số điện thoại hợp lệ.");
+        } else if (!regExEmail.test(String(email).toLowerCase())) {
+            alert("Vui lòng điền email hợp lệ.");
+        } else {
+            $.ajax({
+                url: '/user/signup',
+                type: 'put',
+                dataType: 'json',
+                data: {
+                    name: name,
+                    dob: dob,
+                    address: address,
+                    email: email,
+                    phone: phone,
+                    sex: sex,
+                    pass: pass,
+                    username: user
+                }
+            }).done(function () {
+                alert("Đăng kí thành công.");
+                $('#mySignUpModal').modal('hide');
+                window.location.href = "/";
+            }).fail(function (err) {
+                console.log(err);
+                alert("Đăng kí không thành công. Vui lòng thực hiện lại thao tác.");
+            });
+        }
+    });
 });
