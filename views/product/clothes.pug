@@ -56,4 +56,12 @@ block content
                                         input.checkforfun(type='checkbox' name='' id=`${product.id}`)
                                         label(for=`${product.id}`)
                                             i.fa.fa-heart
+                    nav(aria-label='Page navigation products')
+                        ul.pagination.justify-content-center
+                            li.page-item
+                            - let i = 0
+                                while i <= allProducts.length / 9
+                                    li.page-item
+                                        a.page-link(href='/product/clothes?page=' + (i + 1))= i + 1
+                                    -i++
 

@@ -5,6 +5,12 @@ const user = require('../src/models/user.model');
 const productDetail = require('../src/models/productDetail.model');
 
 module.exports.clothes = (req, res) => {
+    let page = parseInt(req.query.page) || 1; // n
+    let perPage = 9; // x
+
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
+
     let image;
     if(req.session.user) {
 
@@ -23,7 +29,7 @@ module.exports.clothes = (req, res) => {
     }).then(function (products) {
         res.render('product/clothes', {
             allProducts: products,
-            products: products.slice(0, 9),
+            products: products.slice(start, end),
             cart: req.session.cart,
             hearts: req.session.heart,
             image: image
@@ -35,6 +41,13 @@ module.exports.clothes = (req, res) => {
 };
 
 module.exports.backpack = (req, res) => {
+
+    let page = parseInt(req.query.page) || 1; // n
+    let perPage = 9; // x
+
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
+
     let image;
     if(req.session.user) {
         user.findOne({
@@ -53,7 +66,7 @@ module.exports.backpack = (req, res) => {
     }).then(function (products) {
         res.render('product/backpack', {
             allProducts: products,
-            products: products.slice(0, 9),
+            products: products.slice(start, end),
             cart: req.session.cart,
             hearts: req.session.heart,
             image: image
@@ -64,6 +77,12 @@ module.exports.backpack = (req, res) => {
 };
 
 module.exports.shoe = (req, res) => {
+
+    let page = parseInt(req.query.page) || 1; // n
+    let perPage = 9; // x
+
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
 
     let image;
     if(req.session.user) {
@@ -84,7 +103,7 @@ module.exports.shoe = (req, res) => {
     }).then(function (products) {
         res.render('product/shoe', {
             allProducts: products,
-            products: products.slice(0, 9),
+            products: products.slice(start, end),
             cart: req.session.cart,
             hearts: req.session.heart,
             image: image
@@ -96,6 +115,12 @@ module.exports.shoe = (req, res) => {
 };
 
 module.exports.accessories = (req, res) => {
+
+    let page = parseInt(req.query.page) || 1; // n
+    let perPage = 9; // x
+
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
 
     let image;
     if(req.session.user) {
@@ -116,7 +141,7 @@ module.exports.accessories = (req, res) => {
     }).then(function (products) {
         res.render('product/accessories', {
             allProducts: products,
-            products: products.slice(0, 9),
+            products: products.slice(start, end),
             cart: req.session.cart,
             hearts: req.session.heart,
             image: image
