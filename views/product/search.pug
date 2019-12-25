@@ -33,11 +33,22 @@ block content
                                     p= product.price + '₫'
                                     div
                                         if(hearts)
-                                            each heart in hearts
-                                                if(heart.id === product.id)
-                                                    input.checkforfun(type='checkbox' name='' id=`${product.id}` checked)
-                                                    label(for=`${product.id}`)
-                                                        i.fa.fa-heart
+                                            if(hearts.length < 1)
+                                                input.checkforfun(type='checkbox' name='' id=`${product.id}`)
+                                                label(for=`${product.id}`)
+                                                    i.fa.fa-heart
+                                            else
+                                                -let pU = false
+                                                    each heart in hearts
+                                                        if(heart.id === product.id)
+                                                            input.checkforfun(type='checkbox' name='' id=`${product.id}` checked)
+                                                            label(for=`${product.id}`)
+                                                                i.fa.fa-heart
+                                                            -pU = true
+                                                    if(pU === false)
+                                                        input.checkforfun(type='checkbox' name='' id=`${product.id}`)
+                                                        label(for=`${product.id}`)
+                                                            i.fa.fa-heart
                                         else
                                             input.checkforfun(type='checkbox' name='' id=`${product.id}`)
                                             label(for=`${product.id}`)
