@@ -45,10 +45,11 @@ html
                 .form-group.col-md-12.mt-5.pt-3.ml-5
                     span.fa.fa-search.icon-left
                     input.new-form-control.form-control.input-opacity(type='text', name='', placeholder='Tìm kiếm sản phẩm ...', size='60px')
-            .d-flex.d-none.d-md-flex.col-md-4.justify-content-center.align-items-end.pb-3
+            .d-flex.d-none.d-md-flex.col-md-3.justify-content-center.align-items-end.pb-3
                 span
                     if user
-                        img.round.img-user.mr-3(src=image alt='user img')
+                        img.round.img-user.mr-1(src=image alt='user img')
+                        i.mr-5.fas.fa-sign-out-alt.text-white#logout
                 span
                     if modal
                         a.text-white.mr-3(href='#' data-toggle=modal.dataToggle data-target=modal.dataTarget)

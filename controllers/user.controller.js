@@ -483,5 +483,11 @@ module.exports.uploadAvt = (req, res) => {
         cart: req.session.cart,
         image: image
     });
+};
 
+module.exports.logOut = (req, res) => {
+    res.clearCookie('userId');
+    req.session.destroy();
+
+    res.status(200).send({msg: "Đã đăng xuất"});
 };

@@ -314,4 +314,19 @@ $(document).ready(function () {
         $(".file-upload").click();
     });
 
+
+    //ajax logout
+    $("#logout").on('click', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: "get",
+            url: "/user/logout",
+        }).done(function () {
+            window.location.href = "/";
+        }).fail(function (err) {
+            console.log(err);
+            alert("Lỗi: " + err);
+        })
+    })
 });
