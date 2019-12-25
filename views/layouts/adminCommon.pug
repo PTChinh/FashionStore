@@ -28,28 +28,27 @@ html
                 .sidebar-sticky
                     ul.nav.flex-column
                         li
-                            a.nav-link.active.h6
+                            a.nav-link.h6(href='/admin/dashboard')
                                 i.fas.fa-tachometer-alt
                                 |   Bảng điều khiển
-                                span.sr-only (current)
                         li
-                            a.nav-link.h6(href='#')
+                            a.nav-link.h6(href='/admin/invoice')
                                 i.fas.fa-file-invoice-dollar
                                 |   Đơn đặt hàng
                         li
-                            a.nav-link.h6(href='#')
+                            a.nav-link.h6(href='/admin/product')
                                 i.fas.fa-shopping-cart
                                 |   Sản phẩm
                         li
-                            a.nav-link.h6(href='#')
+                            a.nav-link.h6(href='/admin/user')
                                 i.fas.fa-users
                                 |   Khách hàng
                         li
-                            a.nav-link.h6(href='#')
+                            a.nav-link.h6(href='/admin/staff')
                                 i.fas.fa-user-cog
                                 |   Nhân viên
                         li
-                            a.nav-link.h6(href='#')
+                            a.nav-link.h6(href='/admin/report')
                                 i.fas.fa-paste
                                 |   Báo cáo
             block content

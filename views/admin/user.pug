@@ -1,0 +1,28 @@
+extends ../layouts/adminCommon
+block content
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+        h2.mt-3.mb-3
+            | Thông tin khách hàng
+            button.btn.btn-primary.ml-3 Thêm khách hàng
+        .table-responsive
+            table.table.table-hover.table-sm
+                tr
+                    th Mã khách hàng
+                    th Tên khách hàng
+                    th Tài khoản
+                    th Email
+                    th Số điện thoại
+                    th Địa chỉ
+                    th Ghi chú
+                    th Hành động
+                tr
+                    td 1
+                    td Huy
+                    td tranhiepnguyenhuy
+                    td tranhiepnguyenhuy@gmail.com
+                    td 0978238363
+                    td KTX khu B
+                    td active
+                    td
+                        button.btn.btn-info.btn-sm Sửa
+                        button.btn.btn-danger.btn-sm Xóa

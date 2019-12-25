@@ -1,0 +1,24 @@
+extends ../layouts/adminCommon
+block content
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+        h2.mt-3.mb-3
+            | Tài khoản nhân viên
+            button.btn.btn-primary.ml-3 Tạo tài khoản
+        .table-responsive
+            table.table.table-hover.table-sm
+                tr
+                    th STT
+                    th Tài khoản
+                    th Họ và tên
+                    th Địa chỉ
+                    th Ghi chú
+                    th Hành động
+                tr
+                    td 1
+                    td UK
+                    td Phạm Trần Chính
+                    td TP.Hồ Chí Minh
+                    td Admin
+                    td
+                        button.btn.btn-info.btn-sm Sửa
+                        button.btn.btn-danger.btn-sm Xóa
