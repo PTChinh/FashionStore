@@ -16,5 +16,7 @@ router.get('/user', adminMiddleware.requireAuthAdmin, controller.user);
 router.get('/invoice', adminMiddleware.requireAuthAdmin, controller.invoice);
 router.get('/product', adminMiddleware.requireAuthAdmin, controller.product);
 router.get('/report', adminMiddleware.requireAuthAdmin, controller.report);
+router.put('/staff/signup', adminMiddleware.requireAuthAdmin, controller.createStaff);
+router.put('/staff/update', adminMiddleware.requireAuthAdmin, controller.updateStaff);
 
 module.exports = router;

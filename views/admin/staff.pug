@@ -3,22 +3,79 @@ block content
     main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
         h2.mt-3.mb-3
             | Tài khoản nhân viên
-            button.btn.btn-primary.ml-3 Tạo tài khoản
+            button.btn.btn-primary.ml-3(data-toggle='modal' data-target='#staffSignUpModal') Tạo tài khoản
         .table-responsive
-            table.table.table-hover.table-sm
-                tr
-                    th STT
-                    th Tài khoản
-                    th Họ và tên
-                    th Địa chỉ
-                    th Ghi chú
-                    th Hành động
-                tr
-                    td 1
-                    td UK
-                    td Phạm Trần Chính
-                    td TP.Hồ Chí Minh
-                    td Admin
-                    td
-                        button.btn.btn-info.btn-sm Sửa
-                        button.btn.btn-danger.btn-sm Xóa
+            table.table.table-hover.table-bordered
+                tr(align='center')
+                    th.align-middle ID
+                    th.align-middle Tài khoản
+                    th.align-middle Email
+                    th.align-middle Trạng thái
+                    th.align-middle Vai trò
+                    th.align-middle Ngày tạo
+                    th.align-middle Hành động
+                each staff in staffs
+                    tr.text-center
+                        td.align-middle.staff-id= staff.id
+                        td.align-middle.staff-username= staff.username
+                        td.align-middle.staff-email= staff.email
+                        td.align-middle
+                            if(staff.status === 1)
+                                button.btn.btn-outline-success.staff-status(name='1') Active
+                            else
+                                button.btn.btn-outline-danger.staff-status(name='0') Deactive
+                        td.align-middle
+                            if(staff.role === 1)
+                                button.btn.btn-outline-primary.staff-role(name='1') Staff
+                            if(staff.role === 2)
+                                button.btn.btn-outline-primary.staff-role(name='2') Manager
+                            if(staff.role === 3)
+                                button.btn.btn-outline-primary.staff-role(name='3') Admin
+                        td.align-middle= moment(`${staff.createdAt}`).format('DD-MM-YYYY')
+                        td.align-middle
+                            if(admin.role === 3)
+                                button.btn.btn-info.btn-sm.mr-1.update-staff Sửa
+                            else
+                                button.btn.btn-dark none
+        .container
+            #staffSignUpModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h4.modal-title Đăng kí
+                        form#stafFormSignUp
+                            .modal-body
+                                .form-group
+                                    input.form-control#staffUsername(type='text', placeholder='Tài khoản', required='required')
+                                    input.form-control.mt-2#staffPassword(type='password', placeholder='Mật khẩu', required='required')
+                                    input.form-control.mt-2#staffEmail(type='text' placeholder='Email' required='required' maxlength='100')
+                                    select.form-control.mt-2#roleSelect
+                                        option(value='1') Staff
+                                        option(value='2') Manager
+                                        option(value='3') Admin
+                            .modal-footer
+                                button.btn.btn-primary.float-right#btnStaffSignUp(type='submit') Đăng kí
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close
+
+        .container
+            #staffUpdateModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h4.modal-title Cập nhật
+                        form#stafFormUpdate
+                            .modal-body
+                                .form-group
+                                    input.form-control#staffCurId(type='text' readonly)
+                                    input.form-control.mt-2#staffCurUsername(type='text' readonly)
+                                    input.form-control.mt-2#staffCurEmail(type='text' placeholder='Email' required='required' maxlength='100')
+                                    select.form-control.mt-2#roleCurSelect
+                                        option(value='1') Staff
+                                        option(value='2') Manager
+                                        option(value='3') Admin
+                                    select.form-control.mt-2#statusCurSelect
+                                        option(value='1') Active
+                                        option(value='0') Deactive
+                            .modal-footer
+                                button.btn.btn-primary.float-right#btnStaffUpdate(type='submit') Cập nhật
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close

@@ -49,7 +49,17 @@ module.exports.dashBoard = (req, res) => {
 };
 
 module.exports.staff = (req, res) => {
-    res.render('admin/staff');
+
+    admin.findAll().then(function (staffs) {
+        let admin = req.session.admin;
+        res.render('admin/staff', {
+            staffs: staffs,
+            admin: admin
+        });
+
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
 };
 
 module.exports.user = (req, res) => {
@@ -66,4 +76,64 @@ module.exports.product = (req, res) => {
 
 module.exports.report = (req, res) => {
     res.render('admin/report');
+};
+
+module.exports.createStaff = (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    const email = req.body.email;
+    const role = req.body.role;
+    let hash = bcrypt.hashSync(password, saltRounds);
+
+    admin.create({
+        username: username,
+        password: hash,
+        email: email,
+        role: role,
+        status: 1,
+        created_at: Date.now(),
+        updated_at: Date.now()
+    }).then(function (admin) {
+        if(admin) {
+            res.status(200).send({msg: "Đăng kí thành công."});
+        } else {
+            res.status(500).send({msg: "Đăng kí không thành công."});
+        }
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
+};
+
+module.exports.updateStaff = (req, res) => {
+    const username = req.body.username;
+    const email = req.body.email;
+    const role = req.body.role;
+    const status = req.body.status;
+    const id = req.body.id;
+
+    admin.findOne({
+        where: {
+            id: id
+        }
+    }).then((ad) => {
+        if (ad == null) {
+            return res.status(401).send({
+                msg: "Không tìm thấy tài khoản."
+            });
+        }
+        admin.update(
+            {
+                username: username,
+                email: email,
+                role: role,
+                status: status,
+                updated_at: Date.now()
+            }, {
+                where: {
+                    id: id
+                }
+            }
+        );
+        return res.status(200).send({msg: "Thay đổi thành công."});
+    });
 };
