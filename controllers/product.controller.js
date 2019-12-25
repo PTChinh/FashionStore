@@ -243,6 +243,12 @@ module.exports.addToCart = (req, res) => {
 
 module.exports.search = (req, res) => {
 
+    let page = parseInt(req.query.page) || 1; // n
+    let perPage = 9; // x
+
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
+
     const search = req.query.search;
     let matchProducts;
 
@@ -264,10 +270,12 @@ module.exports.search = (req, res) => {
         });
 
         res.render('product/search', {
-            products: matchProducts,
+            products: matchProducts.slice(start, end),
+            allProducts: matchProducts,
             cart: req.session.cart,
             hearts: req.session.heart,
-            image: image
+            image: image,
+            search: search
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
