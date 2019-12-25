@@ -20,6 +20,11 @@ module.exports = {
         allowNull: false
       },
 
+      image: {
+        type: Sequelize.STRING(200),
+        allowNull: false
+      },
+
       sex: {
         type: Sequelize.STRING(10),
         allowNull: false

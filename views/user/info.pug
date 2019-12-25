@@ -7,12 +7,13 @@ block content
         .row.mt-5
             .col-6.col-md-4
                 .d-flex.flex-row.justify-content-center.mt-5.mb-3
-                    .Customer-Image.bg-warning.Scale-Trans.Box-Shadow-Around
-                        img.Info-Cus-Image-Sc(src='images/Do Nam 1.jpg')
-                        .Change-CusImg-Btn-State
-                            .Change-CusImg-Btn.bg-white.rounded-circle.d-flex.justify-content-center.align-items-center
-                                button.rounded-circle.border-0
-                                    i.fas.fa-camera
+                    form#formUploadImg(method='POST' action='/user/avatar' enctype='multipart/form-data')
+                        .Customer-Image.bg-dark.Scale-Trans.Box-Shadow-Around
+                            img#avatar.Info-Cus-Image-Sc(src=image)
+                            .Change-CusImg-Btn-State
+                                .Change-CusImg-Btn.bg-white.rounded-circle.d-flex.justify-content-center.align-items-center
+                                    input.file-upload.fas.fa-camera(type='file' name='avatar' style={ opacity: 0 })
+                        button#upload.btn.btn-primary.mt-3.ml-5(type='submit') Lưu
                 h3.text-center Ảnh đại diện
                 span.d-flex.justify-content-center
                     button.btn.btn-primary(data-Toggle='modal' data-Target='#mypassmodal')

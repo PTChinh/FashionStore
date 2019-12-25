@@ -1,8 +1,10 @@
 const express = require('express');
+const multer = require('multer');
 
 const controller = require('../controllers/user.controller');
 const userMiddleware = require('../middleware/user.middleware');
 const router = express.Router();
+const upload = multer({dest: './public/images/user/'});
 
 router.get('/cart', controller.cart);
 router.post('/cart', controller.removeFromCart);
@@ -15,5 +17,5 @@ router.get('/order', controller.orderInfo);
 router.get('/interested', controller.interested);
 router.post('/interested', controller.addToInterested);
 router.put('/interested', controller.removeFromInterested);
-
+router.post('/avatar', upload.single('avatar'), controller.uploadAvt);
 module.exports = router;

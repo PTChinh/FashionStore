@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const Sequelize = require('sequelize');
+const multer = require('multer');
+const upload = multer({dest: './public/images/user/'});
 
 const db = require('../src/database/connection');
 const user = require('../src/models/user.model');
@@ -14,6 +16,15 @@ module.exports.cart = (req, res) => {
     let cart = req.session.cart;
     let products = [];
     let promises = [];
+
+    let image;
+    user.findOne({
+        where: {
+            id: us.id
+        }
+    }).then(user => {
+        image = user.image;
+    });
 
     if(cart) {
         for (let i = 0; i < cart.length; i++) {
@@ -41,7 +52,8 @@ module.exports.cart = (req, res) => {
             res.render('user/cart', {
                 user: us,
                 cart: cart,
-                products: products
+                products: products,
+                image: image
             });
         }).catch((err) => {
             console.log('Some thing went wrong! ' + err);
@@ -51,16 +63,27 @@ module.exports.cart = (req, res) => {
         res.render('user/cart', {
             user: us,
             cart: cart,
+            image: image
         });
     }
 };
 
 module.exports.info = (req, res) => {
     let us = req.session.user;
-    res.render('user/info', {
-        user: us,
-        cart: req.session.cart
+    let image;
+    user.findOne({
+        where: {
+            id: us.id
+        }
+    }).then(user => {
+        image = user.image;
+        res.render('user/info', {
+            user: us,
+            cart: req.session.cart,
+            image: image
+        });
     });
+
 };
 
 module.exports.changePassword = (req, res) => {
@@ -243,6 +266,15 @@ module.exports.orderInfo = (req, res) => {
   let us = req.session.user;
   let listTrans, listOrders = [], promises = [];
 
+    let image;
+    user.findOne({
+        where: {
+            id: req.session.user.id
+        }
+    }).then(user => {
+        image = user.image;
+    });
+
   transaction.findAll({
       where: {
           user_id: us.id
@@ -270,7 +302,8 @@ module.exports.orderInfo = (req, res) => {
               user: us,
               cart: req.session.cart,
               listTrans: listTrans,
-              listOrders: listOrders
+              listOrders: listOrders,
+              image: image
           });
       }).catch((err) => {
           console.log('Some thing went wrong! ' + err);
@@ -285,6 +318,14 @@ module.exports.orderInfo = (req, res) => {
 module.exports.interested = (req, res) => {
     let heart = req.session.heart;
     let listProducts = [], promises = [];
+    let image;
+    user.findOne({
+        where: {
+            id: req.session.user.id
+        }
+    }).then(user => {
+        image = user.image;
+    });
 
     if(heart) {
         for (let i = 0; i < heart.length; i++) {
@@ -307,7 +348,8 @@ module.exports.interested = (req, res) => {
                 user: req.session.user,
                 cart: req.session.cart,
                 listProducts: req.session.heart,
-                listProductDetails: listProducts
+                listProductDetails: listProducts,
+                image: image
             });
         }).catch((err) => {
             console.log('Some thing went wrong! ' + err);
@@ -316,6 +358,7 @@ module.exports.interested = (req, res) => {
         res.render('user/interested', {
             user: req.session.user,
             cart: req.session.cart,
+            image: image
         });
     }
 };
@@ -404,4 +447,41 @@ module.exports.changeInfo = (req, res) => {
 
         return res.status(200).send({msg: "Thay đổi thành công."});
     });
+};
+
+module.exports.uploadAvt = (req, res) => {
+
+    let path = req.file.path;
+    let repPath = path.replace(/\\/g, "/");
+    let newPath = repPath.split('/').slice(1).join('/');
+
+    user.findOne({
+        where: {
+            id: req.signedCookies.userId
+        }
+    }).then((us) => {
+        if (us == null) {
+            return res.status(401).send({
+                msg: "Không tìm thấy tài khoản."
+            });
+        }
+        user.update(
+            {
+                image: newPath
+            },
+            {
+                where: {
+                    id: req.signedCookies.userId
+                }
+            });
+    });
+
+    let image = newPath;
+    console.log(image);
+    res.render('user/info', {
+        user: req.session.user,
+        cart: req.session.cart,
+        image: image
+    });
+
 };

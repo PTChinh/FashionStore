@@ -1,10 +1,21 @@
 const db = require('../src/database/connection');
 const Sequelize = require('sequelize');
 const product = require('../src/models/product.model');
+const user = require('../src/models/user.model');
 const productDetail = require('../src/models/productDetail.model');
 
 module.exports.clothes = (req, res) => {
+    let image;
+    if(req.session.user) {
 
+        user.findOne({
+            where: {
+                id: req.session.user.id
+            }
+        }).then(user => {
+            image = user.image;
+        });
+    }
     product.findAll({
        where: {
            category_id: 1
@@ -14,7 +25,8 @@ module.exports.clothes = (req, res) => {
             allProducts: products,
             products: products.slice(0, 9),
             cart: req.session.cart,
-            hearts: req.session.heart
+            hearts: req.session.heart,
+            image: image
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
@@ -23,6 +35,16 @@ module.exports.clothes = (req, res) => {
 };
 
 module.exports.backpack = (req, res) => {
+    let image;
+    if(req.session.user) {
+        user.findOne({
+            where: {
+                id: req.session.user.id
+            }
+        }).then(user => {
+            image = user.image;
+        });
+    }
 
     product.findAll({
         where: {
@@ -33,7 +55,8 @@ module.exports.backpack = (req, res) => {
             allProducts: products,
             products: products.slice(0, 9),
             cart: req.session.cart,
-            hearts: req.session.heart
+            hearts: req.session.heart,
+            image: image
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
@@ -41,6 +64,18 @@ module.exports.backpack = (req, res) => {
 };
 
 module.exports.shoe = (req, res) => {
+
+    let image;
+    if(req.session.user) {
+
+        user.findOne({
+            where: {
+                id: req.session.user.id
+            }
+        }).then(user => {
+            image = user.image;
+        });
+    }
 
     product.findAll({
         where: {
@@ -51,7 +86,8 @@ module.exports.shoe = (req, res) => {
             allProducts: products,
             products: products.slice(0, 9),
             cart: req.session.cart,
-            hearts: req.session.heart
+            hearts: req.session.heart,
+            image: image
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
@@ -60,6 +96,18 @@ module.exports.shoe = (req, res) => {
 };
 
 module.exports.accessories = (req, res) => {
+
+    let image;
+    if(req.session.user) {
+
+        user.findOne({
+            where: {
+                id: req.session.user.id
+            }
+        }).then(user => {
+            image = user.image;
+        });
+    }
 
     product.findAll({
         where: {
@@ -70,7 +118,8 @@ module.exports.accessories = (req, res) => {
             allProducts: products,
             products: products.slice(0, 9),
             cart: req.session.cart,
-            hearts: req.session.heart
+            hearts: req.session.heart,
+            image: image
         });
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
@@ -82,6 +131,17 @@ module.exports.detail = (req, res) => {
 
     let productId = req.query.id;
     let listProducts;
+    let image;
+    if(req.session.user) {
+
+        user.findOne({
+            where: {
+                id: req.session.user.id
+            }
+        }).then(user => {
+            image = user.image;
+        });
+    }
 
     product.findOne({
         where: {
@@ -109,7 +169,8 @@ module.exports.detail = (req, res) => {
                 product: product,
                 productDetails: productDetails,
                 listProducts: listProducts,
-                cart: req.session.cart
+                cart: req.session.cart,
+                image: image
             });
         }).catch(function (err) {
             console.log('Some thing went wrong! ' + err);
