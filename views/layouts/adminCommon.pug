@@ -1,0 +1,69 @@
+html
+    head
+        meta(charset='UTF-8')
+        title Sakura Fashion Admin
+        meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no', name='viewport')
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+        script(src='https://kit.fontawesome.com/14be88be6b.js', crossorigin='anonymous')
+        base(href='/')
+        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css', integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ', crossorigin='anonymous')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat:400,700,200&display=swap')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+        link(rel='stylesheet', type='text/css', href='styles/admin.css')
+    nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
+        a.navbar-brand.col-sm-3.col-md-2.d-flex.justify-content-center(href='#') Bee Fashion
+        .dropdown.mr-5.px-lg-5
+            button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                | UK
+            .dropdown-menu.dropdown-menu-right(aria-labelledby='dropdownMenuButton')
+                a.dropdown-item(href='#')
+                    span.fas.fa-user-edit.mr-1
+                    | Thông tin cá nhân
+                a.dropdown-item(href='#')
+                    span.fa.fa-sign-out.mr-2
+                    | Đăng xuất
+    .container-fluid
+        .row
+            nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+                .sidebar-sticky
+                    ul.nav.flex-column
+                        li
+                            a.nav-link.active.h6
+                                svg.feather.feather-home(xmlns='http://www.w3.org/2000/svg', width='16', height='16', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+                                    path(d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z')
+                                    polyline(points='9 22 9 12 15 12 15 22')
+                                |   Bảng điều khiển
+                                span.sr-only (current)
+                        li
+                            a.nav-link.h6(href='#')
+                                svg.feather.feather-file(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+                                    path(d='M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z')
+                                    polyline(points='13 2 13 9 20 9')
+                                |   Đơn đặt hàng
+                        li
+                            a.nav-link.h6(href='#')
+                                svg.feather.feather-shopping-cart(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+                                    circle(cx='9', cy='21', r='1')
+                                    circle(cx='20', cy='21', r='1')
+                                    path(d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6')
+                                |   Sản phẩm
+                        li
+                            a.nav-link.h6(href='#')
+                                svg.feather.feather-users(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+                                    path(d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2')
+                                    circle(cx='9', cy='7', r='4')
+                                    path(d='M23 21v-2a4 4 0 0 0-3-3.87')
+                                    path(d='M16 3.13a4 4 0 0 1 0 7.75')
+                                |   Khách hàng
+                        li
+                            a.nav-link.h6(href='#')
+                                svg.feather.feather-bar-chart-2(xmlns='http://www.w3.org/2000/svg', width='24', height='24', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+                                    line(x1='18', y1='20', x2='18', y2='10')
+                                    line(x1='12', y1='20', x2='12', y2='4')
+                                    line(x1='6', y1='20', x2='6', y2='14')
+                                |   Báo cáo
+            block content
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js',crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+    script(src='scripts/main.js')
