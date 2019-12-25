@@ -89,8 +89,10 @@ html
                             a(href='/product/accessories') Trang sức & phụ kiện
                         li
                             a(href='/product/backpack') Balo & túi xách
-                li.font-weight-bold Vận chuyển
-                li.font-weight-bold Về chúng tôi
+                li.font-weight-bold
+                    a(href='/transport') Vận chuyển
+                li.font-weight-bold
+                    a(href='/about') Về chúng tôi
             .d-flex.d-md-none.flex-column.justify-content-center
                 .Nav-Mobile
                     span.Pointer Menu Day
@@ -102,7 +104,8 @@ html
                                     li
                                         .Menu-Opt-Width Về chúng tôi
                                     li Bộ sưu tập
-                                    li Vận chuyển
+                                    li
+                                        a(href='/transport') Vận chuyển
                             li.Menu-Opt
                                 | Cửa hàng
                                 ul.Sup-Menu-Mobile
@@ -112,11 +115,11 @@ html
                                     li Trang sức, phụ kiện
                                     li Balo, túi xách
                             li
-                                a(href='#') Vận chuyển
+                                a(href='/transport') Vận chuyển
                             li
-                                a(href='#') Về chúng tôi
+                                a(href='/about') Về chúng tôi
                             li
-                                a(href='#') Giỏ hàng
+                                a(href='/user/cart') Giỏ hàng
         .container
             #myModal.modal.fade
                 .modal-dialog
