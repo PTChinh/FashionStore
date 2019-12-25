@@ -31,11 +31,10 @@ block content
                                 label.ml-3(for='promotion') Đang khuyến mãi
             .col-12.col-md-9
                 .d-flex.justify-content-end.mb-5.mt-5
-                    label.mt-1 Sắp xếp theo:
-                    select.ml-3.form-control.col-sm-3
-                        option Giá từ thấp đến cao
-                        option Giá từ cao đến thấp
-                        option Từ A -> Z
+                    form(method="GET")
+                        .form-group.col-md-12.mt-5.pt-3.ml-5
+                            span.fa.fa-search.icon-left
+                            input.new-form-control.form-control.input-opacity(type='text', name='', placeholder='Tìm kiếm sản phẩm ...', size='60px')
                 .container.border
                     .row.justify-content-around.p-2
                         each product in products

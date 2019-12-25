@@ -32,24 +32,20 @@ html
                 height: 30px;
             }
     header.container-fulid
-        .container.d-flex.justify-content-center.border-bottom.border-white
-            .col-12.col-md-2.pt-2.pb-2
-                a(href='/')
-                    img(src='/images/logo.jpg' alt='Sakura shop')
-            .col-12.col-md-2.d-flex.align-items-center
-                .Special-Tiltle-Affect.p-2
-                    span.header-title
-                        strong SAKURA
-
-            form(method="POST")
-                .form-group.col-md-12.mt-5.pt-3.ml-5
-                    span.fa.fa-search.icon-left
-                    input.new-form-control.form-control.input-opacity(type='text', name='', placeholder='Tìm kiếm sản phẩm ...', size='60px')
-            .d-flex.d-none.d-md-flex.col-md-3.justify-content-center.align-items-end.pb-3
+        .container.d-flex.border-bottom.border-white.justify-content-between
+            .row.justify-content-around
+                .col-12.col-md-2.pt-2.pb-2
+                    a(href='/')
+                        img(src='/images/logo.jpg' alt='Sakura shop')
+                .col-12.col-md-2.d-flex.align-items-center
+                    .Special-Tiltle-Affect.p-2
+                        span.header-title
+                            strong SAKURA
+            .d-flex.col-md-3.align-items-end.pb-3
                 span
                     if user
                         img.round.img-user.mr-1(src=image alt='user img')
-                        i.mr-5.fas.fa-sign-out-alt.text-white#logout
+                        i.mr-3.fas.fa-sign-out-alt.text-white#logout
                 span
                     if modal
                         a.text-white.mr-3(href='#' data-toggle=modal.dataToggle data-target=modal.dataTarget)
