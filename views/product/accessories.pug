@@ -20,18 +20,19 @@ block content
                     div
                         div
                             h5.mb-3 Khoảng Giá
-                            select.form-control.mb-5
-                                option Dưới 500.000₫
-                                option Từ 500.000₫ - 1.000.000₫
-                                option Trên 1.000.000₫
+                            select.form-control.mb-5#priceSelect
+                                option(value='1') Dưới 500.000₫
+                                option(value='2') Từ 500.000₫ - 1.000.000₫
+                                option(value='3') Trên 1.000.000₫
                         div
                             h5.mb-3 Dịch Vụ & Khuyến Mãi
                             div
                                 input#promotion.mb-5(type='checkbox', name='')
                                 label.ml-3(for='promotion') Đang khuyến mãi
+                            a.btn.btn-primary#btnFilter(href='') Áp dụng
             .col-12.col-md-9
                 .d-flex.justify-content-end.mb-5.mt-5
-                    form(method="GET" action='/product/search')
+                    form.form-id(method="GET" action='/product/search' id=`${products[0].category_id}`)
                         .form-group.col-md-12.mt-5.pt-3.ml-5
                             span.fa.fa-search.icon-left
                             input.new-form-control.form-control.input-opacity(type='text', name='search', placeholder='Tìm kiếm sản phẩm ...', size='60px')

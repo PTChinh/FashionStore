@@ -27,6 +27,7 @@ module.exports.clothes = (req, res) => {
            category_id: 1
        }
     }).then(function (products) {
+
         res.render('product/clothes', {
             allProducts: products,
             products: products.slice(start, end),
@@ -272,4 +273,82 @@ module.exports.search = (req, res) => {
         console.log('Some thing went wrong! ' + err);
     });
 
+};
+
+module.exports.filter = (req, res) => {
+
+    let page = parseInt(req.query.page) || 1; // n
+    let perPage = 9; // x
+
+    let start = (page - 1) * perPage;
+    let end = page * perPage;
+
+    let promotion = parseInt(req.query.promotion, 10);
+    let selected = parseInt(req.query.selected, 10);
+    let category_id = parseInt(req.query.id, 10);
+    let matchProduct;
+    let image;
+
+    if(req.session.user) {
+
+        user.findOne({
+            where: {
+                id: req.session.user.id
+            }
+        }).then(user => {
+            image = user.image;
+        });
+    }
+    product.findAll({
+        where: {
+            category_id: category_id
+        }
+    }).then(function (products) {
+        if(selected === 1) {
+            if (promotion === 1) {
+                matchProduct = products.filter((product) => {
+                    return product.price < 500000 && product.sale !== 0;
+                });
+            } else {
+                matchProduct = products.filter((product) => {
+                    return product.price < 500000 && product.sale === 0;
+                });
+            }
+        }
+        else if(selected === 2) {
+            if (promotion === 1) {
+                matchProduct = products.filter((product) => {
+                    return product.price >= 500000 && product.price <= 1000000 && product.price !== 0;
+                });
+            } else {
+                matchProduct = products.filter((product) => {
+                    return product.price >= 500000 && product.price <= 1000000 && product.price === 0;
+                });
+            }
+        }
+        else if(selected === 3) {
+            if (promotion === 0) {
+                matchProduct = products.filter((product) => {
+                    return product.price > 1000000 && promotion !== 0;
+                });
+            } else {
+                matchProduct = products.filter((product) => {
+                    return product.price > 1000000 && promotion === 0;
+                });
+            }
+        }
+
+        res.render('product/filter', {
+            products: matchProduct.slice(start, end),
+            allProducts: matchProduct,
+            cart: req.session.cart,
+            hearts: req.session.heart,
+            image: image,
+            promotion: promotion,
+            selected: selected,
+            category_id: category_id
+        });
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
 };

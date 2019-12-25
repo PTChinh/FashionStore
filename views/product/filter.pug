@@ -15,13 +15,30 @@ block content
                                 a(href='/product/shoe') Giày dép
                             li
                                 a(href='/product/accessories') Trang sức & phụ kiện
+                div
+                    h4.mb-5 Bộ lọc tìm kiếm
+                    div
+                        div
+                            h5.mb-3 Khoảng Giá
+                            if(seleted === 1)
+                                h6.mb-3 Dưới 500.000₫
+                            else if(seleted === 2)
+                                h6.mb-3 Từ 500.000₫ - 1.000.000₫
+                            else
+                                h6.mb-3 Trên 1.000.000₫
+                        div
+                            h5.mb-3 Dịch Vụ & Khuyến Mãi
+                            if(promotion === 1)
+                                h6.mb-3 Đang khuyến mãi
+                            else
+                                h6.mb-3 Không khuyến mãi
             .col-12.col-md-9
                 .container.border
-                    .row.justify-content-around.p-2
-                        if(products.length < 1)
-                            h1
-                                center Không có kết quả thích hợp
-                        else
+                    if(products.length < 1)
+                        h1
+                            center Không có kết quả nào
+                    else
+                        .row.justify-content-around.p-2
                             each product in products
                                 .d-flex.flex-column.text-center.border.mb-2.mt-1.Box-Shadow-Around
                                     figure.Img-Product-Small.Scale-Trans
@@ -40,4 +57,12 @@ block content
                                             input.checkforfun(type='checkbox' name='' id=`${product.id}`)
                                             label(for=`${product.id}`)
                                                 i.fa.fa-heart
+                        nav(aria-label='Page navigation products')
+                            ul.pagination.justify-content-center
+                                li.page-item
+                                - let i = 0
+                                    while i <= allProducts.length / 9
+                                        li.page-item
+                                            a.page-link(href='/product/filter?id=' + `${category_id}` + '&promotion=' + `${promotion}` + '&selected=' + `${selected}` + '&page=' + (i + 1))= i + 1
+                                        -i++
 

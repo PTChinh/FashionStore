@@ -11,5 +11,6 @@ router.get('/accessories', controller.accessories);
 router.get('/detail', controller.detail);
 router.post('/detail', controller.addToCart);
 router.get('/search', controller.search);
+router.get('/filter', controller.filter);
 
 module.exports = router;

@@ -390,4 +390,21 @@ $(document).ready(function () {
             });
         }
     });
+
+    //ajax product filter
+    $("#btnFilter").on('click', function (e) {
+        e.preventDefault();
+
+        var promotion = 0;
+
+        if($("#promotion").is(":checked"))
+            promotion = 1;
+
+        var selectedVal = parseInt($("#priceSelect option:selected").val(), 10);
+        var id = $(".form-id").attr('id');
+        $(this).attr('href', '/product/filter?id=' + id + '&promotion=' + promotion + '&selected=' + selectedVal);
+
+        window.location.href = '../product/filter?id=' + id + '&promotion=' + promotion + '&selected=' + selectedVal;
+
+    });
 });
