@@ -13,10 +13,12 @@ html
     nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
         a.navbar-brand.col-sm-3.col-md-2.d-flex.justify-content-center(href='#') Bee Fashion
         .dropdown.mr-5.px-lg-5
-            button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                | UK
+            button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')= admin.username
             .dropdown-menu.dropdown-menu-right(aria-labelledby='dropdownMenuButton')
-                a.dropdown-item(href='#')
+                a.dropdown-item.text-white.cursor-hand#staffChangePass
+                    span.fa.fa-unlock-alt.mr-2
+                    | Đổi mật khẩu
+                a.dropdown-item.text-white.cursor-hand#staffLogout
                     span.fa.fa-sign-out.mr-2
                     | Đăng xuất
     .container-fluid

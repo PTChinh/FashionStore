@@ -252,4 +252,19 @@ $(document).ready(function () {
             });
         }
     });
+
+    //ajax logout
+    $("#staffLogout").on('click', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: "get",
+            url: "/admin/staff/logout",
+        }).done(function () {
+            window.location.href = "/admin";
+        }).fail(function (err) {
+            console.log(err);
+            alert("Lỗi: " + err);
+        })
+    });
 });

@@ -506,7 +506,8 @@ module.exports.uploadAvt = (req, res) => {
 
 module.exports.logOut = (req, res) => {
     res.clearCookie('userId');
-    req.session.destroy();
+    delete req.session.user;
+    delete req.session.cart;
 
     res.status(200).send({msg: "Đã đăng xuất"});
 };

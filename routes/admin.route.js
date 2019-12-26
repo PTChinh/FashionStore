@@ -20,5 +20,6 @@ router.put('/staff/signup', adminMiddleware.requireAuthAdmin, controller.createS
 router.put('/user/signup', adminMiddleware.requireAuthAdmin, controller.createUser);
 router.put('/staff/update', adminMiddleware.requireAuthAdmin, controller.updateStaff);
 router.put('/user/update', adminMiddleware.requireAuthAdmin, controller.updateUser);
+router.get('/staff/logout', adminMiddleware.requireAuthAdmin, controller.staffLogout);
 
 module.exports = router;

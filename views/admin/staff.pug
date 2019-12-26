@@ -3,7 +3,8 @@ block content
     main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
         h2.mt-3.mb-3
             | Tài khoản nhân viên
-            button.btn.btn-primary.ml-3(data-toggle='modal' data-target='#staffSignUpModal') Tạo tài khoản
+            if(admin.role !== 1)
+                button.btn.btn-primary.ml-3(data-toggle='modal' data-target='#staffSignUpModal') Tạo tài khoản
         .table-responsive
             table.table.table-hover.table-bordered
                 tr(align='center')

@@ -46,7 +46,10 @@ module.exports.postLogin = (req, res) => {
 };
 
 module.exports.dashBoard = (req, res) => {
-    res.render('admin/dashboard');
+    let admin = req.session.admin;
+    res.render('admin/dashboard', {
+        admin: admin
+    });
 };
 
 module.exports.staff = (req, res) => {
@@ -77,15 +80,24 @@ module.exports.user = (req, res) => {
 };
 
 module.exports.invoice = (req, res) => {
-    res.render('admin/invoice');
+    let admin = req.session.admin;
+    res.render('admin/invoice', {
+        admin: admin
+    });
 };
 
 module.exports.product = (req, res) => {
-    res.render('admin/product');
+    let admin = req.session.admin;
+    res.render('admin/product', {
+        admin: admin
+    });
 };
 
 module.exports.report = (req, res) => {
-    res.render('admin/report');
+    let admin = req.session.admin;
+    res.render('admin/report', {
+        admin: admin
+    });
 };
 
 module.exports.createStaff = (req, res) => {
@@ -220,7 +232,13 @@ module.exports.updateUser = (req, res) => {
                     id: id
                 }
             });
-
         return res.status(200).send({msg: "Thay đổi thành công."});
     });
+};
+
+module.exports.staffLogout = (req, res) => {
+    res.clearCookie('adminId');
+    delete req.session.admin;
+
+    res.status(200).send({msg: "Đã đăng xuất"});
 };
