@@ -470,3 +470,39 @@ module.exports.updateProduct = (req, res) => {
     });
 
 };
+
+module.exports.updateProductDetail = (req, res) => {
+
+    const id = req.body.productDetailId;
+    const color = req.body.color;
+    const size = req.body.size;
+
+
+    productDetail.findOne({
+        where: {
+            id: id
+        }
+    }).then((pro) => {
+        if (pro == null) {
+            return res.status(401).send({
+                msg: "Không tìm thấy sản phẩm."
+            });
+        }
+        productDetail.update(
+            {
+                color: color,
+                size: size,
+                updated_at: Date.now()
+            },
+            {
+                where: {
+                    id: id
+                }
+            });
+
+        return res.status(200).send({msg: "Sửa sản phẩm thành công"});
+    });
+
+};
+
+

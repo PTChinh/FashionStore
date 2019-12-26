@@ -3,6 +3,7 @@ block content
     main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
         h2.mt-3.mb-3 Thông tin sản phẩm
             button.btn.btn-info.mr-1.ml-3#btnUpdateProduct Sửa thông tin sản phẩm
+            button.btn.btn-info.mr-1 Sửa ảnh sản phẩm
             button.btn.btn-primary Thêm sản phẩm
         h5.name-pro= pro.name
         h5.id-pro(style='display:none;')= pro.id
@@ -29,13 +30,14 @@ block content
                         td.align-middle.item-id= item.id
                         td.align-middle.row.justify-content-center
                             img.mini-img(src=item.image)
-                        td.align-middle= item.color
-                        td.align-middle= item.size
+                        td.align-middle.item-color= item.color
+                        td.align-middle.item-size= item.size
                         td.align-middle= item.total
                         td.align-middle= item.buyed
                         td.align-middle= moment(`${item.createdAt}`).format('DD-MM-YYYY')
                         td.align-middle
-                            button.btn.btn-info.mr-1 Sửa
+                            button.btn.btn-info.mr-1.btnUpdateDetail Sửa
+                            button.btn.btn-info.mr-1.btnUpdateImgDetail Sửa ảnh
                             if(productDetails.length > 1)
                                 button.btn.btn-danger.btnRemoveDetailProduct Xóa
 
@@ -72,4 +74,22 @@ block content
                                     input.form-control#productCurSale(type='number' placeholder='Email' required='required' min='0' max='50')
                             .modal-footer
                                 button.btn.btn-primary.float-right#btnProductUpdate Cập nhật
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close
+        .container
+            #detailUpdateModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h4.modal-title Cập nhật
+                        form#detailFormUpdate
+                            .modal-body
+                                .form-group
+                                    label ID
+                                    input.form-control#detailCurId(type='text' readonly)
+                                    label.mt-2 Màu sắc
+                                    input.form-control#detailCurColor(type='text' required='required')
+                                    label.mt-2 Size
+                                    input.form-control#detailSize(type='text' placeholder='Price' required='required')
+                            .modal-footer
+                                button.btn.btn-primary.float-right#btndetailUpdate Cập nhật
                                 button.btn.btn-light(type='button', data-dismiss='modal') Close

@@ -341,7 +341,7 @@ $(document).ready(function () {
 
     });
 
-    //ajax detail invoice
+    //ajax detail product
     $('.btnViewDetail').on('click', function (e) {
         e.preventDefault();
 
@@ -396,6 +396,8 @@ $(document).ready(function () {
         });
     });
 
+
+    //ajax update product
     $("#btnUpdateProduct").on('click', function (e) {
         e.preventDefault();
 
@@ -450,5 +452,48 @@ $(document).ready(function () {
             console.log(err);
             alert(err.responseJSON.msg);
         })
-    })
+    });
+
+    //ajax update product detail
+    $(".btnUpdateDetail").on('click', function(e) {
+        e.preventDefault();
+
+        var $row = $(this).closest("tr");    // Find the row
+        var id = parseInt($row.find(".item-id").text(), 10);
+        var color = $row.find(".item-color").text();
+        var size = $row.find(".item-size").text();
+
+
+        $('#detailCurId').attr('value', id);
+        $('#detailCurColor').attr('value', color);
+        $('#detailSize').attr('value', size);
+
+        $('#detailUpdateModal').modal('show');
+
+        $('#btndetailUpdate').on('click', function (e) {
+
+            e.preventDefault();
+
+            var id = $('#detailCurId').val();
+            var color = $('#detailCurColor').val();
+            var size = $('#detailSize').val();
+
+            $.ajax({
+                type: "put",
+                url: '/admin/product/detail/updatedetail',
+                data: {
+                    productDetailId: id,
+                    color: color,
+                    size: size
+                },
+            }).done(function () {
+                alert("Sửa thành công");
+                window.location.replace(window.location);
+            }).fail(function (err) {
+                console.log(err);
+                alert(err.responseJSON.msg);
+            });
+        });
+    });
+
 });

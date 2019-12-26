@@ -31,5 +31,6 @@ router.get('/product/detail', adminMiddleware.requireAuthAdmin, controller.detai
 router.put('/product/remove', adminMiddleware.requireAuthAdmin, controller.removeProduct);
 router.put('/product/detail/remove', adminMiddleware.requireAuthAdmin, controller.removeProductDetail);
 router.put('/product/detail/update', adminMiddleware.requireAuthAdmin, controller.updateProduct);
+router.put('/product/detail/updatedetail', adminMiddleware.requireAuthAdmin, controller.updateProductDetail);
 
 module.exports = router;
