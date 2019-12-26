@@ -29,4 +29,5 @@ block content
                         td.align-middle= moment(`${item.createdAt}`).format('DD-MM-YYYY')
                         td.align-middle
                             button.btn.btn-info.mr-1 Sửa
-                            button.btn.btn-danger.btnRemoveProduct Xóa
+                            if(productDetails.length > 1)
+                                button.btn.btn-danger.btnRemoveDetailProduct Xóa

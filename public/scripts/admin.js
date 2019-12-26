@@ -373,4 +373,26 @@ $(document).ready(function () {
             alert(err.responseJSON.msg);
         });
     });
+
+    //ajax remove product
+    $(".btnRemoveDetailProduct ").click(function(e) {
+        e.preventDefault();
+
+        var $row = $(this).closest("tr");    // Find the row
+        var id = parseInt($row.find(".item-id").text(), 10);
+
+        $.ajax({
+            type: "put",
+            url: '/admin/product/detail/remove',
+            data: {
+                productDetailId: id
+            },
+        }).done(function () {
+            alert("Xóa sản phẩm thành công");
+            window.location.replace(window.location);
+        }).fail(function (err) {
+            console.log(err);
+            alert(err.responseJSON.msg);
+        });
+    });
 });

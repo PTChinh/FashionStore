@@ -26,5 +26,6 @@ router.put('/invoice/confirm', adminMiddleware.requireAuthAdmin, controller.conf
 router.get('/invoice/detail', adminMiddleware.requireAuthAdmin, controller.detailInvoice);
 router.get('/product/detail', adminMiddleware.requireAuthAdmin, controller.detailProduct);
 router.put('/product/remove', adminMiddleware.requireAuthAdmin, controller.removeProduct);
+router.put('/product/detail/remove', adminMiddleware.requireAuthAdmin, controller.removeProductDetail);
 
 module.exports = router;

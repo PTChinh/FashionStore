@@ -405,3 +405,27 @@ module.exports.detailProduct = (req, res) => {
         console.log('Some thing went wrong! ' + err);
     });
 };
+
+module.exports.removeProductDetail = (req, res) => {
+    let id = req.body.productDetailId;
+
+    productDetail.findOne({
+        where: {
+            id: id
+        }
+    }).then(function (pro) {
+        if (pro == null) {
+            return res.status(401).send({
+                msg: "Không tìm thấy sản phẩm."
+            });
+        }
+        productDetail.destroy({
+            where: {
+                id: id
+            }
+        });
+
+        return res.status(200).send({msg: "Xóa sản phẩm thành công"});
+    });
+
+};
