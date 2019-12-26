@@ -1,7 +1,10 @@
 const express = require('express');
+const multer = require('multer');
 
 const controller = require('../controllers/admin.controller');
 const adminMiddleware = require('../middleware/admin.middleware');
+
+const upload = multer({dest: './public/images/products/'});
 
 const router = express.Router();
 
@@ -27,5 +30,6 @@ router.get('/invoice/detail', adminMiddleware.requireAuthAdmin, controller.detai
 router.get('/product/detail', adminMiddleware.requireAuthAdmin, controller.detailProduct);
 router.put('/product/remove', adminMiddleware.requireAuthAdmin, controller.removeProduct);
 router.put('/product/detail/remove', adminMiddleware.requireAuthAdmin, controller.removeProductDetail);
+router.put('/product/detail/update', adminMiddleware.requireAuthAdmin, controller.updateProduct);
 
 module.exports = router;

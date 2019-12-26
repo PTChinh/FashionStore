@@ -395,4 +395,60 @@ $(document).ready(function () {
             alert(err.responseJSON.msg);
         });
     });
+
+    $("#btnUpdateProduct").on('click', function (e) {
+        e.preventDefault();
+
+        var id = $('.id-pro').text();
+        var sup = $('.supplier-pro').text();
+        var cate = $('.cate-pro').text();
+        var content = $('.content-pro').text();
+        var price = $('.price-pro').text();
+        var sale = $('.sale-pro').text();
+        var name = $('.name-pro').text();
+
+        $('#productCurId').attr('value', id);
+        $('#productCurName').attr('value', name);
+        $('#supCurSelect').val(sup);
+        $('#cateCurSelect').val(cate);
+        $('#productCurContent').attr('value', content);
+        $('#productCurPrice').attr('value',price);
+        $('#productCurSale').attr('value',sale);
+
+        $('#productUpdateModal').modal('show');
+    });
+
+    $("#btnProductUpdate").on('click', function (e) {
+        e.preventDefault();
+
+        var id = $('#productCurId').val();
+        var sup = parseInt($("#supCurSelect option:selected").val(), 10);
+        var cate = parseInt($("#cateCurSelect option:selected").val(), 10);
+        var content = $('#productCurContent').val();
+        var price = $('#productCurPrice').val();
+        var sale = $('#productCurSale').val();
+        var name = $('#productCurName').val();
+
+
+        $.ajax({
+            type: 'put',
+            url: '/admin/product/detail/update',
+            dataType: 'json',
+            data: {
+                id: id,
+                sup: sup,
+                cate: cate,
+                content: content,
+                price: price,
+                sale: sale,
+                name: name
+            }
+        }).done(function () {
+            alert("Cập nhật sản phẩm thành công");
+            window.location.href = '../admin/product';
+        }).fail(function (err) {
+            console.log(err);
+            alert(err.responseJSON.msg);
+        })
+    })
 });

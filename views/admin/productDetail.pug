@@ -2,9 +2,16 @@ extends ../layouts/adminCommon
 block content
     main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
         h2.mt-3.mb-3 Thông tin sản phẩm
-            button.btn.btn-info.mr-1.ml-3 Sửa thông tin sản phẩm
+            button.btn.btn-info.mr-1.ml-3#btnUpdateProduct Sửa thông tin sản phẩm
             button.btn.btn-primary Thêm sản phẩm
-        h5= pro.name
+        h5.name-pro= pro.name
+        h5.id-pro(style='display:none;')= pro.id
+        h5.supplier-pro(style='display:none;')= pro.supplier_id
+        h5.cate-pro(style='display:none;')= pro.category_id
+        h5.content-pro(style='display:none;')= pro.content
+        h5.price-pro(style='display:none;')= pro.price
+        h5.sale-pro(style='display:none;')= pro.sale
+        h5.img-pro(style='display:none;')= pro.image
         h6.mt-2= pro.price + '₫'
         .table-responsive
             table.table.table-hover.table-sm
@@ -31,3 +38,38 @@ block content
                             button.btn.btn-info.mr-1 Sửa
                             if(productDetails.length > 1)
                                 button.btn.btn-danger.btnRemoveDetailProduct Xóa
+
+        .container
+            #productUpdateModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h4.modal-title Cập nhật
+                        form#productFormUpdate
+                            .modal-body
+                                .form-group
+                                    label ID
+                                    input.form-control#productCurId(type='text' readonly)
+                                    label.mt-2 Tên sản phẩm
+                                    input.form-control#productCurName(type='text')
+                                    label.mt-2 Nhà cung cấp
+                                    select.form-control#supCurSelect
+                                        option(value='1') Mabư
+                                        option(value='2') Liloan
+                                        option(value='3') Nike
+                                        option(value='4') LV
+                                        option(value='5') Tiffany
+                                    label.mt-2 Danh mục
+                                    select.form-control#cateCurSelect
+                                        option(value='1') Quần & áo
+                                        option(value='2') Balo & túi xách
+                                        option(value='3') Giày & dép
+                                        option(value='4') Phụ kiện & trang sức
+                                    input.form-control.mt-2#productCurContent(type='text' placeholder='Content' required='required' maxlength='100')
+                                    label.mt-2 Giá
+                                    input.form-control#productCurPrice(type='number' placeholder='Price' required='required')
+                                    label.mt-2 Sale
+                                    input.form-control#productCurSale(type='number' placeholder='Email' required='required' min='0' max='50')
+                            .modal-footer
+                                button.btn.btn-primary.float-right#btnProductUpdate Cập nhật
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close
