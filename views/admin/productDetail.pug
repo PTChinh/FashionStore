@@ -4,7 +4,8 @@ block content
         h2.mt-3.mb-3 Thông tin sản phẩm
             button.btn.btn-info.mr-1.ml-3#btnUpdateProduct Sửa thông tin sản phẩm
             button.btn.btn-info.mr-1 Sửa ảnh sản phẩm
-            button.btn.btn-primary Thêm sản phẩm
+            button.btn.btn-primary.mr-1(data-toggle='modal' data-target='#productCreateModal') Thêm sản phẩm
+            button.btn.btn-primary(data-toggle='modal' data-target='#detailCreateModal') Thêm loại sản phẩm
         h5.name-pro= pro.name
         h5.id-pro(style='display:none;')= pro.id
         h5.supplier-pro(style='display:none;')= pro.supplier_id
@@ -32,7 +33,7 @@ block content
                             img.mini-img(src=item.image)
                         td.align-middle.item-color= item.color
                         td.align-middle.item-size= item.size
-                        td.align-middle= item.total
+                        td.align-middle.item-total= item.total
                         td.align-middle= item.buyed
                         td.align-middle= moment(`${item.createdAt}`).format('DD-MM-YYYY')
                         td.align-middle
@@ -89,7 +90,76 @@ block content
                                     label.mt-2 Màu sắc
                                     input.form-control#detailCurColor(type='text' required='required')
                                     label.mt-2 Size
-                                    input.form-control#detailSize(type='text' placeholder='Price' required='required')
+                                    input.form-control#detailSize(type='text' placeholder='Size' required='required')
+                                    label.mt-2 Số lượng
+                                    input.form-control#detailTotal(type='number' placeholder='Total' required='required' min='0')
                             .modal-footer
                                 button.btn.btn-primary.float-right#btndetailUpdate Cập nhật
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close
+        .container
+            #productCreateModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h4.modal-title Thêm sản phẩm
+                        form(action="/admin/product/detail/create", method="POST", enctype="multipart/form-data")
+                            .modal-body
+                                .form-group
+                                    label.mt-2 Tên sản phẩm
+                                    input.form-control(type='text' name='name')
+                                .form-group
+                                    label.mt-2 Nhà cung cấp
+                                    select.form-control(name='sup')
+                                        option(value='1') Mabư
+                                        option(value='2') Liloan
+                                        option(value='3') Nike
+                                        option(value='4') LV
+                                        option(value='5') Tiffany
+                                .form-group
+                                    label.mt-2 Danh mục
+                                    select.form-control(name='cate')
+                                        option(value='1') Quần & áo
+                                        option(value='2') Balo & túi xách
+                                        option(value='3') Giày & dép
+                                        option(value='4') Phụ kiện & trang sức
+                                .form-group
+                                    input.form-control.mt-2(type='text' placeholder='Content' required='required' maxlength='100' name='content')
+                                .form-group
+                                    label.mt-2 Giá
+                                    input.form-control(type='number' placeholder='Price' required='required' name='price')
+                                .form-group
+                                    label.mt-2 Sale
+                                    input.form-control(type='number' placeholder='Sale' required='required' min='0' max='50' name='sale')
+                                .form-group
+                                    label(for="avatar") Avatar
+                                    input#avatar.form-control-file(name="avatar", type="file" required='required')
+                            .modal-footer
+                                button.btn.btn-primary.float-right(type='submit') Tạo
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close
+
+        .container
+            #detailCreateModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h4.modal-title Thêm loại sản phẩm
+                        form(action="/admin/product/detail/createdetail", method="POST", enctype="multipart/form-data")
+                            .modal-body
+                                .form-group
+                                    label.mt-2 ID sản phẩm
+                                    input.form-control(type='text' required='required' name='productId' value=pro.id readonly)
+                                .form-group
+                                    label.mt-2 Màu sắc
+                                    input.form-control(type='text' required='required' name='color')
+                                .form-group
+                                    label.mt-2 Size
+                                    input.form-control(type='text' placeholder='Size' required='required' name='size')
+                                .form-group
+                                    label.mt-2 Số lượng
+                                    input.form-control(type='number' placeholder='Total' required='required' min='0' name='total')
+                                .form-group
+                                    label(for="avatardetail") Avatar
+                                    input#avatardetail.form-control-file(name="avatardetail", type="file" required='required')
+                            .modal-footer
+                                button.btn.btn-primary.float-right Thêm
                                 button.btn.btn-light(type='button', data-dismiss='modal') Close

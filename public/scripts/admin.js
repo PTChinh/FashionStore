@@ -462,11 +462,13 @@ $(document).ready(function () {
         var id = parseInt($row.find(".item-id").text(), 10);
         var color = $row.find(".item-color").text();
         var size = $row.find(".item-size").text();
+        var total = $row.find(".item-total").text();
 
 
         $('#detailCurId').attr('value', id);
         $('#detailCurColor').attr('value', color);
         $('#detailSize').attr('value', size);
+        $('#detailTotal').attr('value', total);
 
         $('#detailUpdateModal').modal('show');
 
@@ -477,6 +479,7 @@ $(document).ready(function () {
             var id = $('#detailCurId').val();
             var color = $('#detailCurColor').val();
             var size = $('#detailSize').val();
+            var total = $('#detailTotal').val();
 
             $.ajax({
                 type: "put",
@@ -484,7 +487,8 @@ $(document).ready(function () {
                 data: {
                     productDetailId: id,
                     color: color,
-                    size: size
+                    size: size,
+                    total: total
                 },
             }).done(function () {
                 alert("Sửa thành công");

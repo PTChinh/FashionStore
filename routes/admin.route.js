@@ -32,5 +32,7 @@ router.put('/product/remove', adminMiddleware.requireAuthAdmin, controller.remov
 router.put('/product/detail/remove', adminMiddleware.requireAuthAdmin, controller.removeProductDetail);
 router.put('/product/detail/update', adminMiddleware.requireAuthAdmin, controller.updateProduct);
 router.put('/product/detail/updatedetail', adminMiddleware.requireAuthAdmin, controller.updateProductDetail);
+router.post('/product/detail/create', upload.single('avatar'), controller.createProduct);
+router.post('/product/detail/createdetail', upload.single('avatardetail'), controller.createProductDetail);
 
 module.exports = router;

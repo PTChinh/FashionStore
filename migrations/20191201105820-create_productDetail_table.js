@@ -23,12 +23,12 @@ module.exports = {
 
       color: {
         type: Sequelize.STRING(100),
-        allowNull: false
+        allowNull: true
       },
 
       size: {
         type: Sequelize.STRING(4),
-        allowNull: false
+        allowNull: true
       },
 
       total: {

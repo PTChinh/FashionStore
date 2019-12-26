@@ -476,6 +476,7 @@ module.exports.updateProductDetail = (req, res) => {
     const id = req.body.productDetailId;
     const color = req.body.color;
     const size = req.body.size;
+    const total = req.body.total;
 
 
     productDetail.findOne({
@@ -492,6 +493,7 @@ module.exports.updateProductDetail = (req, res) => {
             {
                 color: color,
                 size: size,
+                total: total,
                 updated_at: Date.now()
             },
             {
@@ -503,6 +505,82 @@ module.exports.updateProductDetail = (req, res) => {
         return res.status(200).send({msg: "Sửa sản phẩm thành công"});
     });
 
+};
+
+module.exports.createProduct = (req, res) => {
+
+    let path = req.file.path;
+    let repPath = path.replace(/\\/g, "/");
+    let newPath = repPath.split('/').slice(1).join('/');
+
+    let name = req.body.name;
+    let sup = req.body.sup;
+    let cate = req.body.cate;
+    let content = req.body.content;
+    let price = req.body.price;
+    let sale = req.body.sale;
+
+    product.create({
+        name: name,
+        supplier_id: sup,
+        category_id: cate,
+        content: content,
+        price: price,
+        sale: sale,
+        image: newPath,
+        created_at: Date.now(),
+        updated_at: Date.now()
+    }).then(function (pro) {
+        if(pro) {
+            productDetail.create({
+                product_id: pro.id,
+                image: pro.image,
+                total: 0,
+                buyed: 0,
+                created_at: Date.now(),
+                updated_at: Date.now()
+            }).then(function (rs) {
+                res.redirect('/admin/product');
+            }).catch(function (err) {
+                console.log('Some thing went wrong! ' + err);
+            });
+        } else {
+            res.status(500).send({msg: "Tạo không thành công."});
+        }
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
+};
+
+module.exports.createProductDetail = (req, res) => {
+
+    let path = req.file.path;
+    let repPath = path.replace(/\\/g, "/");
+    let newPath = repPath.split('/').slice(1).join('/');
+
+    let product_id = req.body.productId;
+    let color = req.body.color;
+    let size = req.body.size;
+    let total = req.body.total;
+
+    productDetail.create({
+        product_id: product_id,
+        color: color,
+        size: size,
+        total: total,
+        buyed: 0,
+        image: newPath,
+        created_at: Date.now(),
+        updated_at: Date.now()
+    }).then(function (pro) {
+        if(pro) {
+            res.redirect('/admin/product/detail?id=' + product_id);
+        } else {
+            res.status(500).send({msg: "Tạo không thành công."});
+        }
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
 };
 
 
