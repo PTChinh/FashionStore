@@ -1,0 +1,32 @@
+extends ../layouts/adminCommon
+block content
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+        h2.mt-3.mb-3 Thông tin sản phẩm
+            button.btn.btn-info.mr-1.ml-3 Sửa thông tin sản phẩm
+            button.btn.btn-primary Thêm sản phẩm
+        h5= pro.name
+        h6.mt-2= pro.price + '₫'
+        .table-responsive
+            table.table.table-hover.table-sm
+                tr(align='center')
+                    th.align-middle ID
+                    th.align-middle Hình ảnh
+                    th.align-middle Màu sắc
+                    th.align-middle Size
+                    th.align-middle Tổng
+                    th.align-middle Đã bán
+                    th.align-middle Ngày tạo
+                    th.align-middle Hành động
+                each item in productDetails
+                    tr.text-center
+                        td.align-middle.item-id= item.id
+                        td.align-middle.row.justify-content-center
+                            img.mini-img(src=item.image)
+                        td.align-middle= item.color
+                        td.align-middle= item.size
+                        td.align-middle= item.total
+                        td.align-middle= item.buyed
+                        td.align-middle= moment(`${item.createdAt}`).format('DD-MM-YYYY')
+                        td.align-middle
+                            button.btn.btn-info.mr-1 Sửa
+                            button.btn.btn-danger.btnRemoveProduct Xóa

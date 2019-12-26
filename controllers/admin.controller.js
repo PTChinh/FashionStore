@@ -7,6 +7,7 @@ const user = require('../src/models/user.model');
 const transaction = require('../src/models/transaction.model');
 const orders = require('../src/models/orders.model');
 const product = require('../src/models/product.model');
+const productDetail = require('../src/models/productDetail.model');
 
 module.exports.login = (req, res) => {
     res.render('admin/login');
@@ -366,11 +367,41 @@ module.exports.removeProduct = (req, res) => {
             }
         });
 
+        productDetail.destroy({
+           where: {
+               product_id: id
+           }
+        });
+
         return res.status(200).send({msg: "Xóa sản phẩm thành công"});
     });
 
 };
 
-module.exports.updateProduct = (req, res) => {
+module.exports.detailProduct = (req, res) => {
+    let pro_id = parseInt(req.query.id, 10);
 
+    product.findOne({
+        where: {
+            id: pro_id
+        }
+    }).then(function (pro) {
+        productDetail.findAll({
+            where: {
+                product_id: pro_id
+            }
+        }).then(function (productDetails) {
+            let admin = req.session.admin;
+            res.render('admin/productDetail', {
+                productDetails: productDetails,
+                admin: admin,
+                pro: pro
+            });
+
+        }).catch(function (err) {
+            console.log('Some thing went wrong! ' + err);
+        });
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
 };

@@ -341,6 +341,17 @@ $(document).ready(function () {
 
     });
 
+    //ajax detail invoice
+    $('.btnViewDetail').on('click', function (e) {
+        e.preventDefault();
+
+        var $row = $(this).closest("tr");    // Find the row
+        var id = parseInt($row.find(".pro-id").text(), 10);
+
+        window.location.href = '../admin/product/detail?id=' + id;
+
+    });
+
     //ajax remove product
     $(".btnRemoveProduct").click(function(e) {
         e.preventDefault();

@@ -2,8 +2,7 @@ extends ../layouts/adminCommon
 block content
     main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
         h2.mt-3.mb-3
-            | Thông tin sản phẩm
-            button.btn.btn-primary.ml-3 Thêm sản phẩm
+            | Danh sách sản phẩm
         .table-responsive
             table.table.table-hover.table-sm
                 tr(align='center')
@@ -43,5 +42,6 @@ block content
                         td.align-middle.row.justify-content-center
                             img.mini-img(src=product.image)
                         td.align-middle
-                            button.btn.btn-primary.mr-1 Sửa
+                            button.btn.btn-info.mr-1.btnViewDetail Xem
                             button.btn.btn-danger.btnRemoveProduct Xóa
+
