@@ -3,6 +3,7 @@ const saltRounds = 10;
 
 const db = require('../src/database/connection');
 const admin = require('../src/models/admin.model');
+const user = require('../src/models/user.model');
 
 module.exports.login = (req, res) => {
     res.render('admin/login');
@@ -63,7 +64,16 @@ module.exports.staff = (req, res) => {
 };
 
 module.exports.user = (req, res) => {
-    res.render('admin/user');
+
+    user.findAll().then(function (users) {
+        let admin = req.session.admin;
+        res.render('admin/user', {
+            users: users,
+            admin: admin
+        });
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
 };
 
 module.exports.invoice = (req, res) => {
@@ -134,6 +144,83 @@ module.exports.updateStaff = (req, res) => {
                 }
             }
         );
+        return res.status(200).send({msg: "Thay đổi thành công."});
+    });
+};
+
+module.exports.createUser = (req, res) => {
+
+    const username = req.body.username;
+    const address = req.body.address;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const dob = req.body.dob;
+    const sex = req.body.sex;
+    const name = req.body.name;
+    const pass = req.body.pass;
+    let hash = bcrypt.hashSync(pass, saltRounds);
+
+    user.create({
+        name: name,
+        username: username,
+        image: 'images/user/default.png',
+        sex: sex,
+        password: hash,
+        email: email,
+        phone: phone,
+        dob: dob,
+        address: address,
+        status: 1,
+        created_at: Date.now(),
+        updated_at: Date.now()
+    }).then(function (us) {
+        if(us) {
+            res.status(200).send({msg: "Đăng kí thành công."});
+        } else {
+            res.status(500).send({msg: "Đăng kí không thành công."});
+        }
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
+    });
+};
+
+module.exports.updateUser = (req, res) => {
+    const name = req.body.name;
+    const dob = req.body.dob;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const address = req.body.address;
+    const sex = req.body.sex;
+    const id = parseInt(req.body.id, 10);
+    const status = parseInt(req.body.status,10);
+
+    user.findOne({
+        where: {
+            id: id
+        }
+    }).then((us) => {
+        if (us == null) {
+            return res.status(401).send({
+                msg: "Không tìm thấy tài khoản."
+            });
+        }
+        user.update(
+            {
+                name: name,
+                dob: dob,
+                email: email,
+                phone: phone,
+                sex: sex,
+                address: address,
+                status: status,
+                updated_at: Date.now()
+            },
+            {
+                where: {
+                    id: id
+                }
+            });
+
         return res.status(200).send({msg: "Thay đổi thành công."});
     });
 };

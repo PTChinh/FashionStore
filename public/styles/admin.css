@@ -127,4 +127,8 @@ body {
 a {
     text-decoration: none !important;
 }
+
+.scroll {
+    overflow-x: scroll;
+}
         

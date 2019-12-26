@@ -3,26 +3,93 @@ block content
     main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
         h2.mt-3.mb-3
             | Thông tin khách hàng
-            button.btn.btn-primary.ml-3 Thêm khách hàng
+            button.btn.btn-primary.ml-3(data-toggle='modal' data-target='#userSignUpModal') Thêm khách hàng
         .table-responsive
-            table.table.table-hover.table-sm
-                tr
-                    th Mã khách hàng
-                    th Tên khách hàng
-                    th Tài khoản
-                    th Email
-                    th Số điện thoại
-                    th Địa chỉ
-                    th Ghi chú
-                    th Hành động
-                tr
-                    td 1
-                    td Huy
-                    td tranhiepnguyenhuy
-                    td tranhiepnguyenhuy@gmail.com
-                    td 0978238363
-                    td KTX khu B
-                    td active
-                    td
-                        button.btn.btn-info.btn-sm Sửa
-                        button.btn.btn-danger.btn-sm Xóa
+            table.table.table-hover
+                tr(align='center')
+                    th.align-middle(style='width: 5%;') Mã KH
+                    th.align-middle Tên KH
+                    th.align-middle Tài khoản
+                    th.align-middle(style='width: 2%;') Giới tính
+                    th.align-middle Email
+                    th.align-middle(style='width: 8%;') Số điện thoại
+                    th.align-middle(style='width: 8%;') Ngày sinh
+                    th.align-middle Địa chỉ
+                    th.align-middle Trạng thái
+                    th.align-middle(style='width: 8%;') Ngày tạo
+                    th.align-middle Hành động
+                each user in users
+                    tr.text-center
+                        td.align-middle.cus-id= user.id
+                        td.align-middle.cus-name= user.name
+                        td.align-middle.cus-username= user.username
+                        td.align-middle.cus-sex= user.sex
+                        td.align-middle.cus-email= user.email
+                        td.align-middle.cus-phone= user.phone
+                        td.align-middle.cus-dob= moment(`${user.dob}`).format('DD-MM-YYYY')
+                        td.align-middle.cus-address= user.address
+                        td.align-middle
+                            if(user.status === 1)
+                                button.btn.btn-outline-success.cus-status(name='1') Active
+                            else
+                                button.btn.btn-outline-danger.cus-status(name='0') Deactive
+                        td.align-middle.cus-created-at= moment(`${user.createdAt}`).format('DD-MM-YYYY')
+                        td.align-middle
+                            button.btn.btn-info.btn-sm.update-cus Sửa
+
+        .container
+            #userSignUpModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h4.modal-title Đăng kí
+                        form#userFormSignUp
+                            .modal-body
+                                .form-group
+                                    input.form-control#cusUsername(type='text', placeholder='Tài khoản', required='required')
+                                    input.form-control.mt-2#cusPassword(type='password', placeholder='Mật khẩu', required='required')
+                                    input.form-control.mt-2#cusName(type='text' placeholder='Tên người dùng' required='required' maxlength='64')
+                                    input.mt-2#cusMaleSex(type='radio' name='newGender' value='male' checked=true)
+                                    span.ml-1 Nam
+                                    input.ml-5#cusFemaleSex(type='radio' name='newGender' value='female')
+                                    span.ml-1 Nữ
+                                    input.ml-5#cusOtherSex(type='radio' name='newGender' value='other')
+                                    span.ml-1 Khác
+                                    input.form-control.mt-2#cusEmail(type='text' placeholder='Email' required='required' maxlength='100')
+                                    input.form-control.mt-2#cusDob(type='date' placeholder='Ngày sinh' name='newBirthday' max='2001-12-31'
+                                        min='1980-01-01')
+                                    input.form-control.mt-2#cusAddress(type='text' placeholder='Địa chỉ' required='required' maxlength='255')
+                                    input.numberic.form-control.mt-2#cusPhone(type='text' placeholder='Số điện thoại' required='required' maxlength='10')
+                            .modal-footer
+                                button.btn.btn-primary.float-right#btnCusSignUp(type='submit') Đăng kí
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close
+
+        .container
+            #cusUpdateModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h4.modal-title Cập nhật
+                        form#cusFormUpdate
+                            .modal-body
+                                .form-group
+                                    input.form-control#cusUpId(type='text' readonly)
+                                    input.form-control#cusUpUsername(type='text' readonly)
+                                    input.form-control.mt-2#cusUpName(type='text' placeholder='Tên người dùng' required='required' maxlength='64')
+                                    input.mt-2#cusUpMaleSex(type='radio' name='newGender' value='male')
+                                    span.ml-1 Nam
+                                    input.ml-5#cusUpFemaleSex(type='radio' name='newGender' value='female')
+                                    span.ml-1 Nữ
+                                    input.ml-5#cusUpOtherSex(type='radio' name='newGender' value='other')
+                                    span.ml-1 Khác
+                                    input.form-control.mt-2#cusUpEmail(type='text' placeholder='Email' required='required' maxlength='100')
+                                    input.form-control.mt-2#cusUpDob(type='date' placeholder='Ngày sinh' name='newBirthday' max='2001-12-31'
+                                        min='1980-01-01')
+                                    input.form-control.mt-2#cusUpAddress(type='text' placeholder='Địa chỉ' required='required' maxlength='255')
+                                    input.numberic.form-control.mt-2#cusUpPhone(type='text' placeholder='Số điện thoại' required='required' maxlength='10')
+                                    select.form-control.mt-2#cusSelect
+                                        option(value='1') Active
+                                        option(value='0') Deactive
+                            .modal-footer
+                                button.btn.btn-primary.float-right#btnCusUpdate(type='submit') Cập nhật
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close
