@@ -17,7 +17,7 @@ block content
                     th.align-middle Hình ảnh
                 each product in products
                     tr.text-center
-                        td.align-middle= product.id
+                        td.align-middle.pro-id= product.id
                         td.align-middle= product.name
                         if(product.category_id === 1)
                             td.align-middle Quần & áo
@@ -44,4 +44,4 @@ block content
                             img.mini-img(src=product.image)
                         td.align-middle
                             button.btn.btn-primary.mr-1 Sửa
-                            button.btn.btn-danger Xóa
+                            button.btn.btn-danger.btnRemoveProduct Xóa

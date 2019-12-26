@@ -339,5 +339,27 @@ $(document).ready(function () {
 
         window.location.href = '../admin/invoice/detail?id=' + id;
 
-    })
+    });
+
+    //ajax remove product
+    $(".btnRemoveProduct").click(function(e) {
+        e.preventDefault();
+
+        var $row = $(this).closest("tr");    // Find the row
+        var id = parseInt($row.find(".pro-id").text(), 10);
+
+        $.ajax({
+            type: "put",
+            url: '/admin/product/remove',
+            data: {
+                product_id: id
+            },
+        }).done(function () {
+            alert("Xóa sản phẩm thành công");
+            window.location.replace(window.location);
+        }).fail(function (err) {
+            console.log(err);
+            alert(err.responseJSON.msg);
+        });
+    });
 });

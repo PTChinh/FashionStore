@@ -346,3 +346,31 @@ module.exports.detailInvoice = (req, res) => {
         console.log('Some thing went wrong! ' + err);
     });
 };
+
+module.exports.removeProduct = (req, res) => {
+    let id = req.body.product_id;
+
+    product.findOne({
+        where: {
+            id: id
+        }
+    }).then(function (pro) {
+        if (pro == null) {
+            return res.status(401).send({
+                msg: "Không tìm thấy sản phẩm."
+            });
+        }
+        product.destroy({
+            where: {
+                id: id
+            }
+        });
+
+        return res.status(200).send({msg: "Xóa sản phẩm thành công"});
+    });
+
+};
+
+module.exports.updateProduct = (req, res) => {
+
+};
