@@ -5,6 +5,7 @@ const db = require('../src/database/connection');
 const admin = require('../src/models/admin.model');
 const user = require('../src/models/user.model');
 const transaction = require('../src/models/transaction.model');
+const orders = require('../src/models/orders.model');
 
 module.exports.login = (req, res) => {
     res.render('admin/login');
@@ -308,5 +309,33 @@ module.exports.confirmInvoice = (req, res) => {
             }
         );
         return res.status(200).send({msg: "Duyệt đơn hàng thành công"});
+    });
+};
+
+module.exports.detailInvoice = (req, res) => {
+    let trans_id = parseInt(req.query.id, 10);
+
+    transaction.findOne({
+        where: {
+            id: trans_id
+        }
+    }).then(function (tran) {
+        orders.findAll({
+            where: {
+                transaction_id: trans_id
+            }
+        }).then(function (orders) {
+            let admin = req.session.admin;
+            res.render('admin/detailInvoice', {
+                orders: orders,
+                admin: admin,
+                tran: tran
+            });
+
+        }).catch(function (err) {
+            console.log('Some thing went wrong! ' + err);
+        });
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
     });
 };

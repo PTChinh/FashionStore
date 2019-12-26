@@ -1,0 +1,32 @@
+extends ../layouts/adminCommon
+block content
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+        h2.mt-3.mb-5
+            | Chi tiết đơn hàng
+        h5
+            label Khách hàng:
+                span.ml-3.font-italic= tran.name
+        h5
+            label Địa chỉ:
+                span.ml-3.font-italic= tran.address
+        h5
+            label Số điện thoại:
+                span.ml-3.font-italic= tran.phone
+        h5
+            label Ngày tạo:
+                span.ml-3.font-italic= moment(`${tran.createdAt}`).format('DD-MM-YYYY')
+        .table-responsive.mt-5
+            table.table.table-hover.table-bordered
+                tr(align='center')
+                    th.align-middle(style='width: 10%;') Mã chi tiết
+                    th.align-middle(style='width: 10%;') Mã đơn hàng
+                    th.align-middle(style='width: 30%;') Sản phẩm
+                    th.align-middle Tổng tiền
+                    th.align-middle(style='width: 20%;') Thành tiền (đã giảm giá)
+                each order in orders
+                    tr.text-center
+                        td.align-middle= order.id
+                        td.align-middle= order.transaction_id
+                        td.align-middle= order.product_name
+                        td.align-middle= order.price
+                        td.align-middle= order.amount

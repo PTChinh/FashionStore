@@ -329,4 +329,15 @@ $(document).ready(function () {
         });
 
     });
+
+    //ajax detail invoice
+    $('.detail-invoice').on('click', function (e) {
+        e.preventDefault();
+
+        var $row = $(this).closest("tr");    // Find the row
+        var id = parseInt($row.find(".confirm-id").text(), 10);
+
+        window.location.href = '../admin/invoice/detail?id=' + id;
+
+    })
 });
