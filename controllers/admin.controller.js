@@ -6,6 +6,7 @@ const admin = require('../src/models/admin.model');
 const user = require('../src/models/user.model');
 const transaction = require('../src/models/transaction.model');
 const orders = require('../src/models/orders.model');
+const product = require('../src/models/product.model');
 
 module.exports.login = (req, res) => {
     res.render('admin/login');
@@ -95,9 +96,15 @@ module.exports.invoice = (req, res) => {
 };
 
 module.exports.product = (req, res) => {
-    let admin = req.session.admin;
-    res.render('admin/product', {
-        admin: admin
+
+    product.findAll().then(function (pros) {
+        let admin = req.session.admin;
+        res.render('admin/product', {
+            products: pros,
+            admin: admin
+        });
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
     });
 };
 

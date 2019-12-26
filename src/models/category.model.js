@@ -16,7 +16,7 @@ module.exports = sequelize.define("category", {
 
     parent_id: {
         type: Sequelize.INTEGER(11),
-        allowNull: false
+        allowNull: true
     },
 
     orders: {
@@ -27,6 +27,16 @@ module.exports = sequelize.define("category", {
     status: {
         type: Sequelize.INTEGER(1),
         allowNull: false
+    },
+
+    createdAt: {
+        field: 'created_at',
+        type: Sequelize.DATE,
+    },
+
+    updatedAt: {
+        field: 'updated_at',
+        type: Sequelize.DATE,
     }
 
 }, {

@@ -6,24 +6,42 @@ block content
             button.btn.btn-primary.ml-3 Thêm sản phẩm
         .table-responsive
             table.table.table-hover.table-sm
-                tr
-                    th STT
-                    th Tên sản phẩm
-                    th Danh mục
-                    th Giá
-                    th Khuyến mãi
-                    th Nhà cung cấp
-                    th Nội dung
-                    th Hình ảnh
-                tr
-                    td 1
-                    td Quần short
-                    td 1
-                    td 200000
-                    td 5
-                    td 1
-                    td hihihih
-                    td image
-                    td
-                        button.btn.btn-primary Sửa
-                        button.btn.btn-danger Xóa
+                tr(align='center')
+                    th.align-middle STT
+                    th.align-middle Tên sản phẩm
+                    th.align-middle Danh mục
+                    th.align-middle Giá
+                    th.align-middle Khuyến mãi
+                    th.align-middle Nhà cung cấp
+                    th.align-middle Nội dung
+                    th.align-middle Hình ảnh
+                each product in products
+                    tr.text-center
+                        td.align-middle= product.id
+                        td.align-middle= product.name
+                        if(product.category_id === 1)
+                            td.align-middle Quần & áo
+                        if(product.category_id === 2)
+                            td.align-middle Balo & túi xách
+                        if(product.category_id === 3)
+                            td.align-middle Giày & dép
+                        if(product.category_id === 4)
+                            td.align-middle Phụ kiện & trang sức
+                        td.align-middle= product.price
+                        td.align-middle= product.sale
+                        if(product.category_id === 1)
+                            td.align-middle Mabư
+                        if(product.category_id === 2)
+                            td.align-middle Liloan
+                        if(product.category_id === 3)
+                            td.align-middle Nike
+                        if(product.category_id === 4)
+                            td.align-middle LV
+                        if(product.category_id === 5)
+                            td.align-middle Tiffany
+                        td.align-middle= product.content
+                        td.align-middle.row.justify-content-center
+                            img.mini-img(src=product.image)
+                        td.align-middle
+                            button.btn.btn-primary.mr-1 Sửa
+                            button.btn.btn-danger Xóa

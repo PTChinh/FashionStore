@@ -39,17 +39,14 @@ const saltRounds = 10;
 require('./src/database/connection');
 const user = require('./src/models/user.model');
 const product = require('./src/models/product.model');
+const category = require('./src/models/category.model');
 const productDetail = require('./src/models/productDetail.model');
 
 var hash = bcrypt.hashSync('huy123', saltRounds);
 var day = new Date(1999,4,15);
-// productDetail.create({
-//     product_id: 29,
-//     image: 'images/products/shoe/shoes/giay-nam-y2010-bd-a42/2.jpg',
-//     color: 'trắng đỏ',
-//     size: '39',
-//     total: 20,
-//     buyed: 0,
+// category.create({
+//     name: 'Balo & túi xách',
+//     status: 1,
 //     created_at: Date.now(),
 //     updated_at: Date.now()
 // }).then(function (pro) {

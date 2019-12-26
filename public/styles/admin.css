@@ -135,4 +135,9 @@ a {
 .cursor-hand {
     cursor: pointer;
 }
+
+.mini-img {
+    width: 30px;
+    height: 30px;
+}
         
