@@ -49,11 +49,40 @@ module.exports.postLogin = (req, res) => {
     });
 };
 
+async function countSomething() {
+    let ads = await admin.count();
+    let pros = await product.count();
+    let us = await user.count();
+    let inv = await transaction.count();
+
+    return {
+        ads: ads,
+        pros: pros,
+        us: us,
+        inv: inv
+    }
+}
+
 module.exports.dashBoard = (req, res) => {
-    let admin = req.session.admin;
-    res.render('admin/dashboard', {
-        admin: admin
-    });
+
+    admin.count().then(function (a) {
+        product.count().then(function (b) {
+            user.count().then(function (c) {
+                transaction.count().then(function (d) {
+                    let ad = req.session.admin;
+                    res.render('admin/dashboard', {
+                        admin: ad,
+                        ads: a,
+                        pros: b,
+                        us: c,
+                        trans: d
+                    });
+                })
+            })
+        })
+    })
+
+
 };
 
 module.exports.staff = (req, res) => {
