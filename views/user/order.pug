@@ -5,7 +5,7 @@ block content
     .mb-3
         .container
             .bg-white
-                if(listTrans)
+                if(!listTrans)
                     h1
                         center Bạn chưa có đơn hàng nào
                 else
@@ -30,12 +30,13 @@ block content
                                         td.align-middle= trans.amount
                                         td.align-middle= trans.address
                                             td.align-middle= moment(`${trans.createdAt}`).format('DD-MM-YYYY')
-                                        if(trans.status === 0)
-                                            td.align-middle Đang chờ
-                                        if(trans.status === 1)
-                                            td.align-middle Đã duyệt
-                                        if(trans.status === 2)
-                                            td.align-middle Đã nhận
+                                        td.align-middle
+                                            if(trans.status === 0)
+                                                button.btn.btn-outline-dark Đang chờ
+                                            if(trans.status === 1)
+                                                button.btn.btn-outline-primary Đã duyệt
+                                            if(trans.status === 2)
+                                                button.btn.btn-outline-success Đã nhận
                                         td.align-middle
                                             if(trans.status === 0)
                                                 button.btn.btn-danger Hủy
