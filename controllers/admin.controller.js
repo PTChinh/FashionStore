@@ -242,3 +242,34 @@ module.exports.staffLogout = (req, res) => {
 
     res.status(200).send({msg: "Đã đăng xuất"});
 };
+
+module.exports.staffChangePassword = (req, res) => {
+    const oldPass = req.body.oldPassword;
+    const newPass = req.body.newPassword;
+
+    admin.findOne({
+        where: {id: req.signedCookies.adminId}
+    }).then((staff) => {
+        if (staff == null) {
+            return res.status(401).send({
+                msg: "Không tìm thấy tài khoản."
+            });
+        }
+        let result = bcrypt.compareSync(oldPass, staff.password);
+        if (result === false) {
+            return res.status(406).send({msg: "Mật khẩu cũ không đúng."});
+        }
+        let hash = bcrypt.hashSync(newPass, saltRounds);
+        admin.update(
+            {
+                password: hash,
+                updated_at: Date.now()
+            },
+            {
+                where: {
+                    id: req.signedCookies.adminId
+                }
+            });
+        return res.status(200).send({msg: "Thay đổi mật khẩu thành công"});
+    });
+};

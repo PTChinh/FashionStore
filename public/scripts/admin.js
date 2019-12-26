@@ -267,4 +267,33 @@ $(document).ready(function () {
             alert("Lỗi: " + err);
         })
     });
+
+    //ajax staff change password
+    $('#stafChangeForm').on('submit', function(e) {
+        e.preventDefault();
+
+        if ($('#staffNewpassword').val() !== $('#staffRepassword').val())
+            alert('Mật khẩu nhập lại không đúng');
+        else {
+
+            var oldpassword = $('#staffOldpassword').val();
+            var newpassword = $('#staffNewpassword').val();
+
+            $.ajax({
+                url: '/admin/staff/changepassword',
+                type: 'put',
+                dataType: 'json',
+                data: {
+                    oldPassword: oldpassword,
+                    newPassword: newpassword,
+                }
+            }).done(function (data) {
+                alert("Thay đổi mật khẩu thành công.");
+                $('#staffPassModal').modal('hide');
+            }).fail(function (err) {
+                console.log(err);
+                alert(err.responseJSON.msg);
+            });
+        }
+    });
 });

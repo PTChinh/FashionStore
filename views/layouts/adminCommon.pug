@@ -11,11 +11,11 @@ html
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
         link(rel='stylesheet', type='text/css', href='styles/admin.css')
     nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
-        a.navbar-brand.col-sm-3.col-md-2.d-flex.justify-content-center(href='#') Bee Fashion
+        a.navbar-brand.col-sm-3.col-md-2.d-flex.justify-content-center(href='#') Sakura Fashion
         .dropdown.mr-5.px-lg-5
             button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')= admin.username
             .dropdown-menu.dropdown-menu-right(aria-labelledby='dropdownMenuButton')
-                a.dropdown-item.text-white.cursor-hand#staffChangePass
+                a.dropdown-item.text-white.cursor-hand(data-Toggle='modal' data-Target='#staffPassModal')
                     span.fa.fa-unlock-alt.mr-2
                     | Đổi mật khẩu
                 a.dropdown-item.text-white.cursor-hand#staffLogout
@@ -51,6 +51,21 @@ html
                                 i.fas.fa-paste
                                 |   Báo cáo
             block content
+        .container
+            #staffPassModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        form#stafChangeForm(method='PUT')
+                            .modal-header
+                                h4.modal-title Đổi Mật Khẩu
+                            .modal-body
+                                .form-group
+                                    input.form-control#staffOldpassword(type='password', name='oldPassword', placeholder='Mật khẩu cũ', required='required')
+                                    input.form-control.mt-2#staffNewpassword(type='password', name='newPassword', placeholder='Mật khẩu mới', required='required')
+                                    input.form-control.mt-2#staffRepassword(type='password', name='rePassword', placeholder='Nhập lại mật khẩu mới', required='required')
+                            .modal-footer
+                                button.btn.btn-primary.float-right#btnUpdatePass(type='submit') Cập nhật
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close
     script(src='https://code.jquery.com/jquery-3.4.1.min.js',crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')

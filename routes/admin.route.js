@@ -21,5 +21,6 @@ router.put('/user/signup', adminMiddleware.requireAuthAdmin, controller.createUs
 router.put('/staff/update', adminMiddleware.requireAuthAdmin, controller.updateStaff);
 router.put('/user/update', adminMiddleware.requireAuthAdmin, controller.updateUser);
 router.get('/staff/logout', adminMiddleware.requireAuthAdmin, controller.staffLogout);
+router.put('/staff/changepassword', adminMiddleware.requireAuthAdmin, controller.staffChangePassword);
 
 module.exports = router;
