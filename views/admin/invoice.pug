@@ -4,34 +4,58 @@ block content
         h2.mt-3.mb-3
             | Thông tin đặt hàng
         .table-responsive
-            table.table.table-hover.table-sm
-                tr
-                    th STT
-                    th Mã ĐH
-                    th Họ tên
-                    th Địa chỉ
-                    th SĐT
-                    th Email
-                    th Thành tiền
-                    th HT thanh toán
-                    th Vận chuyển
-                    th Ghi chú
-                    th Trạng thái
-                    th Ngày nhận
-                    th Hành động
-                tr
-                    td 1
-                    td MK01
-                    td Trần Chính
-                    td TP.Hồ Chí Minh
-                    td 0352556122
-                    td Admin@gmail.com
-                    td 900000
-                    td Tiền mặt
-                    td Chuyển phát nhanh
-                    td Không
-                    td Đã duyệt
-                    td 22/2/2222
-                    td
-                        button.btn.btn-info.btn-sm +
-                        button.btn.btn-danger.btn-sm x
+            table.table.table-hover.table-bordered
+                tr(align='center')
+                    th.align-middle(style='width: 1%;') Mã ĐH
+                    th.align-middle Họ tên
+                    th.align-middle(style='width: 10%;') Địa chỉ
+                    th.align-middle SĐT
+                    th.align-middle Email
+                    th.align-middle Thành tiền
+                    th.align-middle HT thanh toán
+                    th.align-middle(style='width: 1%;') Vận chuyển
+                    th.align-middle Ghi chú
+                    th.align-middle(style='width: 8%;') Ngày tạo
+                    th.align-middle Trạng thái
+                    th.align-middle(style='width: 10%;') Hành động
+                each tran in trans
+                    tr.text-center
+                        td.align-middle.confirm-id= tran.id
+                        td.align-middle= tran.name
+                        td.align-middle= tran.address
+                        td.align-middle= tran.phone
+                        td.align-middle= tran.email
+                        td.align-middle= tran.amount
+                        td.align-middle= tran.payment
+                        td.align-middle= tran.transport
+                        if(tran.message === null)
+                            td.align-middle Không
+                        else
+                            td.align-middle= tran.message
+                        td.align-middle= moment(`${tran.createdAt}`).format('DD-MM-YYYY')
+                        td.align-middle
+                            if(tran.status === 0)
+                                button.btn.btn-outline-dark.btn-sm(name='0') Đang chờ
+                            if(tran.status === 1)
+                                button.btn.btn-outline-primary.btn-sm(name='1') Đã duyệt
+                            if(tran.status === 2)
+                                button.btn.btn-outline-success.btn-sm(name='2') Đã giao
+                        td.align-middle
+                            button.btn.btn-info.btn-sm.mr-1.confirm-invoice(data-toggle='modal' data-target='#invoiceUpdateModal') Duyệt
+                            button.btn.btn-primary.btn-sm Xem
+
+        .container
+            #invoiceUpdateModal.modal.fade
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h4.modal-title Duyệt đơn
+                        form#invoiceFormUpdate
+                            .modal-body
+                                .form-group
+                                    select.form-control.mt-2#invoiceStatusSelect
+                                        option(value='1') Xác nhận đơn hàng
+                                        option(value='2') Xác nhận đã giao hàng
+                            .modal-footer
+                                button.btn.btn-primary.float-right#btnInvoiceUpdate(type='submit') Cập nhật
+                                button.btn.btn-light(type='button', data-dismiss='modal') Close

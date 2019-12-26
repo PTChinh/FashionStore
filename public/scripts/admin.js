@@ -296,4 +296,37 @@ $(document).ready(function () {
             });
         }
     });
+
+
+    //ajax confirm invoice
+    $(".confirm-invoice").on('click', function (e) {
+        e.preventDefault();
+
+        var $row = $(this).closest("tr");    // Find the row
+        var id = parseInt($row.find(".confirm-id").text(), 10);
+
+        $('#btnInvoiceUpdate').on('click', function (e) {
+            e.preventDefault();
+
+            var status = parseInt($("#invoiceStatusSelect option:selected").val(), 10);
+
+            $.ajax({
+                url: '/admin/invoice/confirm',
+                type: 'put',
+                dataType: 'json',
+                data: {
+                    id: id,
+                    status: status
+                }
+            }).done(function () {
+                $('#invoiceUpdateModal').modal('hide');
+                window.location.replace(window.location);
+            }).fail(function (err) {
+                console.log(err);
+                alert(err.responseJSON.msg);
+            });
+
+        });
+
+    });
 });

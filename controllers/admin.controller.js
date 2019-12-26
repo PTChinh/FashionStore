@@ -4,6 +4,7 @@ const saltRounds = 10;
 const db = require('../src/database/connection');
 const admin = require('../src/models/admin.model');
 const user = require('../src/models/user.model');
+const transaction = require('../src/models/transaction.model');
 
 module.exports.login = (req, res) => {
     res.render('admin/login');
@@ -80,9 +81,15 @@ module.exports.user = (req, res) => {
 };
 
 module.exports.invoice = (req, res) => {
-    let admin = req.session.admin;
-    res.render('admin/invoice', {
-        admin: admin
+
+    transaction.findAll().then(function (trans) {
+        let admin = req.session.admin;
+        res.render('admin/invoice', {
+            trans: trans,
+            admin: admin
+        });
+    }).catch(function (err) {
+        console.log('Some thing went wrong! ' + err);
     });
 };
 
@@ -271,5 +278,35 @@ module.exports.staffChangePassword = (req, res) => {
                 }
             });
         return res.status(200).send({msg: "Thay đổi mật khẩu thành công"});
+    });
+};
+
+module.exports.confirmInvoice = (req, res) => {
+    const id = req.body.id;
+    const status = req.body.status;
+
+    transaction.findOne({
+        where: {
+            id: id
+        }
+    }).then(function (tran) {
+        if (tran == null) {
+            return res.status(401).send({
+                msg: "Không tìm thấy đơn hàng."
+            });
+        }
+
+        transaction.update(
+            {
+                status: status,
+                updated_at: Date.now()
+            },
+            {
+                where: {
+                    id: id
+                }
+            }
+        );
+        return res.status(200).send({msg: "Duyệt đơn hàng thành công"});
     });
 };
