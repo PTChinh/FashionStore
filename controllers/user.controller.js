@@ -545,6 +545,31 @@ module.exports.signUp = (req, res) => {
     }).catch(function (err) {
         console.log('Some thing went wrong! ' + err);
     })
+};
 
+module.exports.cancel = (req, res) => {
+    let id = req.body.trans;
 
+    transaction.findOne({
+        where: {
+            id: id
+        }
+    }).then(function (tran) {
+        if(tran == null) {
+            return res.status(401).send({msg: "Không tìm thấy đơn hàng"});
+        }
+
+        transaction.destroy({
+            where: {
+                id: id
+            }
+        });
+
+        orders.destroy({
+            where: {
+                transaction_id: id
+            }
+        });
+        return res.status(200).send({msg: "Hủy thành công"});
+    });
 };

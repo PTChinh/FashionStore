@@ -407,4 +407,27 @@ $(document).ready(function () {
         window.location.href = '../product/filter?id=' + id + '&promotion=' + promotion + '&selected=' + selectedVal;
 
     });
+
+    //ajax remove order
+    $(".btnCancel").click(function(e) {
+        e.preventDefault();
+        var url = window.location;
+
+        var $row = $(this).closest("tr");    // Find the row
+        var $id = $row.find(".name-trans").text();
+       
+        $.ajax({
+            type: "put",
+            url: '/user/cancel',
+            data: {
+                trans: $id
+            },
+        }).done(function () {
+            alert("Xóa đơn hàng thành công");
+            window.location.replace(url);
+        }).fail(function (err) {
+            console.log(err);
+            alert(err.responseJSON.msg);
+        });
+    });
 });
