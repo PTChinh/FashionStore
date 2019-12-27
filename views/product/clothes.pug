@@ -2,7 +2,7 @@ extends ../layouts/common
 block content
     .container
         .row
-            .col-6.col-md-3
+            .col-6.col-md-3.mt-5
                 div
                     h4.mb-3 Danh mục sản phẩm
                     .mb-5
@@ -31,15 +31,15 @@ block content
                                 label.ml-3(for='promotion') Đang khuyến mãi
                             a.btn.btn-primary#btnFilter(href='') Áp dụng
             .col-12.col-md-9
-                .d-flex.justify-content-end.mb-5.mt-5
+                .d-flex.justify-content-start.mb-5.mt-5
                     form.form-id(method="GET" action='/product/search' id=`${products[0].category_id}`)
-                        .form-group.col-md-12.mt-5.pt-3.ml-5
+                        .form-group.col-md-12.mt-5.pt-3
                             span.fa.fa-search.icon-left
                             input.new-form-control.form-control.input-opacity(type='text', name='search', placeholder='Tìm kiếm sản phẩm ...', size='60px')
                 .container.border
                     .row.justify-content-around.p-2
                         each product in products
-                            .d-flex.flex-column.text-center.border.mb-2.mt-1.Box-Shadow-Around
+                            .d-flex.flex-column.text-center.border.mb-2.mt-1.Box-Shadow-Around.col-3
                                 figure.Img-Product-Small.Scale-Trans
                                     img.Info-Product-Image-Sc(src=product.image alt='my product')
                                 p= product.name

@@ -2,7 +2,7 @@ extends ../layouts/common
 block content
     .container
         .row
-            .col-6.col-md-3
+            .col-6.col-md-3.mt-5
                 div
                     h4.mb-3 Danh mục sản phẩm
                     .mb-5
@@ -33,7 +33,7 @@ block content
                             else
                                 h6.mb-3 Không khuyến mãi
             .col-12.col-md-9
-                .container.border
+                .container.border.mt-5.bg-white
                     if(products.length < 1)
                         h1
                             center Không có kết quả nào

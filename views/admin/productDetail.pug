@@ -3,7 +3,6 @@ block content
     main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
         h2.mt-3.mb-3 Thông tin sản phẩm
             button.btn.btn-info.mr-1.ml-3#btnUpdateProduct Sửa thông tin sản phẩm
-            button.btn.btn-info.mr-1 Sửa ảnh sản phẩm
             button.btn.btn-primary.mr-1(data-toggle='modal' data-target='#productCreateModal') Thêm sản phẩm
             button.btn.btn-primary(data-toggle='modal' data-target='#detailCreateModal') Thêm loại sản phẩm
         h5.name-pro= pro.name
@@ -38,7 +37,6 @@ block content
                         td.align-middle= moment(`${item.createdAt}`).format('DD-MM-YYYY')
                         td.align-middle
                             button.btn.btn-info.mr-1.btnUpdateDetail Sửa
-                            button.btn.btn-info.mr-1.btnUpdateImgDetail Sửa ảnh
                             if(productDetails.length > 1)
                                 button.btn.btn-danger.btnRemoveDetailProduct Xóa
 
@@ -126,7 +124,7 @@ block content
                                     input.form-control.mt-2(type='text' placeholder='Content' required='required' maxlength='100' name='content')
                                 .form-group
                                     label.mt-2 Giá
-                                    input.form-control(type='number' placeholder='Price' required='required' name='price')
+                                    input.form-control(type='number' placeholder='Price' required='required' name='price' min='0')
                                 .form-group
                                     label.mt-2 Sale
                                     input.form-control(type='number' placeholder='Sale' required='required' min='0' max='50' name='sale')

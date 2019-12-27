@@ -10,10 +10,11 @@ block content
                     th.align-middle Tên sản phẩm
                     th.align-middle Danh mục
                     th.align-middle Giá
-                    th.align-middle Khuyến mãi
+                    th.align-middle Khuyến mãi (%)
                     th.align-middle Nhà cung cấp
-                    th.align-middle Nội dung
-                    th.align-middle Hình ảnh
+                    th.align-middle(style='width: 10%;') Nội dung
+                    th.align-middle(style='width: 8%;') Hình ảnh
+                    th.align-middle(style='width: 10%;') Hành động
                 each product in products
                     tr.text-center
                         td.align-middle.pro-id= product.id

@@ -415,7 +415,7 @@ $(document).ready(function () {
 
         var $row = $(this).closest("tr");    // Find the row
         var $id = $row.find(".name-trans").text();
-       
+
         $.ajax({
             type: "put",
             url: '/user/cancel',

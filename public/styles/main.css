@@ -39,7 +39,6 @@
 }
 
 .Sup-Menu-Opt {
-    border-top: 3px solid green;
     z-index: 1;
     display: none;
     position: absolute;
@@ -232,7 +231,7 @@ body, footer {
 }
 
 .E-background-color {
-    background-color: white;
+    background-color: #fad9f9;
 }
 
 .Type-background-color {
